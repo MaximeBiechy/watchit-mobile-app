@@ -1,4 +1,11 @@
 module.exports = {
-  root: true,
-  extends: '@react-native',
+  parser: '@typescript-eslint/parser',
+  extends: ['airbnb', 'prettier'],
+  plugins: ['prettier'],
+  rules: {
+    'prettier/prettier': ['error'],
+    'react/react-in-jsx-scope': 'off',
+    'import/extensions': 'off',
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
+  },
 };
