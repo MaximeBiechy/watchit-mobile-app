@@ -9,20 +9,27 @@ import fr from './translations/fr.json';
 const LOCALES = ['en', 'fr'];
 const LANGUAGES_STORAGE_KEY = 'userLanguage';
 
-i18next.use(initReactI18next).init({
-  supportedLngs: LOCALES,
-  resources: {
-    en: {
-      translation: en,
+const getLanguage = async () => {
+  const language = await AsyncStorage.getItem(LANGUAGES_STORAGE_KEY);
+  return language || 'en';
+};
+
+getLanguage().then((language: string) => {
+  i18next.use(initReactI18next).init({
+    supportedLngs: LOCALES,
+    resources: {
+      en: {
+        translation: en,
+      },
+      fr: {
+        translation: fr,
+      },
     },
-    fr: {
-      translation: fr,
+    fallbackLng: language,
+    interpolation: {
+      escapeValue: false,
     },
-  },
-  fallbackLng: 'fr',
-  interpolation: {
-    escapeValue: false,
-  },
+  });
 });
 
 export const changeLanguage = async (language: string) => {
