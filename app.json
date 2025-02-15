@@ -1,4 +1,7 @@
 {
   "name": "WatchitApp",
-  "displayName": "WatchitApp"
+  "displayName": "WatchitApp",
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-8173203314977114~7066622758"
+  }
 }
