@@ -1,8 +1,13 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Config from 'react-native-config';
+
+if (!Config.WATCHIT_API_URL) {
+  throw new Error('WATCHIT_API_URL is not defined in the .env file');
+}
 
 const api = axios.create({
-  baseURL: process.env.WATCHIT_API_URL,
+  baseURL: Config.WATCHIT_API_URL,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -12,7 +17,7 @@ const api = axios.create({
 api.interceptors.request.use(
   async (config) => {
     const token = await AsyncStorage.getItem('accessToken');
-    if (token) {
+    if (token && config.headers) {
       config.headers.set('Authorization', `Bearer ${token}`);
     }
     return config;
@@ -41,7 +46,7 @@ const refreshAccessToken = async () => {
   }
 };
 
-api.interceptors.request.use(
+api.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
@@ -53,7 +58,7 @@ api.interceptors.request.use(
     const { status } = error.response;
 
     // ? Unauthorized
-    if (status === 401) {
+    if (status === 401 && !originalRequest.retry) {
       originalRequest.retry = true;
       const newAccessToken = await refreshAccessToken();
 
