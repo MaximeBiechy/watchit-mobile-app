@@ -1,5 +1,7 @@
 apply plugin: "com.android.application"
+// MANUAL ADD
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+// END MANUAL ADD
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
 
