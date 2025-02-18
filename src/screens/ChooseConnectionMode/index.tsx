@@ -4,7 +4,7 @@ import assets from '../../assets/assets.ts';
 import styles from './styles.ts';
 import ButtonComponent from '../../components/Button/ButtonComponent.tsx';
 
-function ChooseConnectionMode() {
+function ChooseConnectionModeScreen() {
   const { t } = useTranslation('chooseConnectionMode');
 
   return (
@@ -33,4 +33,4 @@ function ChooseConnectionMode() {
   );
 }
 
-export default ChooseConnectionMode;
+export default ChooseConnectionModeScreen;

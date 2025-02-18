@@ -1,4 +1,4 @@
 import HomeScreen from './HomeScreen.tsx';
-import ChooseConnectionMode from './ChooseConnectionMode/index.tsx';
+import ChooseConnectionModeScreen from './ChooseConnectionMode/index.tsx';
 
-export { HomeScreen, ChooseConnectionMode };
+export { HomeScreen, ChooseConnectionModeScreen };
