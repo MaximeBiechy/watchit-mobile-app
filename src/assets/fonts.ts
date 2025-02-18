@@ -5,7 +5,6 @@ const fonts = {
   },
   Poppins: {
     regular: 'Poppins-Regular',
-    medium: 'Poppins-Medium',
     semiBold: 'Poppins-SemiBold',
   },
   Roboto: {
