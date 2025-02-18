@@ -6,4 +6,11 @@
         <item name="android:editTextBackground">@drawable/rn_edit_text_material</item>
     </style>
 
+    <!-- MANUAL ADD : for react-native-bootsplash-->
+    <style name="BootTheme" parent="Theme.BootSplash">
+        <item name="bootSplashBackground">@color/bootsplash_background</item>
+        <item name="bootSplashLogo">@drawable/screen</item>
+        <item name="postBootSplashTheme">@style/AppTheme</item>
+    </style>
+    <!-- END MANUAL ADD : for react-native-bootsplash-->
 </resources>
