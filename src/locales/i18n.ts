@@ -1,10 +1,7 @@
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-// Import translations for each language
-import en from './translations/en.json';
-import fr from './translations/fr.json';
+import translations from './translations/index.ts';
 
 const LOCALES = ['en', 'fr'];
 const LANGUAGES_STORAGE_KEY = 'userLanguage';
@@ -17,14 +14,7 @@ const getLanguage = async () => {
 getLanguage().then((language: string) => {
   i18next.use(initReactI18next).init({
     supportedLngs: LOCALES,
-    resources: {
-      en: {
-        translation: en,
-      },
-      fr: {
-        translation: fr,
-      },
-    },
+    resources: translations,
     fallbackLng: language,
     interpolation: {
       escapeValue: false,
