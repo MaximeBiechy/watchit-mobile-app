@@ -2,8 +2,28 @@
   "migIndex": 1,
   "data": [
     {
+      "path": "src/assets/fonts/Montserrat/Montserrat-Medium.ttf",
+      "sha1": "4656e40419da86a5fec473ea8e7fc0efef183f05"
+    },
+    {
       "path": "src/assets/fonts/Montserrat/Montserrat-SemiBold.ttf",
       "sha1": "d491c9d0af61faef59ca807737b560170f547f5b"
+    },
+    {
+      "path": "src/assets/fonts/Poppins/Poppins-Medium.ttf",
+      "sha1": "283f21b44efbdbf276ba802be2d949a36bbc4233"
+    },
+    {
+      "path": "src/assets/fonts/Poppins/Poppins-Regular.ttf",
+      "sha1": "fdd3002e7d814ee47c1c1b8487c72c6bbb3a2d00"
+    },
+    {
+      "path": "src/assets/fonts/Poppins/Poppins-SemiBold.ttf",
+      "sha1": "8a4ace9392d06bcb7f8ea2f5169b07e4c383a90d"
+    },
+    {
+      "path": "src/assets/fonts/Roboto/Roboto-Regular.ttf",
+      "sha1": "3bff51436aa7eb995d84cfc592cc63e1316bb400"
     }
   ]
 }
