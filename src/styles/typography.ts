@@ -7,14 +7,24 @@ export const bodyInfoFont = fonts.Montserrat.medium;
 export const bodyTextFont = fonts.Poppins.regular;
 export const bodyLongTextFont = fonts.Roboto.regular;
 
-export const navigationTopBarTitle = {
+export const authTitle = {
   fontFamily: headingTitleFont,
-  fontSize: 16,
+  fontSize: 24,
 };
 
 export const sectionTitle = {
   fontFamily: headingSectionFont,
   fontSize: 18,
+};
+
+export const navigationTopBarTitle = {
+  fontFamily: headingTitleFont,
+  fontSize: 16,
+};
+
+export const bodyLongText = {
+  fontFamily: bodyLongTextFont,
+  fontSize: 14,
 };
 
 export const bodyInfo = {
@@ -25,9 +35,4 @@ export const bodyInfo = {
 export const bodyText = {
   fontFamily: bodyTextFont,
   fontSize: 12,
-};
-
-export const bodyLongText = {
-  fontFamily: bodyLongTextFont,
-  fontSize: 14,
 };
