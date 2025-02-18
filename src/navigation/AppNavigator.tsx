@@ -5,6 +5,7 @@ import RNBootSplash from 'react-native-bootsplash';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import MainNavigator from './MainNavigator.tsx';
 import AuthNavigator from './AuthNavigator.tsx';
+import darkTheme from '../styles/themes.ts';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,9 +23,9 @@ function AppNavigator() {
   }, []);
 
   return (
-    <NavigationContainer onReady={() => RNBootSplash.hide({ fade: true })}>
+    <NavigationContainer onReady={() => RNBootSplash.hide({ fade: true })} theme={darkTheme}>
       {/* ? Show the MainStack if the user is authenticated, otherwise show the AuthStack */}
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Navigator screenOptions={{ headerShown: false, contentStyle: { paddingHorizontal: 16, paddingTop: 8 } }}>
         {isAuthenticated ? (
           <Stack.Screen name="MainStack" component={MainNavigator} />
         ) : (
