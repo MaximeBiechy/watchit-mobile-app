@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { Alert, Button, Text, TextInput, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
 import { showToast } from '../utils/toast.tsx';
 import AdBanner from '../components/AdBanner/AdBanner.tsx';
 import { register } from '../services/api/auth.ts';
+import { setUserData, selectUserData } from '../store/user/userSlice.ts';
 
 function HomeScreen() {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const userData = useSelector(selectUserData);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -15,9 +19,11 @@ function HomeScreen() {
     try {
       const newUser = await register(username, email, password);
       if (newUser && newUser.username) {
+        dispatch(setUserData(newUser));
+        console.log('Current store state:', userData);
         Alert.alert('Success', `${newUser.username} has been created successfully!`);
       } else {
-        throw new Error('User registration failed!');
+        Alert.alert('Error', newUser.error || 'An error occurred while creating the user');
       }
     } catch (error: any) {
       Alert.alert('Error', error.message);

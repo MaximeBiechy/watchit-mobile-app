@@ -1,4 +1,6 @@
+import { t } from 'i18next';
 import api from './api.ts';
+import { showToast } from '../../utils/toast.tsx';
 
 export const register = async (username: string, email: string, password: string) => {
   try {
@@ -9,8 +11,10 @@ export const register = async (username: string, email: string, password: string
     });
 
     return response.data;
-  } catch (error) {
-    return null;
+  } catch (error: any) {
+    const message = error.response?.data?.message || 'An error occurred';
+    const translatedMessage = t(message);
+    showToast('error', translatedMessage);
+    return { error: error.response?.data?.message || 'An error occurred' };
   }
 };
-
