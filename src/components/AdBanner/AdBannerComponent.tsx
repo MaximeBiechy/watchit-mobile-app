@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function AdBanner() {
+function AdBannerComponent() {
   return (
     <View style={styles.container}>
       <BannerAd unitId={TestIds.BANNER} size={BannerAdSize.BANNER} requestOptions={{ requestNonPersonalizedAdsOnly: true }} />
@@ -16,4 +16,4 @@ function AdBanner() {
   );
 }
 
-export default AdBanner;
+export default AdBannerComponent;
