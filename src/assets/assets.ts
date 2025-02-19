@@ -17,6 +17,8 @@ const assets = {
   },
   icons: {
     arrowLeft: 'arrow-back-outline',
+    eye: 'eye-outline',
+    eyeOff: 'eye-off-outline',
   },
 };
 
