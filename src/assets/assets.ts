@@ -6,9 +6,6 @@ import apple from './images/social-media/apple.png';
 import facebook from './images/social-media/facebook.png';
 import google from './images/social-media/google.png';
 
-// ICONS
-import eyeHidden from './icons/eye-hidden.svg';
-
 const assets = {
   images: {
     logo,
@@ -19,7 +16,7 @@ const assets = {
     },
   },
   icons: {
-    eyeHidden,
+    arrowLeft: 'arrow-back-outline',
   },
 };
 
