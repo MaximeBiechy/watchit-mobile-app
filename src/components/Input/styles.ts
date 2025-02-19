@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { darkGray } from '../../styles/colors.ts';
+import { bodyTextFont } from '../../styles/typography.ts';
 
 const styles = StyleSheet.create({
   label: {
@@ -18,7 +19,8 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     color: 'white',
-    fontSize: 16,
+    fontFamily: bodyTextFont,
+    fontSize: 14,
   },
 });
 
