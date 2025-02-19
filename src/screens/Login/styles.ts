@@ -5,7 +5,6 @@ import { subTitleColor } from '../../styles/colors.ts';
 const style = StyleSheet.create({
   titleContainer: {
     alignItems: 'center',
-    flex: 1,
     justifyContent: 'center',
     marginVertical: 60,
     gap: 15,
