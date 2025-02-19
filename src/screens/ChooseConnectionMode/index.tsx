@@ -15,7 +15,13 @@ function ChooseConnectionModeScreen() {
       <Image source={assets.images.logo} style={styles.appLogo} />
       <Text style={styles.appTitle}>Watch It</Text>
       <Text style={[styles.introText]}>{t('intro')}</Text>
-      <ButtonComponent title={t('signup')} onPress={() => {}} buttonStyle={{ margin: 40 }} />
+      <ButtonComponent
+        title={t('signup')}
+        onPress={() => {
+          navigation.navigate('Signup');
+        }}
+        buttonStyle={{ margin: 40 }}
+      />
       <View style={styles.textContainer}>
         <Text style={[styles.bodyText, styles.questionText]}>{t('question')}</Text>
         <Text
