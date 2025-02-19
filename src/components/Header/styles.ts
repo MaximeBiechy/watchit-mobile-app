@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     paddingHorizontal: 6,
     paddingTop: 8,
+    paddingBottom: 20,
   },
   leftSide: {
     width: 40,
