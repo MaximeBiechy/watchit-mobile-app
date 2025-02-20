@@ -2,7 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { AuthStackParamList } from './RootStackParamList.tsx';
-import { ChooseConnectionModeScreen, LoginScreen, SignUpScreen } from '../screens/index.ts';
+import { ChooseConnectionModeScreen, LoginScreen, SignUpScreen, EmailVerification } from '../screens/index.ts';
 import { renderHeader } from '../components/Header/HeaderComponent.tsx';
 
 const AuthStack = createNativeStackNavigator<AuthStackParamList>();
@@ -25,6 +25,13 @@ function AuthNavigator() {
         component={SignUpScreen}
         options={({ navigation }) => ({
           header: () => renderHeader(t('signup:screenTitle'), navigation, true),
+        })}
+      />
+      <AuthStack.Screen
+        name="EmailVerification"
+        component={EmailVerification}
+        options={({ navigation }) => ({
+          header: () => renderHeader('emailverfif', navigation, true),
         })}
       />
     </AuthStack.Navigator>
