@@ -10,6 +10,7 @@ export const bodyLongTextFont = fonts.Roboto.regular;
 export const authTitle = {
   fontFamily: headingTitleFont,
   fontSize: 24,
+  color: 'white',
 };
 
 export const sectionTitle = {
