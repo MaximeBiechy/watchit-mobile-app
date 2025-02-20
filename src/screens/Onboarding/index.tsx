@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, Animated, Dimensions } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, Animated } from 'react-native';
 import { useDispatch } from 'react-redux';
 import onboardingData from './onBoardingData.ts';
 import OnboardingSlide from '../../components/Onboarding/OnboardingSlide.tsx';
@@ -46,12 +46,11 @@ function OnboardingScreen() {
         <TouchableOpacity onPress={handleSkip}>
           <Text style={styles.skipText}>Skip</Text>
         </TouchableOpacity>
-        {onboardingData.map((item) => (
-          <View
-            key={item.id}
-            style={[styles.dot, { backgroundColor: Number(item.id) === currentIndex ? 'white' : '#FFFFFF33' }]}
-          />
-        ))}
+        <View style={styles.dotContainer}>
+          {onboardingData.map((item, index) => (
+            <View key={item.id} style={[styles.dot, { backgroundColor: index === currentIndex ? 'white' : '#FFFFFF33' }]} />
+          ))}
+        </View>
         <TouchableOpacity onPress={handleNext}>
           <Text style={styles.nextText}>{currentIndex === onboardingData.length - 1 ? 'Finish' : 'Next'}</Text>
         </TouchableOpacity>

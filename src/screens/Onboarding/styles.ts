@@ -10,6 +10,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignSelf: 'center',
     marginBottom: 20,
+    justifyContent: 'space-around',
+    width: '100%',
+  },
+  dotContainer: {
+    flexDirection: 'row',
+    alignSelf: 'center',
   },
   dot: {
     width: 8,
