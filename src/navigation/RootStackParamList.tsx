@@ -15,7 +15,8 @@ export type AuthStackParamList = {
 };
 
 export type OnboardingStackParamList = {
-  Onboarding1: undefined;
+  Onboarding: undefined;
+  ChooseAvatar: undefined;
 };
 
 export type MainStackParamList = {

@@ -8,5 +8,15 @@ import SignUpScreen from './SignUp/index.tsx';
 import EmailVerification from './EmailVerification/index.tsx';
 // Onboarding Stack
 import OnboardingScreen from './Onboarding/index.tsx';
+import ChooseAvatar from './ChooseAvatar/index.tsx';
 
-export { HomeScreen, DetailsScreen, ChooseConnectionModeScreen, LoginScreen, SignUpScreen, EmailVerification, OnboardingScreen };
+export {
+  HomeScreen,
+  DetailsScreen,
+  ChooseConnectionModeScreen,
+  LoginScreen,
+  SignUpScreen,
+  EmailVerification,
+  OnboardingScreen,
+  ChooseAvatar,
+};

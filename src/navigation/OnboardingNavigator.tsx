@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { OnboardingScreen } from '../screens/index.ts';
+import { OnboardingScreen, ChooseAvatar } from '../screens/index.ts';
 import { renderHeader } from '../components/Header/HeaderComponent.tsx';
 
 const OnboardingStack = createNativeStackNavigator();
@@ -10,6 +10,13 @@ function OnboardingNavigator() {
       <OnboardingStack.Screen
         name="Onboarding"
         component={OnboardingScreen}
+        options={({ navigation }) => ({
+          header: () => renderHeader('', navigation, false),
+        })}
+      />
+      <OnboardingStack.Screen
+        name="ChooseAvatar"
+        component={ChooseAvatar}
         options={({ navigation }) => ({
           header: () => renderHeader('', navigation, false),
         })}
