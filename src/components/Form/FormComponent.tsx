@@ -24,9 +24,8 @@ function FormComponent({ inputs, onSubmit, submitButtonTitle }: FormComponentPro
   return (
     <View style={styles.formContainer}>
       {inputs.map((input) => (
-        <View>
+        <View key={input.placeholder}>
           <InputComponent
-            key={input.placeholder}
             placeholder={input.placeholder}
             value={input.value}
             onChangeText={input.onChangeText}
