@@ -9,6 +9,28 @@ import google from './images/social-media/google.png';
 import onboarding1 from './images/onboarding/onboarding1.png';
 import onboarding2 from './images/onboarding/onboarding2.png';
 import onboarding3 from './images/onboarding/onboarding3.png';
+// IMAGES/ONBOARDING/AVATAR
+import avatar1 from './images/onboarding/avatar/avatar1.png';
+import avatar2 from './images/onboarding/avatar/avatar2.png';
+import avatar3 from './images/onboarding/avatar/avatar3.png';
+import avatar4 from './images/onboarding/avatar/avatar4.png';
+import avatar5 from './images/onboarding/avatar/avatar5.png';
+import avatar6 from './images/onboarding/avatar/avatar6.png';
+import avatar7 from './images/onboarding/avatar/avatar7.png';
+import avatar8 from './images/onboarding/avatar/avatar8.png';
+import avatar9 from './images/onboarding/avatar/avatar9.png';
+import avatar10 from './images/onboarding/avatar/avatar10.png';
+import avatar11 from './images/onboarding/avatar/avatar11.png';
+import avatar12 from './images/onboarding/avatar/avatar12.png';
+import avatar13 from './images/onboarding/avatar/avatar13.png';
+import avatar14 from './images/onboarding/avatar/avatar14.png';
+import avatar15 from './images/onboarding/avatar/avatar15.png';
+import avatar16 from './images/onboarding/avatar/avatar16.png';
+import avatar17 from './images/onboarding/avatar/avatar17.png';
+import avatar18 from './images/onboarding/avatar/avatar18.png';
+import avatar19 from './images/onboarding/avatar/avatar19.png';
+import avatar20 from './images/onboarding/avatar/avatar20.png';
+import avatar21 from './images/onboarding/avatar/avatar21.png';
 
 const assets = {
   images: {
@@ -22,6 +44,29 @@ const assets = {
       onboarding1,
       onboarding2,
       onboarding3,
+      avatar: {
+        avatar1,
+        avatar2,
+        avatar3,
+        avatar4,
+        avatar5,
+        avatar6,
+        avatar7,
+        avatar8,
+        avatar9,
+        avatar10,
+        avatar11,
+        avatar12,
+        avatar13,
+        avatar14,
+        avatar15,
+        avatar16,
+        avatar17,
+        avatar18,
+        avatar19,
+        avatar20,
+        avatar21,
+      },
     },
   },
   icons: {
