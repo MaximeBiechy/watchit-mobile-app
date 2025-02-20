@@ -36,6 +36,7 @@ const userSlice = createSlice({
 });
 
 export const selectUserData = (state: { user: UserState }) => state.user;
+export const selectIsAuthenticated = (state: { user: UserState }) => !!state.user.accessToken;
 
 export const { setUserData, clearUserData } = userSlice.actions;
 

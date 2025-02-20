@@ -1,26 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import RNBootSplash from 'react-native-bootsplash';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useSelector } from 'react-redux';
 import MainNavigator from './MainNavigator.tsx';
 import AuthNavigator from './AuthNavigator.tsx';
 import darkTheme from '../styles/themes.ts';
+import { RootStackParamList } from './RootStackParamList.tsx';
+import { selectIsAuthenticated } from '../store/user/userSlice.ts';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function AppNavigator() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    // ? Check if the user is already authenticated
-    const checkAuthStatus = async () => {
-      const userToken = await AsyncStorage.getItem('accessToken');
-      setIsAuthenticated(!!userToken);
-    };
-
-    checkAuthStatus();
-  }, []);
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+  console.log(isAuthenticated);
 
   return (
     <NavigationContainer onReady={() => RNBootSplash.hide({ fade: true })} theme={darkTheme}>
