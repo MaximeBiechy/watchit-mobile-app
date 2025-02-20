@@ -12,7 +12,6 @@ const styles = StyleSheet.create({
   },
   title: {
     ...authTitle,
-    color: 'white',
     marginVertical: 8,
     textAlign: 'center',
   },

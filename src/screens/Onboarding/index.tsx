@@ -1,15 +1,15 @@
 import React, { useRef, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, Animated } from 'react-native';
-import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { useNavigation } from '@react-navigation/native';
 import OnboardingSlide from '../../components/Onboarding/OnboardingSlide.tsx';
 import styles from './styles.ts';
-import { completeOnboarding } from '../../store/user/userSlice.ts';
 import assets from '../../assets/assets.ts';
+import { OnboardingNavigationProp } from '../../navigation/RootStackParamList.tsx';
 
 function OnboardingScreen() {
-  const dispatch = useDispatch();
   const { t } = useTranslation('onboarding');
+  const navigation = useNavigation<OnboardingNavigationProp>();
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
   const slidesRef = useRef<FlatList>(null);
@@ -41,12 +41,12 @@ function OnboardingScreen() {
     if (currentIndex < onboardingData.length - 1) {
       slidesRef.current?.scrollToIndex({ index: currentIndex + 1 });
     } else {
-      dispatch(completeOnboarding());
+      navigation.navigate('ChooseAvatar');
     }
   };
 
   const handleSkip = () => {
-    dispatch(completeOnboarding());
+    navigation.navigate('ChooseAvatar');
   };
 
   return (
