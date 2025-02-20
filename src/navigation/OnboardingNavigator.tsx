@@ -11,7 +11,7 @@ function OnboardingNavigator() {
         name="Onboarding1"
         component={Onboarding1Screen}
         options={({ navigation }) => ({
-          header: () => renderHeader('onboarding1', navigation, true),
+          header: () => renderHeader('onboarding1', navigation, false),
         })}
       />
     </OnboardingStack.Navigator>
