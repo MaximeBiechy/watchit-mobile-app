@@ -13,7 +13,7 @@ interface OnboardingSlideProps {
 function OnboardingSlide({ item }: OnboardingSlideProps) {
   return (
     <View style={styles.container}>
-      <Image source={item.image} style={styles.image} />
+      <Image source={item.image} />
       <Text style={styles.title}>{item.title}</Text>
       <Text style={styles.description}>{item.description}</Text>
     </View>
