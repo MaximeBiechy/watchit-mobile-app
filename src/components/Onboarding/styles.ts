@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
     ...authTitle,
     color: 'white',
     marginVertical: 8,
+    textAlign: 'center',
   },
   description: {
     fontFamily: bodyInfoFont,
