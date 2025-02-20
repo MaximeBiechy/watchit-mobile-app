@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
-import { authTitle, bodyInfoFont, headingTitleFont } from '../../styles/typography.ts';
-import { gray, highlightColor } from '../../styles/colors.ts';
+import { authTitle, bodyInfoFont, headingSectionFont, headingTitleFont } from '../../styles/typography.ts';
+import { darkGray, gray, highlightColor } from '../../styles/colors.ts';
 
 const styles = StyleSheet.create({
   container: {
@@ -21,6 +21,31 @@ const styles = StyleSheet.create({
   },
   emailText: {
     color: 'white',
+  },
+  otpContainer: {
+    marginVertical: 20,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    gap: 16,
+  },
+  otpInput: {
+    width: 64,
+    height: 64,
+    borderWidth: 1,
+    borderRadius: 12,
+    color: 'white',
+    fontFamily: headingSectionFont,
+    textAlign: 'center',
+    backgroundColor: darkGray,
+    fontSize: 28,
+    lineHeight: 28,
+  },
+  otpInputFocused: {
+    borderColor: highlightColor,
+    borderWidth: 1,
+    borderRadius: 12,
   },
   textContainer: {
     flexDirection: 'row',
