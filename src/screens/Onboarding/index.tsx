@@ -12,8 +12,9 @@ function OnboardingScreen() {
   const { t } = useTranslation('onboarding');
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
-  const slidesRef = useRef<FlatList<any>>(null);
+  const slidesRef = useRef<FlatList>(null);
 
+  // ? Different onboarding slides
   const onboardingData = [
     {
       id: '1',
@@ -36,6 +37,7 @@ function OnboardingScreen() {
   ];
 
   const handleNext = () => {
+    // ? If we're not on the last slide, scroll to the next one
     if (currentIndex < onboardingData.length - 1) {
       slidesRef.current?.scrollToIndex({ index: currentIndex + 1 });
     } else {
@@ -67,7 +69,7 @@ function OnboardingScreen() {
 
       <View style={styles.pagination}>
         <TouchableOpacity onPress={handleSkip}>
-          <Text style={styles.skipText}>Skip</Text>
+          <Text style={styles.skipText}>{t('skip')}</Text>
         </TouchableOpacity>
         <View style={styles.dotContainer}>
           {onboardingData.map((item, index) => (
@@ -75,7 +77,7 @@ function OnboardingScreen() {
           ))}
         </View>
         <TouchableOpacity onPress={handleNext}>
-          <Text style={styles.nextText}>{currentIndex === onboardingData.length - 1 ? 'Finish' : 'Next'}</Text>
+          <Text style={styles.nextText}>{currentIndex === onboardingData.length - 1 ? t('finish') : t('next')}</Text>
         </TouchableOpacity>
       </View>
     </View>
