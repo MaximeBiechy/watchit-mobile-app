@@ -10,6 +10,8 @@ import frEmailVerification from './fr/auth/emailVerification.json';
 // Onboarding
 import enOnboarding from './en/onboarding/onboarding.json';
 import frOnboarding from './fr/onboarding/onboarding.json';
+import enChooseCharacter from './en/onboarding/chooseCharacter.json';
+import frChooseCharacter from './fr/onboarding/chooseCharacter.json';
 // Main
 
 const translations = {
@@ -19,6 +21,7 @@ const translations = {
     signup: enSignup,
     emailVerification: enEmailVerification,
     onboarding: enOnboarding,
+    chooseCharacter: enChooseCharacter,
   },
   fr: {
     chooseConnectionMode: frChooseConnectionMode,
@@ -26,6 +29,7 @@ const translations = {
     signup: frSignup,
     emailVerification: frEmailVerification,
     onboarding: frOnboarding,
+    chooseCharacter: frChooseCharacter,
   },
 };
 
