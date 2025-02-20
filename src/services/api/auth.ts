@@ -12,7 +12,7 @@ export const register = async (username: string, email: string, password: string
 
     return response.data;
   } catch (error: any) {
-    const message = error.response?.data?.message || 'An error occurred';
+    const message = error.response?.data?.message || 'An error occurred, please try again later';
     const translatedMessage = t(message);
     showToast('error', translatedMessage);
     return { error: error.response?.data?.message || 'An error occurred' };
