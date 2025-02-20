@@ -1,17 +1,17 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Onboarding1Screen } from '../screens/index.ts';
+import { OnboardingScreen } from '../screens/index.ts';
 import { renderHeader } from '../components/Header/HeaderComponent.tsx';
 
 const OnboardingStack = createNativeStackNavigator();
 
 function OnboardingNavigator() {
   return (
-    <OnboardingStack.Navigator initialRouteName="Onboarding1">
+    <OnboardingStack.Navigator initialRouteName="Onboarding">
       <OnboardingStack.Screen
-        name="Onboarding1"
-        component={Onboarding1Screen}
+        name="Onboarding"
+        component={OnboardingScreen}
         options={({ navigation }) => ({
-          header: () => renderHeader('onboarding1', navigation, false),
+          header: () => renderHeader('', navigation, false),
         })}
       />
     </OnboardingStack.Navigator>
