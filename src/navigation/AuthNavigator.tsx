@@ -31,7 +31,7 @@ function AuthNavigator() {
         name="EmailVerification"
         component={EmailVerification}
         options={({ navigation }) => ({
-          header: () => renderHeader('emailverfif', navigation, true),
+          header: () => renderHeader(t('emailVerification:screenTitle'), navigation, true),
         })}
       />
     </AuthStack.Navigator>
