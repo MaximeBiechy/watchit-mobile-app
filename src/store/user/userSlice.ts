@@ -5,6 +5,7 @@ interface UserState {
   email: string | null;
   accessToken: string | null;
   refreshToken: string | null;
+  onboardingCompleted: boolean;
 }
 
 const initialState: UserState = {
@@ -12,6 +13,7 @@ const initialState: UserState = {
   email: null,
   accessToken: null,
   refreshToken: null,
+  onboardingCompleted: false,
 };
 
 const userSlice = createSlice({
@@ -32,12 +34,17 @@ const userSlice = createSlice({
       accessToken: null,
       refreshToken: null,
     }),
+    completeOnboarding: (state) => ({
+      ...state,
+      onboardingCompleted: true,
+    }),
   },
 });
 
 export const selectUserData = (state: { user: UserState }) => state.user;
 export const selectIsAuthenticated = (state: { user: UserState }) => !!state.user.accessToken;
+export const selectOnboardingCompleted = (state: { user: UserState }) => state.user.onboardingCompleted;
 
-export const { setUserData, clearUserData } = userSlice.actions;
+export const { setUserData, clearUserData, completeOnboarding } = userSlice.actions;
 
 export default userSlice.reducer;
