@@ -36,8 +36,11 @@ function EmailVerificationScreen({ route }: Props) {
           dispatch(setUserData({ ...userData, onboardingCompleted: true }));
         }, 2000);
       } else {
+        showToast('error', 'errorMessage');
         setBorderColor(errorColor);
       }
+    } else {
+      setBorderColor(darkGray);
     }
   }, [otp, dispatch, userData]);
 

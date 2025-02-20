@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   otpContainer: {
-    marginVertical: 20,
+    marginVertical: 30,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
