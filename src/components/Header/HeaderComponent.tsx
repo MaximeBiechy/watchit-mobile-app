@@ -38,7 +38,7 @@ function HeaderComponent({ title, showLeftIcon = false, rightIcon, onLeftPress, 
 export const renderHeader = (
   title: string,
   navigation: NavigationProp<any>,
-  showLeftIcon: boolean,
+  showLeftIcon?: boolean,
   rightIcon?: string,
   onRightPress?: () => void,
 ) => (
