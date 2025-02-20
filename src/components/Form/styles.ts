@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { bodyInfo } from '../../styles/typography.ts';
+import { bodyInfo, bodyInfoFont } from '../../styles/typography.ts';
 import { highlightColor } from '../../styles/colors.ts';
 
 const style = StyleSheet.create({
@@ -11,6 +11,12 @@ const style = StyleSheet.create({
     ...bodyInfo,
     color: highlightColor,
     textAlign: 'right',
+  },
+  messageText: {
+    color: highlightColor,
+    textAlign: 'right',
+    fontFamily: bodyInfoFont,
+    fontSize: 12,
   },
 });
 

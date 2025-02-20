@@ -1,17 +1,35 @@
 import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import { useNavigation } from '@react-navigation/native';
 import FormComponent from '../../components/Form/FormComponent.tsx';
 import styles from './styles.ts';
+import { register } from '../../services/api/auth.ts';
+import { AuthNavigationProp } from '../../navigation/RootStackParamList.tsx';
 
 function SignUpScreen() {
   const { t } = useTranslation('signup');
+  const navigation = useNavigation<AuthNavigationProp>();
   const [nickName, setNickName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSignUp = () => {
-    // Handle SignUp logic here
+  const handleSignUp = async () => {
+    let response = await register(nickName, email, password);
+
+    if (!response.error) {
+      console.log('User registered successfully');
+      console.log(response);
+      // It's working like this for the navigation.
+      // When the user is registered, the app will navigate to the HomeScreen.
+      response = {
+        username: 'username',
+        email: 'email',
+        accessToken: 'accessToken',
+        refreshToken: 'refreshToken',
+      };
+      navigation.navigate('EmailVerification', { userData: response });
+    }
   };
 
   const inputs = [

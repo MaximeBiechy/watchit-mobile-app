@@ -24,6 +24,7 @@ function LoginScreen() {
       value: password,
       onChangeText: setPassword,
       secureTextEntry: true,
+      message: t('forgotPassword'),
     },
   ];
 

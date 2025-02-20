@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import InputComponent from '../Input/InputComponent.tsx';
 import ButtonComponent from '../Button/ButtonComponent.tsx';
 import styles from './styles.ts';
@@ -11,6 +11,7 @@ interface InputConfig {
   onChangeText: (text: string) => void;
   secureTextEntry?: boolean;
   keyboardType?: 'default' | 'email-address' | 'numeric' | 'phone-pad';
+  message?: string;
 }
 
 interface FormComponentProps {
@@ -23,14 +24,18 @@ function FormComponent({ inputs, onSubmit, submitButtonTitle }: FormComponentPro
   return (
     <View style={styles.formContainer}>
       {inputs.map((input) => (
-        <InputComponent
-          key={input.placeholder}
-          placeholder={input.placeholder}
-          value={input.value}
-          onChangeText={input.onChangeText}
-          secureTextEntry={input.secureTextEntry}
-          keyboardType={input.keyboardType}
-        />
+        <View key={input.placeholder}>
+          <InputComponent
+            placeholder={input.placeholder}
+            value={input.value}
+            onChangeText={input.onChangeText}
+            secureTextEntry={input.secureTextEntry}
+            keyboardType={input.keyboardType}
+          />
+          <TouchableOpacity onPress={() => {}}>
+            {input.message && <Text style={styles.messageText}>{input.message}</Text>}
+          </TouchableOpacity>
+        </View>
       ))}
       <ButtonComponent title={submitButtonTitle} onPress={onSubmit} />
     </View>

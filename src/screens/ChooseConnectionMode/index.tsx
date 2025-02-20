@@ -1,4 +1,4 @@
-import { Image, Text, View } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import assets from '../../assets/assets.ts';
@@ -24,14 +24,13 @@ function ChooseConnectionModeScreen() {
       />
       <View style={styles.textContainer}>
         <Text style={[styles.bodyText, styles.questionText]}>{t('question')}</Text>
-        <Text
-          style={[styles.functionText]}
+        <TouchableOpacity
           onPress={() => {
             navigation.navigate('Login');
           }}
         >
-          {t('login')}
-        </Text>
+          <Text style={[styles.functionText]}>{t('login')}</Text>
+        </TouchableOpacity>
       </View>
       <View style={styles.optionModeConnectionContainer}>
         <View style={styles.line} />
@@ -39,9 +38,15 @@ function ChooseConnectionModeScreen() {
         <View style={styles.line} />
       </View>
       <View style={styles.OAuthContainer}>
-        <Image source={assets.images.SocialsMedia.google} />
-        <Image source={assets.images.SocialsMedia.apple} />
-        <Image source={assets.images.SocialsMedia.facebook} />
+        <TouchableOpacity onPress={() => {}}>
+          <Image source={assets.images.SocialsMedia.google} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => {}}>
+          <Image source={assets.images.SocialsMedia.apple} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => {}}>
+          <Image source={assets.images.SocialsMedia.facebook} />
+        </TouchableOpacity>
       </View>
     </View>
   );

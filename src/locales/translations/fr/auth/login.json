@@ -4,5 +4,6 @@
   "subtitle": "Veuillez entrer vos informations.",
   "placeholderEmail": "Entrez votre email",
   "placeholderPassword": "Entrez votre mot de passe",
+  "forgotPassword": "Mot de passe oublié?",
   "submitButtonTitle": "Connexion"
 }

@@ -4,6 +4,7 @@ export const highlightColor = '#4990E2';
 export const accentColor = '#FF8700';
 export const darkGray = '#3C4B63';
 export const subTitleColor = '#EBEBEF';
+export const cursorColor = '#121829';
 export const errorColor = '#D42525';
 export const warningColor = '#FF8C04';
 export const successColor = '#2A9D8F';
