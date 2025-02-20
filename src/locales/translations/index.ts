@@ -8,6 +8,8 @@ import frSignup from './fr/auth/signup.json';
 import enEmailVerification from './en/auth/emailVerification.json';
 import frEmailVerification from './fr/auth/emailVerification.json';
 // Onboarding
+import enOnboarding from './en/onboarding/onboarding.json';
+import frOnboarding from './fr/onboarding/onboarding.json';
 // Main
 
 const translations = {
@@ -16,12 +18,14 @@ const translations = {
     login: enLogin,
     signup: enSignup,
     emailVerification: enEmailVerification,
+    onboarding: enOnboarding,
   },
   fr: {
     chooseConnectionMode: frChooseConnectionMode,
     login: frLogin,
     signup: frSignup,
     emailVerification: frEmailVerification,
+    onboarding: frOnboarding,
   },
 };
 
