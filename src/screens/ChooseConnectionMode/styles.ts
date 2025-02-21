@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
-import { authTitle, bodyInfoFont, headingTitleFont } from '../../styles/typography.ts';
+import { bodyInfoFont, FONT_SIZE_14, FONT_SIZE_16, FONT_SIZE_28, headingTitleFont } from '../../styles/typography.ts';
 import { gray, highlightColor } from '../../styles/colors.ts';
+import { SCREEN_WIDTH } from '../../styles/responsives.ts';
 
 const styles = StyleSheet.create({
   container: {
@@ -9,16 +10,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   appLogo: {
-    width: 200,
+    width: SCREEN_WIDTH * 0.5,
+    height: (SCREEN_WIDTH * 0.5 * 9) / 16,
+    aspectRatio: 16 / 9,
+    resizeMode: 'cover',
   },
   appTitle: {
-    ...authTitle,
+    fontFamily: headingTitleFont,
+    fontSize: FONT_SIZE_28,
     color: 'white',
     marginVertical: 8,
   },
   introText: {
     fontFamily: headingTitleFont,
-    fontSize: 14,
+    fontSize: FONT_SIZE_14,
     color: gray,
   },
   textContainer: {
@@ -26,22 +31,22 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   questionText: {
-    fontSize: 16,
+    fontSize: FONT_SIZE_16,
   },
   functionText: {
     fontFamily: headingTitleFont,
-    fontSize: 16,
+    fontSize: FONT_SIZE_16,
     color: highlightColor,
   },
   optionModeConnectionContainer: {
-    marginVertical: 40,
-    marginHorizontal: 30,
+    marginVertical: SCREEN_WIDTH * 0.1,
+    marginHorizontal: SCREEN_WIDTH * 0.075,
     flexDirection: 'row',
     alignItems: 'center',
   },
   optionModeConnectionText: {
-    fontSize: 14,
-    marginHorizontal: 10,
+    fontSize: FONT_SIZE_14,
+    marginHorizontal: SCREEN_WIDTH * 0.075 * 0.33,
   },
   line: {
     flex: 1,
@@ -52,6 +57,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     width: '100%',
+  },
+  OAuth: {
+    width: SCREEN_WIDTH * 0.15,
+    height: SCREEN_WIDTH * 0.15,
   },
   // ? GENERIC STYLES FOR THIS SCREEN
   bodyText: {

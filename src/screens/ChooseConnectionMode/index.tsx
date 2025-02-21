@@ -39,13 +39,13 @@ function ChooseConnectionModeScreen() {
       </View>
       <View style={styles.OAuthContainer}>
         <TouchableOpacity onPress={() => {}}>
-          <Image source={assets.images.SocialsMedia.google} />
+          <Image source={assets.images.SocialsMedia.google} style={styles.OAuth} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {}}>
-          <Image source={assets.images.SocialsMedia.apple} />
+          <Image source={assets.images.SocialsMedia.apple} style={styles.OAuth} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {}}>
-          <Image source={assets.images.SocialsMedia.facebook} />
+          <Image source={assets.images.SocialsMedia.facebook} style={styles.OAuth} />
         </TouchableOpacity>
       </View>
     </View>
