@@ -77,7 +77,7 @@ function ChooseAvatar() {
         onPress={() => {
           handleValidation();
         }}
-        buttonStyle={{ marginTop: PADDING_VERTICAL }}
+        buttonStyle={{ marginVertical: PADDING_VERTICAL }}
       />
     </View>
   );
