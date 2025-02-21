@@ -9,7 +9,7 @@ import OnboardingNavigator from './OnboardingNavigator.tsx';
 import darkTheme from '../styles/themes.ts';
 import { RootStackParamList } from './RootStackParamList.tsx';
 import { selectIsAuthenticated, selectOnboardingCompleted } from '../store/user/userSlice.ts';
-import { PADDING } from '../styles/constants.ts';
+import { PADDING_HORIZONTAL, PADDING_VERTICAL, SCREEN_WIDTH } from '../styles/responsives.ts';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -30,7 +30,12 @@ function AppNavigator() {
 
   return (
     <NavigationContainer onReady={() => RNBootSplash.hide({ fade: true })} theme={darkTheme}>
-      <Stack.Navigator screenOptions={{ headerShown: false, contentStyle: { paddingHorizontal: PADDING.HORIZONTAL, paddingTop: PADDING.TOP } }}>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+          contentStyle: { paddingHorizontal: PADDING_HORIZONTAL, paddingTop: PADDING_VERTICAL },
+        }}
+      >
         {screen}
       </Stack.Navigator>
     </NavigationContainer>

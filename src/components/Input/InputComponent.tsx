@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import styles from './styles.ts';
 import assets from '../../assets/assets.ts';
 import { gray } from '../../styles/colors.ts';
+import { FONT_SIZE_22 } from '../../styles/typography.ts';
 
 interface InputProps {
   placeholder?: string;
@@ -32,9 +33,9 @@ function InputComponent({ placeholder, value, onChangeText, secureTextEntry = fa
         {secureTextEntry && (
           <TouchableOpacity onPress={() => setPasswordVisible(!isPasswordVisible)}>
             {isPasswordVisible ? (
-              <Icon name={assets.icons.eye} size={24} color="white" />
+              <Icon name={assets.icons.eye} size={FONT_SIZE_22} color="white" />
             ) : (
-              <Icon name={assets.icons.eyeOff} size={24} color="white" />
+              <Icon name={assets.icons.eyeOff} size={FONT_SIZE_22} color="white" />
             )}
           </TouchableOpacity>
         )}

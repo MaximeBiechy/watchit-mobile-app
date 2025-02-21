@@ -5,6 +5,7 @@ import assets from '../../assets/assets.ts';
 import styles from './styles.ts';
 import ButtonComponent from '../../components/Button/ButtonComponent.tsx';
 import { AuthNavigationProp } from '../../navigation/RootStackParamList.tsx';
+import { SCREEN_WIDTH } from '../../styles/responsives.ts';
 
 function ChooseConnectionModeScreen() {
   const { t } = useTranslation('chooseConnectionMode');
@@ -20,7 +21,7 @@ function ChooseConnectionModeScreen() {
         onPress={() => {
           navigation.navigate('Signup');
         }}
-        buttonStyle={{ margin: 40 }}
+        buttonStyle={{ margin: SCREEN_WIDTH * 0.1 }}
       />
       <View style={styles.textContainer}>
         <Text style={[styles.bodyText, styles.questionText]}>{t('question')}</Text>
@@ -39,13 +40,13 @@ function ChooseConnectionModeScreen() {
       </View>
       <View style={styles.OAuthContainer}>
         <TouchableOpacity onPress={() => {}}>
-          <Image source={assets.images.SocialsMedia.google} />
+          <Image source={assets.images.SocialsMedia.google} style={styles.OAuth} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {}}>
-          <Image source={assets.images.SocialsMedia.apple} />
+          <Image source={assets.images.SocialsMedia.apple} style={styles.OAuth} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {}}>
-          <Image source={assets.images.SocialsMedia.facebook} />
+          <Image source={assets.images.SocialsMedia.facebook} style={styles.OAuth} />
         </TouchableOpacity>
       </View>
     </View>

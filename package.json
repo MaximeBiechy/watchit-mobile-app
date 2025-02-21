@@ -29,6 +29,7 @@
     "react-native-google-mobile-ads": "^14.9.0",
     "react-native-otp-inputs": "^7.4.0",
     "react-native-reanimated": "^3.16.7",
+    "react-native-responsive-fontsize": "^0.5.1",
     "react-native-safe-area-context": "^5.1.0",
     "react-native-screens": "^4.6.0",
     "react-native-svg": "^15.11.1",

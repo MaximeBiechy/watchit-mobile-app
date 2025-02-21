@@ -6,7 +6,7 @@ import styles from './styles.ts';
 import assets from '../../assets/assets.ts';
 import { highlightColor } from '../../styles/colors.ts';
 import ButtonComponent from '../../components/Button/ButtonComponent.tsx';
-import { PADDING } from '../../styles/constants.ts';
+import { PADDING_VERTICAL } from '../../styles/responsives.ts';
 import { showToast } from '../../utils/toast.tsx';
 import { completeOnboarding } from '../../store/user/userSlice.ts';
 
@@ -77,7 +77,7 @@ function ChooseAvatar() {
         onPress={() => {
           handleValidation();
         }}
-        buttonStyle={{ marginTop: PADDING.TOP }}
+        buttonStyle={{ marginVertical: PADDING_VERTICAL }}
       />
     </View>
   );

@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native';
 import { authTitle } from '../../styles/typography.ts';
-import { PADDING, SCREEN_WIDTH } from '../../styles/constants.ts';
+import { PADDING_HORIZONTAL, SCREEN_WIDTH } from '../../styles/responsives.ts';
 
-const imageSize = SCREEN_WIDTH / 3 - PADDING.HORIZONTAL - 4; // ? 3 images per row
+const imageSize = SCREEN_WIDTH / 3 - PADDING_HORIZONTAL - 4; // ? 3 images per row
 
 const styles = StyleSheet.create({
   container: {
