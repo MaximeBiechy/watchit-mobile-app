@@ -1,14 +1,18 @@
 import { StyleSheet } from 'react-native';
-import { authTitle, bodyInfoFont } from '../../styles/typography.ts';
-import { gray } from '../../styles/colors.ts';
+import { authDescription, authTitle } from '../../styles/typography.ts';
 import { PADDING_HORIZONTAL, SCREEN_WIDTH } from '../../styles/responsives.ts';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    marginTop: 100,
+    marginTop: SCREEN_WIDTH * 0.2,
     width: SCREEN_WIDTH - PADDING_HORIZONTAL * 2,
+  },
+  image: {
+    width: SCREEN_WIDTH * 0.7,
+    height: SCREEN_WIDTH * 0.7,
+    resizeMode: 'cover',
   },
   title: {
     ...authTitle,
@@ -16,9 +20,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   description: {
-    fontFamily: bodyInfoFont,
-    fontSize: 14,
-    color: gray,
+    ...authDescription,
     textAlign: 'center',
   },
 });
