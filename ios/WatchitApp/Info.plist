@@ -57,5 +57,13 @@
 		<string>Poppins-SemiBold.ttf</string>
 		<string>Roboto-Regular.ttf</string>
 	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+        <string>UIInterfaceOrientationPortrait</string>
+    </array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+        <string>UIInterfaceOrientationPortrait</string>
+    </array>
 </dict>
 </plist>
