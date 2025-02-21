@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 import {
   authDescription,
   authTitle,
-  bodyInfoFont,
+  bodyInfoFont, FONT_SIZE_14,
   FONT_SIZE_26,
   FONT_SIZE_28,
   headingSectionFont,
@@ -59,13 +59,13 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   questionText: {
-    fontSize: 16,
+    fontSize: FONT_SIZE_14,
     fontFamily: bodyInfoFont,
     color: gray,
   },
   functionText: {
     fontFamily: headingTitleFont,
-    fontSize: 16,
+    fontSize: FONT_SIZE_14,
     color: highlightColor,
   },
 });
