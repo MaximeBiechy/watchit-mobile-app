@@ -1,46 +1,53 @@
 import { StyleSheet } from 'react-native';
-import { authTitle, bodyInfoFont, headingSectionFont, headingTitleFont } from '../../styles/typography.ts';
+import {
+  authDescription,
+  authTitle,
+  bodyInfoFont,
+  FONT_SIZE_26,
+  FONT_SIZE_28,
+  headingSectionFont,
+  headingTitleFont,
+} from '../../styles/typography.ts';
 import { darkGray, gray, highlightColor } from '../../styles/colors.ts';
+import { SCREEN_WIDTH } from '../../styles/responsives.ts';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    marginTop: 100,
+    marginTop: SCREEN_WIDTH * 0.3,
   },
   title: {
     ...authTitle,
-    color: 'white',
+    textAlign: 'center',
     marginVertical: 8,
   },
   subtitle: {
-    fontFamily: bodyInfoFont,
-    fontSize: 14,
-    color: gray,
+    ...authDescription,
     textAlign: 'center',
   },
   emailText: {
     color: 'white',
   },
   otpContainer: {
-    marginVertical: 30,
+    marginVertical: SCREEN_WIDTH * 0.1,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
     alignSelf: 'center',
-    gap: 16,
+    gap: SCREEN_WIDTH * 0.03,
   },
   otpInput: {
-    width: 64,
-    height: 64,
+    width: SCREEN_WIDTH * 0.17,
+    height: SCREEN_WIDTH * 0.17,
     borderWidth: 1,
     borderRadius: 12,
     color: 'white',
     fontFamily: headingSectionFont,
     textAlign: 'center',
     backgroundColor: darkGray,
-    fontSize: 28,
-    lineHeight: 28,
+    fontSize: FONT_SIZE_26,
+    lineHeight: FONT_SIZE_26,
   },
   otpInputFocused: {
     borderColor: highlightColor,

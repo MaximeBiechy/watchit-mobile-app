@@ -4,6 +4,7 @@ import { gray } from './colors.ts';
 import { SCREEN_WIDTH } from './responsives.ts';
 
 export const FONT_SIZE_28 = RFValue(28);
+export const FONT_SIZE_26 = RFValue(26);
 export const FONT_SIZE_24 = RFValue(24);
 export const FONT_SIZE_22 = RFValue(22);
 export const FONT_SIZE_18 = RFValue(18);
@@ -22,14 +23,12 @@ export const authTitle = {
   fontFamily: headingTitleFont,
   fontSize: FONT_SIZE_22,
   color: 'white',
-  textAlign: 'center',
 };
 
 export const authSubtitle = {
   fontFamily: bodyInfoFont,
   fontSize: FONT_SIZE_10,
   color: 'white',
-  textAlign: 'center',
   maxWidth: SCREEN_WIDTH * 0.8,
 };
 
