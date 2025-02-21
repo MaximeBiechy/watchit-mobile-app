@@ -1,21 +1,21 @@
 import { StyleSheet } from 'react-native';
-import { authTitle, bodyInfo } from '../../styles/typography.ts';
-import { subTitleColor } from '../../styles/colors.ts';
+import { authSubtitle, authTitle } from '../../styles/typography.ts';
+import { SCREEN_WIDTH } from '../../styles/responsives.ts';
 
 const style = StyleSheet.create({
   titleContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 60,
+    marginVertical: SCREEN_WIDTH * 0.1,
     gap: 15,
   },
   title: {
     ...authTitle,
-    color: 'white',
+    textAlign: 'center',
   },
   subtitle: {
-    ...bodyInfo,
-    color: subTitleColor,
+    ...authSubtitle,
+    textAlign: 'center',
   },
 });
 

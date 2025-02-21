@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { FONT_SIZE_16, headingSectionFont } from '../../styles/typography.ts';
+import { FONT_SIZE_14, headingSectionFont } from '../../styles/typography.ts';
 import { highlightColor } from '../../styles/colors.ts';
 import { PADDING_VERTICAL_BUTTON } from '../../styles/responsives.ts';
 
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   },
   buttonTitle: {
     fontFamily: headingSectionFont,
-    fontSize: FONT_SIZE_16,
+    fontSize: FONT_SIZE_14,
     color: 'white',
   },
 });
