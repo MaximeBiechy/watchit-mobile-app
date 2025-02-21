@@ -13,7 +13,7 @@ function ChooseConnectionModeScreen() {
 
   return (
     <View style={styles.container}>
-      <Image source={assets.images.logo} style={styles.appLogo} />
+      <assets.images.logo style={styles.appLogo} />
       <Text style={styles.appTitle}>Watch It</Text>
       <Text style={[styles.introText]}>{t('intro')}</Text>
       <ButtonComponent

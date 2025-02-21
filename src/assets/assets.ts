@@ -1,6 +1,6 @@
 // @ts-nocheck / disable checking for TypeScript files
 // IMAGES
-import logo from './images/app-logo.png';
+import logo from './images/logo.svg';
 // IMAGES/SOCIAL MEDIA
 import apple from './images/social-media/apple.png';
 import facebook from './images/social-media/facebook.png';
