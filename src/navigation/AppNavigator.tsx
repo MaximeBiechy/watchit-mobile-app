@@ -9,7 +9,7 @@ import OnboardingNavigator from './OnboardingNavigator.tsx';
 import darkTheme from '../styles/themes.ts';
 import { RootStackParamList } from './RootStackParamList.tsx';
 import { selectIsAuthenticated, selectOnboardingCompleted } from '../store/user/userSlice.ts';
-import { PADDING_HORIZONTAL, PADDING_VERTICAL, SCREEN_WIDTH } from '../styles/responsives.ts';
+import { PADDING_HORIZONTAL, PADDING_VERTICAL } from '../styles/responsives.ts';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

@@ -27,7 +27,7 @@ function ChooseConnectionModeScreen() {
         <Text style={[styles.bodyText, styles.questionText]}>{t('question')}</Text>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('Login');
+            navigation.navigate('Signin');
           }}
         >
           <Text style={[styles.functionText]}>{t('login')}</Text>

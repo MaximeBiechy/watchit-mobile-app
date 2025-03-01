@@ -1,8 +1,8 @@
 // Auth
 import enChooseConnectionMode from './en/auth/chooseConnectionMode.json';
 import frChooseConnectionMode from './fr/auth/chooseConnectionMode.json';
-import enLogin from './en/auth/login.json';
-import frLogin from './fr/auth/login.json';
+import enSignin from './en/auth/signin.json';
+import frSignin from './fr/auth/signin.json';
 import enSignup from './en/auth/signup.json';
 import frSignup from './fr/auth/signup.json';
 import enEmailVerification from './en/auth/emailVerification.json';
@@ -20,7 +20,7 @@ import frErrors from './fr/errors/errors.json';
 const translations = {
   en: {
     chooseConnectionMode: enChooseConnectionMode,
-    login: enLogin,
+    signin: enSignin,
     signup: enSignup,
     emailVerification: enEmailVerification,
     onboarding: enOnboarding,
@@ -29,7 +29,7 @@ const translations = {
   },
   fr: {
     chooseConnectionMode: frChooseConnectionMode,
-    login: frLogin,
+    signin: frSignin,
     signup: frSignup,
     emailVerification: frEmailVerification,
     onboarding: frOnboarding,
