@@ -73,6 +73,9 @@ const assets = {
     arrowLeft: 'arrow-back-outline',
     eye: 'eye-outline',
     eyeOff: 'eye-off-outline',
+    home: 'home-outline',
+    list: 'bookmark-outline',
+    userProfile: 'person-outline',
   },
 };
 
