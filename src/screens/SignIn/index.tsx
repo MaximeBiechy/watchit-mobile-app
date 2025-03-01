@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
 import FormComponent from '../../components/Form/FormComponent.tsx';
 import styles from './styles.ts';
 import { signIn } from '../../services/api/auth.ts';
+import { setUserData } from '../../store/user/userSlice.ts';
 
 function SignInScreen() {
-  const { t } = useTranslation('login');
+  const { t } = useTranslation('signin');
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -14,9 +17,7 @@ function SignInScreen() {
     const response = await signIn(email, password);
 
     if (!response.error) {
-      // It's working like this for the navigation.
-      // When the user is logged in, the app will navigate to the HomeScreen.
-      console.log('User logged in');
+      dispatch(setUserData({ ...response.user, onboardingCompleted: true }));
     }
   };
 

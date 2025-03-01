@@ -12,8 +12,24 @@ export const register = async (username: string, email: string, password: string
 
     return response.data;
   } catch (error: any) {
-    const message = error.response?.data?.message || 'An error occurred, please try again later';
-    const translatedMessage = t(message);
+    const errorCode = error.response?.data?.code || 'UnexpectedError';
+    const translatedMessage = t(`errors:${errorCode}`);
+    showToast('error', translatedMessage);
+    return { error: error.response?.data?.message || 'An error occurred' };
+  }
+};
+
+export const signIn = async (email: string, password: string) => {
+  try {
+    const response = await api.post('/auth/signin', {
+      email,
+      password,
+    });
+
+    return response.data;
+  } catch (error: any) {
+    const errorCode = error.response?.data?.code || 'UnexpectedError';
+    const translatedMessage = t(`errors:${errorCode}`);
     showToast('error', translatedMessage);
     return { error: error.response?.data?.message || 'An error occurred' };
   }

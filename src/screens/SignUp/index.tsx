@@ -15,20 +15,12 @@ function SignUpScreen() {
   const [password, setPassword] = useState('');
 
   const handleSignUp = async () => {
-    let response = await register(nickName, email, password);
+    const response = await register(nickName, email, password);
 
     if (!response.error) {
-      console.log('User registered successfully');
-      console.log(response);
       // It's working like this for the navigation.
       // When the user is registered, the app will navigate to the HomeScreen.
-      response = {
-        username: 'username',
-        email: 'email',
-        accessToken: 'accessToken',
-        refreshToken: 'refreshToken',
-      };
-      navigation.navigate('EmailVerification', { userData: response });
+      navigation.navigate('EmailVerification', { userData: { email, password } });
     }
   };
 
