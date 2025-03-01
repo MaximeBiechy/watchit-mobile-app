@@ -47,10 +47,26 @@ function AppNavigator() {
     if (onboardingCompleted) {
       screen = <Stack.Screen name="MainStack" component={MainNavigator} />;
     } else {
-      screen = <Stack.Screen name="OnboardingStack" component={OnboardingNavigator} />;
+      screen = (
+        <Stack.Screen
+          name="OnboardingStack"
+          component={OnboardingNavigator}
+          options={{
+            contentStyle: { paddingHorizontal: PADDING_HORIZONTAL, paddingTop: PADDING_VERTICAL },
+          }}
+        />
+      );
     }
   } else {
-    screen = <Stack.Screen name="AuthStack" component={AuthNavigator} />;
+    screen = (
+      <Stack.Screen
+        name="AuthStack"
+        component={AuthNavigator}
+        options={{
+          contentStyle: { paddingHorizontal: PADDING_HORIZONTAL, paddingTop: PADDING_VERTICAL },
+        }}
+      />
+    );
   }
 
   return (
@@ -58,7 +74,6 @@ function AppNavigator() {
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
-          contentStyle: { paddingHorizontal: PADDING_HORIZONTAL, paddingTop: PADDING_VERTICAL },
         }}
       >
         {screen}
