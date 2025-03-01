@@ -5,6 +5,7 @@ import { HomeStackParamList } from './RootStackParamList.tsx';
 import { DetailsScreen, HomeScreen } from '../screens/index.ts';
 import { renderHeader } from '../components/Header/HeaderComponent.tsx';
 import { selectUserData } from '../store/user/userSlice.ts';
+import { PADDING_HORIZONTAL, PADDING_VERTICAL } from '../styles/responsives.ts';
 
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();
 
@@ -13,7 +14,12 @@ function HomeNavigator() {
   const user = useSelector(selectUserData);
 
   return (
-    <HomeStack.Navigator initialRouteName="Home">
+    <HomeStack.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        contentStyle: { paddingHorizontal: PADDING_HORIZONTAL, paddingTop: PADDING_VERTICAL },
+      }}
+    >
       <HomeStack.Screen
         name="Home"
         component={HomeScreen}
