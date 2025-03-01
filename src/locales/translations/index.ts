@@ -16,6 +16,11 @@ import frChooseCharacter from './fr/onboarding/chooseCharacter.json';
 import enErrors from './en/errors/errors.json';
 import frErrors from './fr/errors/errors.json';
 // Main
+import enHome from './en/main/home.json';
+import frHome from './fr/main/home.json';
+// Bottom Tab Bar
+import enBottomTabBar from './en/bottomTabBar/bottomTabBar.json';
+import frBottomTabBar from './fr/bottomTabBar/bottomTabBar.json';
 
 const translations = {
   en: {
@@ -26,6 +31,8 @@ const translations = {
     onboarding: enOnboarding,
     chooseCharacter: enChooseCharacter,
     errors: enErrors,
+    home: enHome,
+    bottomTabBar: enBottomTabBar,
   },
   fr: {
     chooseConnectionMode: frChooseConnectionMode,
@@ -35,6 +42,8 @@ const translations = {
     onboarding: frOnboarding,
     chooseCharacter: frChooseCharacter,
     errors: frErrors,
+    home: frHome,
+    bottomTabBar: frBottomTabBar,
   },
 };
 
