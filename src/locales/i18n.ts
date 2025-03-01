@@ -8,7 +8,7 @@ const LANGUAGES_STORAGE_KEY = 'userLanguage';
 
 const getLanguage = async () => {
   const language = await AsyncStorage.getItem(LANGUAGES_STORAGE_KEY);
-  return language || 'en';
+  return language || 'fr';
 };
 
 getLanguage().then((language: string) => {

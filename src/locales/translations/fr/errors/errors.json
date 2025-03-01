@@ -1,0 +1,10 @@
+{
+  "UnexpectedError": "Une erreur est survenue, veuillez réessayer plus tard",
+  "ValidationError": "Vous avez entré une valeur invalide",
+  "DatabaseQueryError": "Une erreur est survenue lors de la requête à la base de données",
+  "InvalidCredentials": "Identifiants invalides",
+  "AccountCreationError": "Impossible de créer le compte avec les informations fournies",
+  "WeakPassword": "Votre mot de passe doit contenir au moins 6 caractères",
+  "UserCreationError": "Une erreur est survenue lors de la création de l'utilisateur",
+  "DatabaseSaveError": "Une erreur est survenue lors de l'enregistrement dans la base de données"
+}

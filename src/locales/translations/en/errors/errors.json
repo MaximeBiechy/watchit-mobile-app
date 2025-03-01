@@ -1,0 +1,10 @@
+{
+  "UnexpectedError": "An error occurred, please try again later",
+  "ValidationError": "You have entered an invalid value",
+  "DatabaseQueryError": "An error occurred while querying the database",
+  "InvalidCredentials": "Invalid credentials",
+  "AccountCreationError": "Unable to create the account with the provided information",
+  "WeakPassword": "Your password must contain at least 6 characters",
+  "UserCreationError": "An error occurred while creating the user",
+  "DatabaseSaveError": "An error occurred while saving to the database"
+}
