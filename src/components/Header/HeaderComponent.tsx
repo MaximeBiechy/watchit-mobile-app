@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { NavigationProp } from '@react-navigation/native';
 import styles from './styles.ts';
 import assets from '../../assets/assets.ts';
+import { FONT_SIZE_22 } from '../../styles/typography.ts';
 
 interface HeaderProps {
   title: string;
@@ -19,7 +20,7 @@ function HeaderComponent({ title, showLeftIcon = false, rightIcon, onLeftPress, 
       <View style={styles.leftSide}>
         {showLeftIcon && onLeftPress && (
           <TouchableOpacity onPress={onLeftPress}>
-            <Icon name={assets.icons.arrowLeft} size={24} color="white" />
+            <Icon name={assets.icons.arrowLeft} size={FONT_SIZE_22} color="white" />
           </TouchableOpacity>
         )}
       </View>
@@ -27,7 +28,7 @@ function HeaderComponent({ title, showLeftIcon = false, rightIcon, onLeftPress, 
       <View style={styles.rightSide}>
         {rightIcon && (
           <TouchableOpacity onPress={onRightPress}>
-            <Icon name={rightIcon} size={24} color="white" />
+            <Icon name={rightIcon} size={FONT_SIZE_22} color="white" />
           </TouchableOpacity>
         )}
       </View>
