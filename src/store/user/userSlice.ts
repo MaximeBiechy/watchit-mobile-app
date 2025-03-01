@@ -5,7 +5,7 @@ interface UserState {
   email: string | null;
   accessToken: string | null;
   refreshToken: string | null;
-  onboardingCompleted: boolean;
+  onboardingCompleted?: boolean;
 }
 
 const initialState: UserState = {
@@ -26,6 +26,7 @@ const userSlice = createSlice({
       email: action.payload.email,
       accessToken: action.payload.accessToken,
       refreshToken: action.payload.refreshToken,
+      onboardingCompleted: action.payload.onboardingCompleted,
     }),
     clearUserData: (state) => ({
       ...state,
@@ -33,6 +34,7 @@ const userSlice = createSlice({
       email: null,
       accessToken: null,
       refreshToken: null,
+      onboardingCompleted: false,
     }),
     completeOnboarding: (state) => ({
       ...state,
