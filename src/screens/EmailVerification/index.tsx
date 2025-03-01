@@ -9,6 +9,7 @@ import { AuthStackParamList } from '../../navigation/RootStackParamList.tsx';
 import styles from './styles.ts';
 import { cursorColor, darkGray, errorColor, successColor } from '../../styles/colors.ts';
 import { showToast } from '../../utils/toast.tsx';
+import { signIn } from '../../services/api/auth.ts';
 
 type Props = NativeStackScreenProps<AuthStackParamList, 'EmailVerification'>;
 
@@ -27,21 +28,33 @@ function EmailVerificationScreen({ route }: Props) {
     }, 0);
   };
   useEffect(() => {
-    if (otp.length === 4) {
-      if (otp === '1234') {
-        // Replace '1234' with the actual OTP validation logic
-        setBorderColor(successColor);
-        showToast('success', 'successMessage');
-        setTimeout(() => {
-          dispatch(setUserData({ ...userData, onboardingCompleted: true }));
-        }, 2000);
-      } else {
-        showToast('error', 'errorMessage');
-        setBorderColor(errorColor);
+    const validateOtp = async () => {
+      if (otp.length !== 4) {
+        setBorderColor(darkGray);
+        return;
       }
-    } else {
-      setBorderColor(darkGray);
-    }
+
+      // TODO: Replace '1234' with the actual OTP validation logic
+      if (otp !== '1234') {
+        showToast('error', 'errorMessage'); // TODO: Add the error message key to the i18n file (edit code key with the backend error code)
+        setBorderColor(errorColor);
+        return;
+      }
+
+      const response = await signIn(userData.email, userData.password);
+      if (response.error) {
+        setBorderColor(errorColor);
+        return;
+      }
+
+      setBorderColor(successColor);
+      showToast('success', t('success'));
+      setTimeout(() => {
+        dispatch(setUserData({ ...response.user }));
+      }, 2000);
+    };
+
+    validateOtp();
   }, [otp, dispatch, userData]);
 
   return (

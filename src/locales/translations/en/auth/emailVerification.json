@@ -3,5 +3,6 @@
   "title": "Verify your account",
   "subtitle": "We have sent you a 4 digit code via your email",
   "question": "Didn't receive the code?",
-  "resend": "Resend"
+  "resend": "Resend",
+  "success": "You will be redirected to the onboarding screen"
 }

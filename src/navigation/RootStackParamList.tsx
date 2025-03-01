@@ -11,7 +11,7 @@ export type AuthStackParamList = {
   ChooseConnectionMode: undefined;
   Signin: undefined;
   Signup: undefined;
-  EmailVerification: { userData: { username: string; email: string; accessToken: string; refreshToken: string } };
+  EmailVerification: { userData: { email: string; password: string } };
 };
 
 export type OnboardingStackParamList = {
