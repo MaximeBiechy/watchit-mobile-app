@@ -9,7 +9,7 @@ export type RootStackParamList = {
 
 export type AuthStackParamList = {
   ChooseConnectionMode: undefined;
-  Login: undefined;
+  Signin: undefined;
   Signup: undefined;
   EmailVerification: { userData: { username: string; email: string; accessToken: string; refreshToken: string } };
 };

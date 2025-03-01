@@ -2,7 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { AuthStackParamList } from './RootStackParamList.tsx';
-import { ChooseConnectionModeScreen, LoginScreen, SignUpScreen, EmailVerification } from '../screens/index.ts';
+import { ChooseConnectionModeScreen, SignInScreen, SignUpScreen, EmailVerification } from '../screens/index.ts';
 import { renderHeader } from '../components/Header/HeaderComponent.tsx';
 
 const AuthStack = createNativeStackNavigator<AuthStackParamList>();
@@ -14,8 +14,8 @@ function AuthNavigator() {
     <AuthStack.Navigator initialRouteName="ChooseConnectionMode">
       <AuthStack.Screen name="ChooseConnectionMode" component={ChooseConnectionModeScreen} options={{ headerShown: false }} />
       <AuthStack.Screen
-        name="Login"
-        component={LoginScreen}
+        name="Signin"
+        component={SignInScreen}
         options={({ navigation }) => ({
           header: () => renderHeader(t('login:screenTitle'), navigation, true),
         })}
