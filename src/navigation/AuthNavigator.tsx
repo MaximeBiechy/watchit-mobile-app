@@ -17,7 +17,7 @@ function AuthNavigator() {
         name="Signin"
         component={SignInScreen}
         options={({ navigation }) => ({
-          header: () => renderHeader(t('login:screenTitle'), navigation, true),
+          header: () => renderHeader(t('signin:screenTitle'), navigation, true),
         })}
       />
       <AuthStack.Screen
