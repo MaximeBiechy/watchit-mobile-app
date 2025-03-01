@@ -8,7 +8,8 @@
       android:icon="@mipmap/ic_launcher"
       android:allowBackup="false"
       android:theme="@style/BootTheme"
-      android:supportsRtl="true">
+      android:supportsRtl="true"
+      android:usesCleartextTraffic="true"> <!-- MANUAL ADD: Remove this line when i'll host the app on PlayStore (HTTPS) -->
       <activity
         android:name=".MainActivity"
         android:screenOrientation="portrait"
