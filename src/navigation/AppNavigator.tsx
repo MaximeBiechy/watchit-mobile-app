@@ -1,21 +1,46 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import RNBootSplash from 'react-native-bootsplash';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import MainNavigator from './MainNavigator.tsx';
 import AuthNavigator from './AuthNavigator.tsx';
 import OnboardingNavigator from './OnboardingNavigator.tsx';
 import darkTheme from '../styles/themes.ts';
 import { RootStackParamList } from './RootStackParamList.tsx';
-import { selectIsAuthenticated, selectOnboardingCompleted } from '../store/user/userSlice.ts';
+import { selectIsAuthenticated, selectOnboardingCompleted, loadUserData } from '../store/user/userSlice.ts';
 import { PADDING_HORIZONTAL, PADDING_VERTICAL } from '../styles/responsives.ts';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function AppNavigator() {
+  const dispatch = useDispatch();
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const onboardingCompleted = useSelector(selectOnboardingCompleted);
+  const [loading, setLoading] = useState(true);
+
+  const loadUserFromStorage = async () => {
+    try {
+      const userData = await AsyncStorage.getItem('user');
+      if (userData) {
+        dispatch(loadUserData(JSON.parse(userData)));
+      }
+    } catch (error) {
+      console.error('Failed to load user data from storage:', error);
+    } finally {
+      setLoading(false);
+      await RNBootSplash.hide({ fade: true });
+    }
+  };
+
+  useEffect(() => {
+    loadUserFromStorage();
+  }, []);
+
+  if (loading) {
+    return null;
+  }
 
   let screen;
   if (isAuthenticated) {
@@ -29,7 +54,7 @@ function AppNavigator() {
   }
 
   return (
-    <NavigationContainer onReady={() => RNBootSplash.hide({ fade: true })} theme={darkTheme}>
+    <NavigationContainer theme={darkTheme}>
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
