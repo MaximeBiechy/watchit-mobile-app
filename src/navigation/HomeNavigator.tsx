@@ -6,6 +6,7 @@ import { DetailsScreen, HomeScreen } from '../screens/index.ts';
 import { renderHeader } from '../components/Header/HeaderComponent.tsx';
 import { selectUserData } from '../store/user/userSlice.ts';
 import { PADDING_HORIZONTAL, PADDING_VERTICAL } from '../styles/responsives.ts';
+import { animation, animationDuration } from '../styles/transitionScreens.ts';
 
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();
 
@@ -18,6 +19,8 @@ function HomeNavigator() {
       initialRouteName="Home"
       screenOptions={{
         contentStyle: { paddingHorizontal: PADDING_HORIZONTAL, paddingTop: PADDING_VERTICAL },
+        animation, // ? Avoid flickering effect when navigating between screens
+        animationDuration, // ? It doesn't seem to work
       }}
     >
       <HomeStack.Screen
