@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     height: SCREEN_WIDTH / 2,
   },
   card: {
-    height: '100%',
+    height: SCREEN_WIDTH / 2,
     aspectRatio: 0.7,
     objectFit: 'cover',
     borderRadius: 14,
