@@ -6,5 +6,7 @@
   "AccountCreationError": "Impossible de créer le compte avec les informations fournies",
   "WeakPassword": "Votre mot de passe doit contenir au moins 6 caractères",
   "UserCreationError": "Une erreur est survenue lors de la création de l'utilisateur",
-  "DatabaseSaveError": "Une erreur est survenue lors de l'enregistrement dans la base de données"
+  "DatabaseSaveError": "Une erreur est survenue lors de l'enregistrement dans la base de données",
+  "ServerError": "Une erreur est survenue sur le serveur"
 }
+
