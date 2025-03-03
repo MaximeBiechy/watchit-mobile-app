@@ -31,7 +31,6 @@ import avatar18 from './images/onboarding/avatar/avatar18.png';
 import avatar19 from './images/onboarding/avatar/avatar19.png';
 import avatar20 from './images/onboarding/avatar/avatar20.png';
 import avatar21 from './images/onboarding/avatar/avatar21.png';
-import spiderman from './images/Spiderman.png';
 
 const assets = {
   images: {
@@ -69,7 +68,6 @@ const assets = {
         avatar21,
       },
     },
-    spiderman,
   },
   icons: {
     arrowLeft: 'arrow-back-outline',
@@ -79,6 +77,7 @@ const assets = {
     options: 'options-outline',
     home: 'home-outline',
     list: 'bookmark-outline',
+    listFull: 'bookmarks-outline',
     userProfile: 'person-outline',
   },
 };

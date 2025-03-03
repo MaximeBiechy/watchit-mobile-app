@@ -1,17 +1,17 @@
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 import React from 'react';
-import SearchBarComponent from '../../components/SearchBar/SearchBarComponent.tsx';
-import assets from '../../assets/assets.ts';
+import { useRoute, RouteProp } from '@react-navigation/native';
+import { HomeStackParamList } from '../../navigation/RootStackParamList.tsx';
+
+type DetailsScreenRouteProp = RouteProp<HomeStackParamList, 'Details'>;
 
 function DetailsScreen() {
+  const route = useRoute<DetailsScreenRouteProp>();
+  const { id } = route.params;
+
   return (
     <View>
-      <SearchBarComponent
-        placeholder="Search for a movie, etc"
-        autoFocus
-        onSearch={(text) => console.log('Recherche:', text)}
-        rightIconName={assets.icons.options}
-      />
+      <Text>id: {id}</Text>
     </View>
   );
 }
