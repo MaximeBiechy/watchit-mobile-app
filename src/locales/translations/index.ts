@@ -18,6 +18,8 @@ import frErrors from './fr/errors/errors.json';
 // Main
 import enHome from './en/main/home.json';
 import frHome from './fr/main/home.json';
+import enSearch from './en/main/search.json';
+import frSearch from './fr/main/search.json';
 // Bottom Tab Bar
 import enBottomTabBar from './en/bottomTabBar/bottomTabBar.json';
 import frBottomTabBar from './fr/bottomTabBar/bottomTabBar.json';
@@ -32,6 +34,7 @@ const translations = {
     chooseCharacter: enChooseCharacter,
     errors: enErrors,
     home: enHome,
+    search: enSearch,
     bottomTabBar: enBottomTabBar,
   },
   fr: {
@@ -43,6 +46,7 @@ const translations = {
     chooseCharacter: frChooseCharacter,
     errors: frErrors,
     home: frHome,
+    search: frSearch,
     bottomTabBar: frBottomTabBar,
   },
 };

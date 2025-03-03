@@ -9,6 +9,7 @@ import ProfileNavigator from './ProfileNavigator.tsx';
 import { gray, highlightColor, primaryColor } from '../styles/colors.ts';
 import assets from '../assets/assets.ts';
 import { bodyInfo, FONT_SIZE_22 } from '../styles/typography.ts';
+import tabBarStyles from "./TabBarStyles.ts";
 
 const Tab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -49,13 +50,7 @@ function TabNavigator() {
       initialRouteName="HomeTab"
       screenOptions={{
         headerShown: false,
-        tabBarStyle: {
-          backgroundColor: primaryColor,
-          borderColor: highlightColor,
-          borderTopWidth: 1,
-          height: 80,
-          paddingTop: 10, // To center the icons vertically (but should do it with another approach)
-        },
+        tabBarStyle: tabBarStyles.default,
         tabBarLabelStyle: { ...bodyInfo, marginTop: 5 },
         tabBarActiveTintColor: highlightColor,
         tabBarInactiveTintColor: gray,

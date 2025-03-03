@@ -34,7 +34,8 @@ export type BottomTabParamList = {
 
 export type HomeStackParamList = {
   Home: undefined;
-  Details: undefined;
+  Details: { id: number; title: string };
+  Search: undefined;
 };
 
 export type MyListStackParamList = {

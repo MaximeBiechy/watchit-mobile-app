@@ -73,8 +73,11 @@ const assets = {
     arrowLeft: 'arrow-back-outline',
     eye: 'eye-outline',
     eyeOff: 'eye-off-outline',
+    search: 'search-outline',
+    options: 'options-outline',
     home: 'home-outline',
     list: 'bookmark-outline',
+    listFull: 'bookmarks-outline',
     userProfile: 'person-outline',
   },
 };
