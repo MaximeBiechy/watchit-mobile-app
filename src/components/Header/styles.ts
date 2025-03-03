@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { navigationTopBarTitle } from '../../styles/typography.ts';
+import { PADDING_HORIZONTAL, PADDING_VERTICAL, SCREEN_WIDTH } from '../../styles/responsives.ts';
 
 const styles = StyleSheet.create({
   headerContainer: {
@@ -7,21 +8,23 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: 'transparent',
-    paddingHorizontal: 6,
-    paddingTop: 8,
-    paddingBottom: 20,
+    paddingHorizontal: PADDING_HORIZONTAL / 2,
+    paddingTop: PADDING_VERTICAL,
+    paddingBottom: PADDING_VERTICAL * 3,
   },
   leftSide: {
-    width: 40,
-    paddingLeft: 8,
+    width: SCREEN_WIDTH * 0.08,
+    paddingLeft: PADDING_HORIZONTAL / 3,
   },
   title: {
     ...navigationTopBarTitle,
     color: 'white',
+    maxWidth: '70%',
+    textAlign: 'center',
   },
   rightSide: {
-    width: 40,
-    paddingRight: 8,
+    width: SCREEN_WIDTH * 0.08,
+    paddingRight: PADDING_HORIZONTAL / 3,
   },
 });
 

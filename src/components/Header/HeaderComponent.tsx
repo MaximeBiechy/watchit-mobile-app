@@ -24,7 +24,9 @@ function HeaderComponent({ title, showLeftIcon = false, rightIcon, onLeftPress, 
           </TouchableOpacity>
         )}
       </View>
-      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.title} numberOfLines={1}>
+        {title}
+      </Text>
       <View style={styles.rightSide}>
         {rightIcon && (
           <TouchableOpacity onPress={onRightPress}>
