@@ -9,6 +9,7 @@ import ChooseAvatar from './ChooseAvatar/index.tsx';
 // Home Stack
 import HomeScreen from './Home/index.tsx';
 import DetailsScreen from './Details/index.tsx';
+import SearchScreen from './Search/index.tsx';
 // My List Stack
 import MyList from './MyList/index.tsx';
 // Profile Stack
@@ -23,6 +24,7 @@ export {
   ChooseAvatar,
   HomeScreen,
   DetailsScreen,
+  SearchScreen,
   MyList,
   UserProfile,
 };
