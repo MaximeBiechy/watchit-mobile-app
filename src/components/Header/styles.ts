@@ -7,10 +7,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: 'transparent',
     paddingHorizontal: PADDING_HORIZONTAL / 2,
-    paddingTop: PADDING_VERTICAL,
-    paddingBottom: PADDING_VERTICAL * 3,
+    paddingTop: PADDING_VERTICAL * 2,
+    paddingBottom: PADDING_VERTICAL * 2,
   },
   leftSide: {
     width: SCREEN_WIDTH * 0.08,
