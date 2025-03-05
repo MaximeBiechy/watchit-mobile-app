@@ -1,10 +1,19 @@
 // @ts-nocheck / disable checking for TypeScript files
 // IMAGES
 import logo from './images/logo.svg';
+import error from './images/onboarding/avatar/avatar1.png'; // TODO: replace with the correct image
+import defaultActor from './images/defaultActor.jpg';
 // IMAGES/SOCIAL MEDIA
 import apple from './images/social-media/apple.png';
 import facebook from './images/social-media/facebook.png';
 import google from './images/social-media/google.png';
+import appleTv from './images/watch-providers/apple-tv.png';
+import disneyPlus from './images/watch-providers/disney.png';
+import max from './images/watch-providers/max.png';
+import netflix from './images/watch-providers/netflix.png';
+import paramount from './images/watch-providers/paramount.png';
+import prime from './images/watch-providers/prime-video.png';
+
 // IMAGES/ONBOARDING
 import onboarding1 from './images/onboarding/onboarding1.png';
 import onboarding2 from './images/onboarding/onboarding2.png';
@@ -35,10 +44,20 @@ import avatar21 from './images/onboarding/avatar/avatar21.png';
 const assets = {
   images: {
     logo,
+    error,
+    defaultActor,
     SocialsMedia: {
       apple,
       facebook,
       google,
+    },
+    WatchProviders: {
+      appleTv,
+      disneyPlus,
+      max,
+      netflix,
+      paramount,
+      prime,
     },
     Onboarding: {
       onboarding1,
@@ -79,6 +98,10 @@ const assets = {
     list: 'bookmark-outline',
     listFull: 'bookmarks-outline',
     userProfile: 'person-outline',
+    calendar: 'calendar-outline',
+    time: 'time-outline',
+    ticket: 'ticket-outline',
+    play: 'play',
   },
 };
 
