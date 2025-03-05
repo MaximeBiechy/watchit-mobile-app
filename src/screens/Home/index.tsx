@@ -9,7 +9,6 @@ import styles from './styles.ts';
 import { getNowPlayingMovies, getPopularMovies, getTopRatedMovies, getUpcomingMovies } from '../../services/api/movies.ts';
 import { SCREEN_WIDTH } from '../../styles/responsives.ts';
 import LoaderComponent from '../../components/Loader/LoaderComponent.tsx';
-import { ScrollView } from 'react-native-gesture-handler';
 
 function MovieGrid({ fetchMovies }: { fetchMovies: () => Promise<any> }) {
   const navigation = useNavigation<HomeNavigationProp>();

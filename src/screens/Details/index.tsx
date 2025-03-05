@@ -1,4 +1,4 @@
-import { Image, ImageBackground, Text, TouchableOpacity, View } from 'react-native';
+import { FlatList, Image, ImageBackground, Text, TouchableOpacity, View, Linking } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useRoute, RouteProp } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -21,6 +21,7 @@ type DetailsScreenRouteProp = RouteProp<HomeStackParamList, 'Details'>;
 function DetailsScreen() {
   const route = useRoute<DetailsScreenRouteProp>();
   const { id } = route.params;
+  console.log('id', id);
   const { t } = useTranslation('details');
   const [movieDetails, setMoviesDetails] = useState<MovieDetails | null>(null);
   const [loading, setLoading] = useState(true);
@@ -53,6 +54,23 @@ function DetailsScreen() {
       />
     );
   }
+
+  // This function is used to filter unique providers and sort them alphabetically
+  const filterUniqueProviders = (providers: string[]) => {
+    const uniqueProviders = new Set<string>();
+    return providers.filter((provider) => {
+      const baseProvider = provider.split(/[ +]/)[0];
+      if (!uniqueProviders.has(baseProvider)) {
+        uniqueProviders.add(baseProvider);
+        return true;
+      }
+      return false;
+    });
+  };
+
+  const sortedStreamingProviders = filterUniqueProviders(movieDetails?.streamingProviders || []).sort((a, b) =>
+    a.localeCompare(b),
+  );
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
@@ -110,40 +128,50 @@ function DetailsScreen() {
           </View>
           <View style={styles.divider} />
           <View style={styles.scoreContainer}>
-            <Text style={styles.score}>{movieDetails?.voteAverage}/10</Text>
+            <Text style={styles.score}>{movieDetails?.voteAverage.toFixed(1)}/10</Text>
             <Text style={styles.who}>IMDB</Text>
           </View>
         </View>
-        <View style={styles.streamingWatcherContainer}>
-          {movieDetails?.streamingProviders &&
-            movieDetails.streamingProviders.length > 0 &&
-            movieDetails.streamingProviders.map((provider: string) => {
-              let imageSource;
-              switch (true) {
-                case provider.includes('Netflix'):
-                  imageSource = assets.images.WatchProviders.netflix;
-                  break;
-                case provider.includes('Prime'):
-                  imageSource = assets.images.WatchProviders.prime;
-                  break;
-                case provider.includes('Disney'):
-                  imageSource = assets.images.WatchProviders.disneyPlus;
-                  break;
-                case provider.includes('Apple'):
-                  imageSource = assets.images.WatchProviders.appleTv;
-                  break;
-                case provider.includes('HBO'):
-                  imageSource = assets.images.WatchProviders.max;
-                  break;
-                case provider.includes('Paramount'):
-                  imageSource = assets.images.WatchProviders.paramount;
-                  break;
-                default:
-                  return null;
-              }
-              return <Image source={imageSource} style={styles.streamingProvider} />;
-            })}
-        </View>
+        <FlatList
+          style={styles.streamingWatcherContainer}
+          data={sortedStreamingProviders}
+          keyExtractor={(provider) => provider}
+          horizontal
+          renderItem={({ item: provider }) => {
+            let imageSource;
+            switch (true) {
+              case provider.includes('Netflix'):
+                imageSource = assets.images.WatchProviders.netflix;
+                break;
+              case provider.includes('Prime'):
+                imageSource = assets.images.WatchProviders.prime;
+                break;
+              case provider.includes('Disney'):
+                imageSource = assets.images.WatchProviders.disneyPlus;
+                break;
+              case provider.includes('Apple'):
+                imageSource = assets.images.WatchProviders.appleTv;
+                break;
+              case provider.includes('Max'):
+                imageSource = assets.images.WatchProviders.max;
+                break;
+              case provider.includes('Paramount'):
+                imageSource = assets.images.WatchProviders.paramount;
+                break;
+              case provider.includes('Canal'):
+                imageSource = assets.images.WatchProviders.canal;
+                break;
+              default:
+                return null;
+            }
+            return (
+              <TouchableOpacity onPress={() => {}}>
+                <Image source={imageSource} style={styles.streamingProvider} />
+              </TouchableOpacity>
+            );
+          }}
+          showsHorizontalScrollIndicator={false}
+        />
         <View style={styles.descriptionContainer}>
           <Text style={styles.sectionTitle}>{t('description')}</Text>
           <Text style={styles.descriptionText}>{movieDetails?.overview}</Text>

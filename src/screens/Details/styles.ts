@@ -132,13 +132,13 @@ const styles = StyleSheet.create({
     color: highlightColor,
   },
   streamingWatcherContainer: {
-    flexDirection: 'row',
+    marginVertical: PADDING_VERTICAL_BUTTON,
   },
   streamingProvider: {
     width: 50,
     height: 50,
     borderRadius: 10,
-    marginHorizontal: PADDING_HORIZONTAL / 2,
+    marginHorizontal: PADDING_HORIZONTAL / 3,
   },
   commentsContainer: {},
   // ? Global Styles for the Details Screen

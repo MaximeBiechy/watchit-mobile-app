@@ -13,6 +13,7 @@ import max from './images/watch-providers/max.png';
 import netflix from './images/watch-providers/netflix.png';
 import paramount from './images/watch-providers/paramount.png';
 import prime from './images/watch-providers/prime-video.png';
+import canal from './images/watch-providers/canal.png';
 
 // IMAGES/ONBOARDING
 import onboarding1 from './images/onboarding/onboarding1.png';
@@ -58,6 +59,7 @@ const assets = {
       netflix,
       paramount,
       prime,
+      canal,
     },
     Onboarding: {
       onboarding1,
