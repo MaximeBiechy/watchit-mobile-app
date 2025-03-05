@@ -3,6 +3,7 @@ export const gray = '#5D6D7D';
 export const highlightColor = '#4990E2';
 export const accentColor = '#FF8700';
 export const darkGray = '#3C4B63';
+export const darkBlue = '#121829';
 export const subTitleColor = '#EBEBEF';
 export const cursorColor = '#121829';
 export const errorColor = '#D42525';
