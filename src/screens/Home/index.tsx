@@ -27,7 +27,9 @@ function HomeScreen() {
       <SearchBarComponent placeholder="Click here to search for a movie, etc" onPress={() => navigation.navigate('Search')} />
       <View style={styles.sectionContainer}>
         <Text style={styles.sectionTitle}>{t('sectionTitle')}</Text>
-        <Text style={[styles.functionText]}>{t('viewAll')}</Text>
+        <TouchableOpacity onPress={() => {}}>
+          <Text style={[styles.functionText]}>{t('viewAll')}</Text>
+        </TouchableOpacity>
       </View>
       <FlatList
         data={moviesNowPlaying}

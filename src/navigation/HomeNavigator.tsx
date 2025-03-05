@@ -19,7 +19,6 @@ function HomeNavigator() {
     <HomeStack.Navigator
       initialRouteName="Home"
       screenOptions={{
-        contentStyle: { paddingHorizontal: PADDING_HORIZONTAL, paddingTop: PADDING_VERTICAL },
         animation, // ? Avoid flickering effect when navigating between screens
         animationDuration, // ? It doesn't seem to work
       }}
@@ -29,6 +28,7 @@ function HomeNavigator() {
         component={HomeScreen}
         options={({ navigation }) => ({
           header: () => renderHeader(`${t('home:hello')} ${user.username}`, navigation, false),
+          contentStyle: { paddingHorizontal: PADDING_HORIZONTAL, paddingTop: PADDING_VERTICAL },
         })}
       />
       <HomeStack.Screen
