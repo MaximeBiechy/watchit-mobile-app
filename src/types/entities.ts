@@ -11,6 +11,7 @@ export interface MovieDetails {
   duration: number;
   genres: string[];
   director: string;
+  backDropPath: string;
   voteAverage: number;
   overview: string;
   actors: Actor[];

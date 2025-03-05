@@ -74,7 +74,7 @@ function DetailsScreen() {
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <ImageBackground source={{ uri: movieDetails?.posterPath }} style={styles.mainInfos}>
+      <ImageBackground source={{ uri: movieDetails?.backDropPath || movieDetails?.posterPath }} style={styles.mainInfos}>
         <LinearGradient
           colors={['rgba(31,29,43,0.2)', 'rgba(38,46,63,0.62)', primaryColor]}
           locations={[0, 0, 1]}

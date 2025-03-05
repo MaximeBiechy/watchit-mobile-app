@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
+
   },
   poster: {
     height: SCREEN_WIDTH / 1.3,
