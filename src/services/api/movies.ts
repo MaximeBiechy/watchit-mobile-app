@@ -11,11 +11,80 @@ export const getNowPlayingMovies = async () => {
         language: i18n.language === 'en' ? 'en-US' : 'fr-FR', // ? API only supports these two languages for now.
       },
     });
+
     return response.data;
   } catch (error: any) {
-    const errorCode = error.response?.data?.code || 'UnexpectedError';
-    const translatedMessage = t(`errors:${errorCode}`);
-    showToast('error', translatedMessage);
+    // const errorCode = error.response?.data?.code || 'UnexpectedError';
+    // const translatedMessage = t(`errors:${errorCode}`);
+    // showToast('error', translatedMessage);
+    return { error: error.response?.data?.message || 'An error occurred' };
+  }
+};
+
+export const getMovieDetails = async (id: number) => {
+  try {
+    const response = await api.get(`/movies/${id}`, {
+      params: {
+        language: i18n.language === 'en' ? 'en-US' : 'fr-FR', // ? API only supports these two languages for now.
+      },
+    });
+
+    return response.data;
+  } catch (error: any) {
+    // const errorCode = error.response?.data?.code || 'UnexpectedError';
+    // const translatedMessage = t(`errors:${errorCode}`);
+    // showToast('error', translatedMessage);
+    return { error: error.response?.data?.message || 'An error occurred' };
+  }
+};
+
+export const getUpcomingMovies = async () => {
+  try {
+    const response = await api.get('/movies/upcoming', {
+      params: {
+        region: i18n.language,
+        language: i18n.language === 'en' ? 'en-US' : 'fr-FR',
+      },
+    });
+    return response.data;
+  } catch (error: any) {
+    // const errorCode = error.response?.data?.code || 'UnexpectedError';
+    // const translatedMessage = t(`errors:${errorCode}`);
+    // showToast('error', translatedMessage);
+    return { error: error.response?.data?.message || 'An error occurred' };
+  }
+};
+
+export const getPopularMovies = async () => {
+  try {
+    const response = await api.get('/movies/popular', {
+      params: {
+        region: i18n.language,
+        language: i18n.language === 'en' ? 'en-US' : 'fr-FR',
+      },
+    });
+    return response.data;
+  } catch (error: any) {
+    // const errorCode = error.response?.data?.code || 'UnexpectedError';
+    // const translatedMessage = t(`errors:${errorCode}`);
+    // showToast('error', translatedMessage);
+    return { error: error.response?.data?.message || 'An error occurred' };
+  }
+};
+
+export const getTopRatedMovies = async () => {
+  try {
+    const response = await api.get('/movies/top_rated', {
+      params: {
+        region: i18n.language,
+        language: i18n.language === 'en' ? 'en-US' : 'fr-FR',
+      },
+    });
+    return response.data;
+  } catch (error: any) {
+    // const errorCode = error.response?.data?.code || 'UnexpectedError';
+    // const translatedMessage = t(`errors:${errorCode}`);
+    // showToast('error', translatedMessage);
     return { error: error.response?.data?.message || 'An error occurred' };
   }
 };

@@ -1,5 +1,9 @@
 {
   "hello": "Hello",
+  "searchPlaceholder": "Click here to search for a movie, etc",
   "sectionTitle": "Now in Cinemas",
-  "viewAll": "View All"
+  "viewAll": "View All",
+  "upcoming": "Upcoming",
+  "popular": "Popular",
+  "topRated": "Top rated"
 }

@@ -1,5 +1,9 @@
 {
   "hello": "Salut",
+  "searchPlaceholder": "Cliquer ici pour rechercher un film, etc",
   "sectionTitle": "Maintenant au cinéma",
-  "viewAll": "Voir tout"
+  "viewAll": "Voir tout",
+  "upcoming": "Prochainement",
+  "popular": "Populaire",
+  "topRated": "Les mieux notés"
 }

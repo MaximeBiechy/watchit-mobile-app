@@ -1,11 +1,19 @@
 import { StyleSheet } from 'react-native';
-import { FONT_SIZE_14, headingTitleFont, sectionTitle } from '../../styles/typography.ts';
-import { highlightColor } from '../../styles/colors.ts';
-import { PADDING_HORIZONTAL, PADDING_VERTICAL_BUTTON, SCREEN_WIDTH } from '../../styles/responsives.ts';
+import { bodyTextFont, FONT_SIZE_14, headingTitleFont, sectionTitle } from '../../styles/typography.ts';
+import { darkGray, highlightColor } from '../../styles/colors.ts';
+import {
+  PADDING_HORIZONTAL,
+  PADDING_VERTICAL,
+  PADDING_VERTICAL_BUTTON,
+  SCREEN_WIDTH
+} from "../../styles/responsives.ts";
 
 const imageSize = SCREEN_WIDTH / 3 - PADDING_HORIZONTAL - 4; // ? 3 images per row
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   sectionContainer: {
     display: 'flex',
     flexDirection: 'row',
@@ -33,13 +41,30 @@ const styles = StyleSheet.create({
     marginRight: PADDING_VERTICAL_BUTTON * 2,
   },
   gridContainer: {
-    marginVertical: 16,
-    justifyContent: 'space-between',
+    gap: PADDING_HORIZONTAL,
+    marginVertical: PADDING_VERTICAL_BUTTON,
   },
   cardGrid: {
     width: imageSize,
+    aspectRatio: 0.7,
     objectFit: 'cover',
     borderRadius: 16,
+  },
+  tabBar: {
+    backgroundColor: 'transparent',
+    elevation: 0,
+    marginVertical: PADDING_VERTICAL_BUTTON,
+  },
+  tabText: {
+    fontFamily: bodyTextFont,
+    fontSize: FONT_SIZE_14,
+    color: 'white',
+  },
+  tabStyle: {
+    padding: PADDING_VERTICAL,
+  },
+  indicator: {
+    backgroundColor: darkGray,
   },
 });
 
