@@ -12,6 +12,7 @@ interface InputConfig {
   secureTextEntry?: boolean;
   keyboardType?: 'default' | 'email-address' | 'numeric' | 'phone-pad';
   message?: string;
+  onFocus?: () => void;
 }
 
 interface FormComponentProps {
@@ -31,6 +32,7 @@ function FormComponent({ inputs, onSubmit, submitButtonTitle }: FormComponentPro
             onChangeText={input.onChangeText}
             secureTextEntry={input.secureTextEntry}
             keyboardType={input.keyboardType}
+            onFocus={input.onFocus}
           />
           <TouchableOpacity onPress={() => {}}>
             {input.message && <Text style={styles.messageText}>{input.message}</Text>}
