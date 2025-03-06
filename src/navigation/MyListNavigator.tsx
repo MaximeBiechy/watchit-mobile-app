@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { MyListStackParamList } from './RootStackParamList.tsx';
-import { MyList } from '../screens/index.ts';
+import { MyListScreen } from '../screens/index.ts';
 import { renderHeader } from '../components/Header/HeaderComponent.tsx';
 import { PADDING_HORIZONTAL, PADDING_VERTICAL } from '../styles/responsives.ts';
 import { animation, animationDuration } from '../styles/transitionScreens.ts';
@@ -19,7 +19,7 @@ function MyListNavigator() {
     >
       <MyListStack.Screen
         name="MyList"
-        component={MyList}
+        component={MyListScreen}
         options={({ navigation }) => ({
           header: () => renderHeader('My List', navigation, false),
         })}

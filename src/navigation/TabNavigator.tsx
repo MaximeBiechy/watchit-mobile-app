@@ -6,10 +6,10 @@ import { BottomTabParamList } from './RootStackParamList.tsx';
 import HomeNavigator from './HomeNavigator.tsx';
 import MyListNavigator from './MyListNavigator.tsx';
 import ProfileNavigator from './ProfileNavigator.tsx';
-import { gray, highlightColor, primaryColor } from '../styles/colors.ts';
+import { gray, highlightColor } from '../styles/colors.ts';
 import assets from '../assets/assets.ts';
 import { bodyInfo, FONT_SIZE_22 } from '../styles/typography.ts';
-import tabBarStyles from "./TabBarStyles.ts";
+import tabBarStyles from './TabBarStyles.ts';
 
 const Tab = createBottomTabNavigator<BottomTabParamList>();
 

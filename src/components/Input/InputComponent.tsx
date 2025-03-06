@@ -13,9 +13,17 @@ interface InputProps {
   onChangeText: (text: string) => void;
   secureTextEntry?: boolean;
   keyboardType?: 'default' | 'email-address' | 'numeric' | 'phone-pad';
+  onFocus?: () => void;
 }
 
-function InputComponent({ placeholder, value, onChangeText, secureTextEntry = false, keyboardType = 'default' }: InputProps) {
+function InputComponent({
+  placeholder,
+  value,
+  onChangeText,
+  secureTextEntry = false,
+  keyboardType = 'default',
+  onFocus,
+}: InputProps) {
   const [isPasswordVisible, setPasswordVisible] = useState(!secureTextEntry);
 
   return (
@@ -29,6 +37,7 @@ function InputComponent({ placeholder, value, onChangeText, secureTextEntry = fa
           value={value}
           onChangeText={onChangeText}
           placeholderTextColor={gray}
+          onFocus={onFocus}
         />
         {secureTextEntry && (
           <TouchableOpacity onPress={() => setPasswordVisible(!isPasswordVisible)}>

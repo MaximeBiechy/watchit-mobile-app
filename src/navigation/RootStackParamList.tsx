@@ -44,6 +44,7 @@ export type MyListStackParamList = {
 
 export type ProfileStackParamList = {
   UserProfile: undefined;
+  EditProfile: undefined;
 };
 
 export type AuthNavigationProp = NativeStackNavigationProp<AuthStackParamList>;
