@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
+import { ScrollView } from 'react-native-gesture-handler';
 import FormComponent from '../../components/Form/FormComponent.tsx';
 import styles from './styles.ts';
 import { signIn } from '../../services/api/auth.ts';
@@ -37,13 +38,13 @@ function SignInScreen() {
   ];
 
   return (
-    <View>
+    <ScrollView>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>{t('title')}</Text>
         <Text style={styles.subtitle}>{t('subtitle')}</Text>
       </View>
       <FormComponent inputs={inputs} onSubmit={handleLogin} submitButtonTitle={t('submitButtonTitle')} />
-    </View>
+    </ScrollView>
   );
 }
 
