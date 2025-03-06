@@ -1,12 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { bodyTextFont, FONT_SIZE_14, headingTitleFont, sectionTitle } from '../../styles/typography.ts';
 import { darkGray, highlightColor } from '../../styles/colors.ts';
-import {
-  PADDING_HORIZONTAL,
-  PADDING_VERTICAL,
-  PADDING_VERTICAL_BUTTON,
-  SCREEN_WIDTH
-} from "../../styles/responsives.ts";
+import { PADDING_HORIZONTAL, PADDING_VERTICAL, PADDING_VERTICAL_BUTTON, SCREEN_WIDTH } from '../../styles/responsives.ts';
 
 const imageSize = SCREEN_WIDTH / 3 - PADDING_HORIZONTAL - 4; // ? 3 images per row
 
