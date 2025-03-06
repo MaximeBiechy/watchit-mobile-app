@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { darkGray } from '../../styles/colors.ts';
+import { darkGray, highlightColor } from '../../styles/colors.ts';
 import { PADDING_HORIZONTAL, SCREEN_WIDTH } from '../../styles/responsives.ts';
 import { bodyTextFont, FONT_SIZE_12, FONT_SIZE_18, headingTitleFont } from '../../styles/typography.ts';
 
@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     padding: PADDING_HORIZONTAL / 2,
     borderRadius: 32,
     borderWidth: 1,
+    borderColor: highlightColor,
     alignItems: 'center',
     justifyContent: 'center',
     marginHorizontal: PADDING_HORIZONTAL / 2,
