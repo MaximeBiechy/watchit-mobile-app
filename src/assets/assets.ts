@@ -3,6 +3,8 @@
 import logo from './images/logo.svg';
 import error from './images/onboarding/avatar/avatar1.png'; // TODO: replace with the correct image
 import defaultActor from './images/defaultActor.jpg';
+import defaultMovie from './images/defaultActor.jpg'; // TODO: replace with the correct image
+import question from './images/question.png';
 // IMAGES/SOCIAL MEDIA
 import apple from './images/social-media/apple.png';
 import facebook from './images/social-media/facebook.png';
@@ -47,6 +49,8 @@ const assets = {
     logo,
     error,
     defaultActor,
+    defaultMovie,
+    question,
     SocialsMedia: {
       apple,
       facebook,

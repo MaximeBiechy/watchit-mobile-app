@@ -1,15 +1,27 @@
 import { Image, Text, View } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { selectUserData } from '../../store/user/userSlice.ts';
+import { useNavigation } from '@react-navigation/native';
+import { useState } from 'react';
+import { logout, selectUserData } from '../../store/user/userSlice.ts';
 import styles from './styles.ts';
 import assets from '../../assets/assets.ts';
 import SettingButtonComponent from '../../components/SettingButton/SettingButtonComponent.tsx';
-import { errorColor } from '../../styles/colors.ts';
+import { errorColor, highlightColor } from '../../styles/colors.ts';
+import { ProfileNavigationProp } from '../../navigation/RootStackParamList.tsx';
+import ModalComponent from '../../components/Modal/ModalComponent.tsx';
 
-function UserProfile() {
+function UserProfileScreen() {
   const { t } = useTranslation('profile');
+  const navigation = useNavigation<ProfileNavigationProp>();
   const user = useSelector(selectUserData);
+  const dispatch = useDispatch();
+  const [isLogoutModalVisible, setIsLogoutModalVisible] = useState(false);
+
+  const handleLogout = () => {
+    dispatch(logout());
+    setIsLogoutModalVisible(false);
+  };
 
   return (
     <View style={styles.container}>
@@ -18,7 +30,13 @@ function UserProfile() {
       <Text style={styles.email}>{user.email}</Text>
       <View style={styles.settingsContainer}>
         <View style={[styles.settingFirstBlock, styles.settingCommonStyle]}>
-          <SettingButtonComponent onPress={() => {}} leftIcon={assets.icons.eyeOff} title={t('editProfile')} />
+          <SettingButtonComponent
+            onPress={() => {
+              navigation.navigate('EditProfile');
+            }}
+            leftIcon={assets.icons.eyeOff}
+            title={t('editProfile')}
+          />
           <SettingButtonComponent
             onPress={() => {}}
             leftIcon={assets.icons.notification}
@@ -33,7 +51,7 @@ function UserProfile() {
         </View>
         <View style={[styles.settingThirdBlock, styles.settingCommonStyle]}>
           <SettingButtonComponent
-            onPress={() => {}}
+            onPress={() => setIsLogoutModalVisible(true)}
             leftIcon={assets.icons.logout}
             leftIconColor={errorColor}
             title={t('logout')}
@@ -46,8 +64,20 @@ function UserProfile() {
           />
         </View>
       </View>
+      <ModalComponent
+        visible={isLogoutModalVisible}
+        title={t('logoutConfirmationTitle')}
+        message={t('logoutConfirmationMessage')}
+        confirmText={t('logoutConfirmationConfirm')}
+        cancelText={t('logoutConfirmationCancel')}
+        confirmColor={highlightColor}
+        cancelColor={highlightColor}
+        icon={assets.images.question}
+        onConfirm={handleLogout}
+        onCancel={() => setIsLogoutModalVisible(false)}
+      />
     </View>
   );
 }
 
-export default UserProfile;
+export default UserProfileScreen;

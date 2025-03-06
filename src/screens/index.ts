@@ -11,9 +11,10 @@ import HomeScreen from './Home/index.tsx';
 import DetailsScreen from './Details/index.tsx';
 import SearchScreen from './Search/index.tsx';
 // My List Stack
-import MyList from './MyList/index.tsx';
+import MyListScreen from './MyList/index.tsx';
 // Profile Stack
-import UserProfile from './UserProfile/index.tsx';
+import UserProfileScreen from './UserProfile/index.tsx';
+import EditProfileScreen from './EditProfile/index.tsx';
 
 export {
   ChooseConnectionModeScreen,
@@ -25,6 +26,7 @@ export {
   HomeScreen,
   DetailsScreen,
   SearchScreen,
-  MyList,
-  UserProfile,
+  MyListScreen,
+  UserProfileScreen,
+  EditProfileScreen,
 };

@@ -6,5 +6,9 @@
   "privacy": "Politique de confidentialité",
   "support": "Aide et support",
   "logout": "Se déconnecter",
-  "deleteAccount": "Supprimer le compte"
+  "deleteAccount": "Supprimer le compte",
+  "logoutConfirmationTitle": "Es-tu sûr ?",
+  "logoutConfirmationMessage": "Tu es sur le point de te déconnecter de l'application",
+  "logoutConfirmationCancel": "Annuler",
+  "logoutConfirmationConfirm": "Se déconnecter"
 }

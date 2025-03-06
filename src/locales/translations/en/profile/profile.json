@@ -6,5 +6,9 @@
   "privacy": "Privacy policy",
   "support": "Help & Support",
   "logout": "Logout",
-  "deleteAccount": "Delete Account"
+  "deleteAccount": "Delete Account",
+  "logoutConfirmationTitle": "Are you sure ?",
+  "logoutConfirmationMessage": "You are about to logout from the app",
+  "logoutConfirmationCancel": "Cancel",
+  "logoutConfirmationConfirm": "Log Out"
 }
