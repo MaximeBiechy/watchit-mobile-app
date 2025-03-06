@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
   },
   indicator: {
     backgroundColor: darkGray,
+    height: 4,
   },
 });
 
