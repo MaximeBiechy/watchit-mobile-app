@@ -34,7 +34,7 @@ function UserProfileScreen() {
             onPress={() => {
               navigation.navigate('EditProfile');
             }}
-            leftIcon={assets.icons.eyeOff}
+            leftIcon={assets.icons.editProfile}
             title={t('editProfile')}
           />
           <SettingButtonComponent

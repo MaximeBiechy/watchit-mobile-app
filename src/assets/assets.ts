@@ -108,6 +108,7 @@ const assets = {
     time: 'time-outline',
     ticket: 'ticket-outline',
     play: 'play',
+    editProfile: 'person-circle-outline',
     notification: 'notifications-outline',
     language: 'language-outline',
     lock: 'lock-closed-outline',
