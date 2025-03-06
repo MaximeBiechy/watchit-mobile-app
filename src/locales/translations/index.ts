@@ -25,6 +25,9 @@ import frSearch from './fr/main/search.json';
 // Bottom Tab Bar
 import enBottomTabBar from './en/bottomTabBar/bottomTabBar.json';
 import frBottomTabBar from './fr/bottomTabBar/bottomTabBar.json';
+// Profile
+import enProfile from './en/profile/profile.json';
+import frProfile from './fr/profile/profile.json';
 
 const translations = {
   en: {
@@ -39,6 +42,7 @@ const translations = {
     details: enDetails,
     search: enSearch,
     bottomTabBar: enBottomTabBar,
+    profile: enProfile,
   },
   fr: {
     chooseConnectionMode: frChooseConnectionMode,
@@ -52,6 +56,7 @@ const translations = {
     details: frDetails,
     search: frSearch,
     bottomTabBar: frBottomTabBar,
+    profile: frProfile,
   },
 };
 
