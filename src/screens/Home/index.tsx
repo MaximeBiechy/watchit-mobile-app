@@ -57,6 +57,7 @@ function HomeScreen() {
   const { t } = useTranslation('home');
   const navigation = useNavigation<HomeNavigationProp>();
   const [index, setIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
   const [routes] = useState([
     { key: 'upcoming', title: t('upcoming') },
     { key: 'popular', title: t('popular') },
@@ -71,10 +72,15 @@ function HomeScreen() {
       if (!response.error) {
         setMoviesNowPlaying(response.movies);
       }
+      setLoading(false);
     };
 
     fetchMoviesNowPlaying();
   }, []);
+
+  if (loading) {
+    return <LoaderComponent />;
+  }
 
   return (
     <View style={styles.container}>
