@@ -26,10 +26,6 @@ const userSlice = createSlice({
       AsyncStorage.setItem('user', JSON.stringify(newState));
       return newState;
     },
-    clearUserData: () => {
-      AsyncStorage.removeItem('user');
-      return { ...initialState };
-    },
     completeOnboarding: (state) => {
       const newState = { ...state, onboardingCompleted: true };
       AsyncStorage.setItem('user', JSON.stringify(newState));
@@ -39,6 +35,10 @@ const userSlice = createSlice({
       ...state,
       ...action.payload,
     }),
+    logout: () => {
+      AsyncStorage.removeItem('user');
+      return { ...initialState };
+    },
   },
 });
 
@@ -46,6 +46,6 @@ export const selectUserData = (state: { user: UserState }) => state.user;
 export const selectIsAuthenticated = (state: { user: UserState }) => !!state.user.accessToken;
 export const selectOnboardingCompleted = (state: { user: UserState }) => state.user.onboardingCompleted;
 
-export const { setUserData, clearUserData, completeOnboarding, loadUserData } = userSlice.actions;
+export const { setUserData, completeOnboarding, loadUserData, logout } = userSlice.actions;
 
 export default userSlice.reducer;
