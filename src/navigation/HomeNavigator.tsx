@@ -52,6 +52,7 @@ function HomeNavigator() {
         component={SearchScreen}
         options={({ navigation }) => ({
           header: () => renderHeader(`${t('search:screenTitle')}`, navigation, true),
+          contentStyle: { paddingHorizontal: PADDING_HORIZONTAL, paddingTop: PADDING_VERTICAL },
         })}
       />
     </HomeStack.Navigator>
