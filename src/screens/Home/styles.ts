@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     color: highlightColor,
   },
   cardContainer: {
+    flexShrink: 1,
     height: SCREEN_WIDTH / 2,
   },
   card: {

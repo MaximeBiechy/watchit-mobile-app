@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { FlatList, Image, RefreshControl, Text, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import { SceneMap, TabBar, TabView } from 'react-native-tab-view';
@@ -9,25 +9,34 @@ import styles from './styles.ts';
 import { getNowPlayingMovies, getPopularMovies, getTopRatedMovies, getUpcomingMovies } from '../../services/api/movies.ts';
 import { SCREEN_WIDTH } from '../../styles/responsives.ts';
 import LoaderComponent from '../../components/Loader/LoaderComponent.tsx';
+import { highlightColor } from '../../styles/colors.ts';
 
 function MovieGrid({ fetchMovies }: { fetchMovies: () => Promise<any> }) {
   const navigation = useNavigation<HomeNavigationProp>();
   const [movies, setMovies] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const fetchData = async () => {
+    setLoading(true);
+    const response = await fetchMovies();
+    if (!response.error) {
+      setMovies(response.movies);
+    }
+    setLoading(false);
+    setRefreshing(false);
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetchMovies();
-      if (!response.error) {
-        setMovies(response.movies);
-      }
-      setLoading(false);
-    };
-
     fetchData();
   }, [fetchMovies]);
 
-  if (loading) {
+  const handleRefresh = () => {
+    setRefreshing(true);
+    fetchData();
+  };
+
+  if (loading && !refreshing) {
     return <LoaderComponent />;
   }
 
@@ -43,6 +52,7 @@ function MovieGrid({ fetchMovies }: { fetchMovies: () => Promise<any> }) {
       numColumns={3}
       showsVerticalScrollIndicator={false}
       columnWrapperStyle={styles.gridContainer}
+      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={handleRefresh} colors={[highlightColor]} />}
     />
   );
 }
@@ -65,20 +75,31 @@ function HomeScreen() {
   ]);
 
   const [moviesNowPlaying, setMoviesNowPlaying] = useState<any[]>([]);
+  const [refreshing, setRefreshing] = useState(false);
+  const flatListRef = useRef<FlatList>(null);
+
+  const fetchMoviesNowPlaying = async () => {
+    setLoading(true);
+    const response = await getNowPlayingMovies();
+    console.log('response', response);
+    if (!response.error) {
+      setMoviesNowPlaying(response.movies);
+    }
+    setLoading(false);
+    setRefreshing(false);
+  };
 
   useEffect(() => {
-    const fetchMoviesNowPlaying = async () => {
-      const response = await getNowPlayingMovies();
-      if (!response.error) {
-        setMoviesNowPlaying(response.movies);
-      }
-      setLoading(false);
-    };
-
     fetchMoviesNowPlaying();
   }, []);
 
-  if (loading) {
+  const handleRefresh = () => {
+    setRefreshing(true);
+    fetchMoviesNowPlaying();
+    flatListRef.current?.scrollToOffset({ animated: true, offset: 0 });
+  };
+
+  if (loading && !refreshing) {
     return <LoaderComponent />;
   }
 
@@ -91,8 +112,9 @@ function HomeScreen() {
           <Text style={styles.functionText}>{t('viewAll')}</Text>
         </TouchableOpacity>
       </View>
-      <View style={{ flexShrink: 1 }}>
+      <View style={styles.cardContainer}>
         <FlatList
+          ref={flatListRef}
           data={moviesNowPlaying}
           renderItem={({ item }) => (
             <TouchableOpacity onPress={() => navigation.navigate('Details', { id: item.id, title: item.title })}>
@@ -103,6 +125,7 @@ function HomeScreen() {
           horizontal
           showsHorizontalScrollIndicator={false}
           nestedScrollEnabled
+          refreshControl={<RefreshControl refreshing={refreshing} onRefresh={handleRefresh} colors={[highlightColor]} />}
         />
       </View>
 
