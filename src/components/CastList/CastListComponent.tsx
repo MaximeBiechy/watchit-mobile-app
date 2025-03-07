@@ -1,4 +1,4 @@
-import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
+import { FlatList, Image, Text, TouchableOpacity } from 'react-native';
 import { Actor } from '../../types/entities.ts';
 import styles from './styles.ts';
 import { SCREEN_WIDTH } from '../../styles/responsives.ts';
