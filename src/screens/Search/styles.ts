@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
   },
   flatListContainer: {
     flexDirection: 'column',
-    gap: PADDING_VERTICAL * 2,
   },
 });
 

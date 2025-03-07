@@ -22,17 +22,20 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     flexDirection: 'row',
+    alignItems: 'center',
     gap: PADDING_VERTICAL / 2,
   },
   title: {
     fontFamily: headingSectionFont,
     color: 'white',
     fontSize: FONT_SIZE_14,
-    maxWidth: '75%',
+    maxWidth: '70%',
   },
   voteContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    height: '100%',
+    gap: PADDING_VERTICAL / 2,
   },
   voteAverage: {
     color: accentColor,
