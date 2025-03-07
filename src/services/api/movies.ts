@@ -43,7 +43,7 @@ export const getUpcomingMovies = async () => {
     const response = await api.get('/movies/upcoming', {
       params: {
         region: i18n.language === 'en' ? 'US' : 'FR',
-        language: i18n.language === 'en' ? 'en-US' : 'fr-FR',
+        language: i18n.language === 'en' ? 'en-US' : 'fr-FR', // ? API only supports these two languages for now.
       },
     });
     return response.data;
@@ -60,7 +60,7 @@ export const getPopularMovies = async () => {
     const response = await api.get('/movies/popular', {
       params: {
         region: i18n.language === 'en' ? 'US' : 'FR',
-        language: i18n.language === 'en' ? 'en-US' : 'fr-FR',
+        language: i18n.language === 'en' ? 'en-US' : 'fr-FR', // ? API only supports these two languages for now.
       },
     });
     return response.data;
@@ -77,7 +77,7 @@ export const getTopRatedMovies = async () => {
     const response = await api.get('/movies/top_rated', {
       params: {
         region: i18n.language === 'en' ? 'US' : 'FR',
-        language: i18n.language === 'en' ? 'en-US' : 'fr-FR',
+        language: i18n.language === 'en' ? 'en-US' : 'fr-FR', // ? API only supports these two languages for now.
       },
     });
     return response.data;

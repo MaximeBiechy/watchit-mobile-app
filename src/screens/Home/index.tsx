@@ -10,6 +10,7 @@ import { getNowPlayingMovies, getPopularMovies, getTopRatedMovies, getUpcomingMo
 import { SCREEN_WIDTH } from '../../styles/responsives.ts';
 import LoaderComponent from '../../components/Loader/LoaderComponent.tsx';
 import { highlightColor } from '../../styles/colors.ts';
+import i18n from "../../locales/i18n.ts";
 
 function MovieGrid({ fetchMovies }: { fetchMovies: () => Promise<any> }) {
   const navigation = useNavigation<HomeNavigationProp>();
@@ -57,10 +58,22 @@ function MovieGrid({ fetchMovies }: { fetchMovies: () => Promise<any> }) {
   );
 }
 
+function UpcomingMovies() {
+  return <MovieGrid fetchMovies={getUpcomingMovies} />;
+}
+
+function PopularMovies() {
+  return <MovieGrid fetchMovies={getPopularMovies} />;
+}
+
+function TopRatedMovies() {
+  return <MovieGrid fetchMovies={getTopRatedMovies} />;
+}
+
 const renderScene = SceneMap({
-  upcoming: () => <MovieGrid fetchMovies={getUpcomingMovies} />,
-  popular: () => <MovieGrid fetchMovies={getPopularMovies} />,
-  topRated: () => <MovieGrid fetchMovies={getTopRatedMovies} />,
+  upcoming: UpcomingMovies,
+  popular: PopularMovies,
+  topRated: TopRatedMovies,
 });
 
 function HomeScreen() {
@@ -68,7 +81,7 @@ function HomeScreen() {
   const navigation = useNavigation<HomeNavigationProp>();
   const [index, setIndex] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [routes] = useState([
+  const [routes, setRoutes] = useState([
     { key: 'upcoming', title: t('upcoming') },
     { key: 'popular', title: t('popular') },
     { key: 'topRated', title: t('topRated') },
@@ -91,6 +104,15 @@ function HomeScreen() {
   useEffect(() => {
     fetchMoviesNowPlaying();
   }, []);
+
+  // ? This is a workaround to update the tab titles when the language changes.
+  useEffect(() => {
+    setRoutes([
+      { key: 'upcoming', title: t('upcoming') },
+      { key: 'popular', title: t('popular') },
+      { key: 'topRated', title: t('topRated') },
+    ]);
+  }, [i18n.language]);
 
   const handleRefresh = () => {
     setRefreshing(true);
@@ -140,6 +162,7 @@ function HomeScreen() {
             jumpTo={props.jumpTo}
             style={styles.tabBar}
             indicatorStyle={styles.indicator}
+            contentContainerStyle={styles.tabBarContentContainer}
             renderTabBarItem={({ route }) => (
               <TouchableOpacity style={styles.tabStyle} onPress={() => props.jumpTo(route.key)}>
                 <Text style={styles.tabText}>{route.title}</Text>

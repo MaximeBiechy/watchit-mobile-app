@@ -51,6 +51,9 @@ const styles = StyleSheet.create({
     elevation: 0,
     marginVertical: PADDING_VERTICAL_BUTTON,
   },
+  tabBarContentContainer: {
+    justifyContent: 'space-between',
+  },
   tabText: {
     fontFamily: bodyTextFont,
     fontSize: FONT_SIZE_14,
