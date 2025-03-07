@@ -15,6 +15,7 @@ import LoaderComponent from '../../components/Loader/LoaderComponent.tsx';
 import ErrorComponent from '../../components/Error/ErrorComponent.tsx';
 import CastListComponent from '../../components/CastList/CastListComponent.tsx';
 import { MovieDetails } from '../../types/entities.ts';
+import { formatVoteAverage } from "../../utils/number.ts";
 
 type DetailsScreenRouteProp = RouteProp<HomeStackParamList, 'Details'>;
 
@@ -55,7 +56,7 @@ function DetailsScreen() {
     );
   }
 
-  // This function is used to filter unique providers and sort them alphabetically
+  // ? This function is used to filter unique providers and sort them alphabetically
   const filterUniqueProviders = (providers: string[]) => {
     const uniqueProviders = new Set<string>();
     return providers.filter((provider) => {
@@ -128,7 +129,7 @@ function DetailsScreen() {
           </View>
           <View style={styles.divider} />
           <View style={styles.scoreContainer}>
-            <Text style={styles.score}>{movieDetails?.voteAverage.toFixed(1)}/10</Text>
+            <Text style={styles.score}>{formatVoteAverage(movieDetails?.voteAverage)}/10</Text>
             <Text style={styles.who}>IMDB</Text>
           </View>
         </View>
