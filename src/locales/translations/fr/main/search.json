@@ -1,3 +1,7 @@
 {
-  "screenTitle": "Rechercher"
+  "screenTitle": "Rechercher",
+  "suggestions": "Suggestions",
+  "actorsTitle": "Acteurs",
+  "moviesTitle": "Movies",
+  "otherTitle": "Other"
 }
