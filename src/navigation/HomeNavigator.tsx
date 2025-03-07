@@ -1,6 +1,7 @@
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { HomeStackParamList } from './RootStackParamList.tsx';
 import { DetailsScreen, HomeScreen, SearchScreen } from '../screens/index.ts';
 import { renderHeader } from '../components/Header/HeaderComponent.tsx';
@@ -8,19 +9,44 @@ import { selectUserData } from '../store/user/userSlice.ts';
 import { PADDING_HORIZONTAL, PADDING_VERTICAL } from '../styles/responsives.ts';
 import { animation, animationDuration } from '../styles/transitionScreens.ts';
 import assets from '../assets/assets.ts';
+import { addToWatchlist, getUserWatchlist, removeFromWatchlist } from '../services/api/users.ts';
 
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();
 
 function HomeNavigator() {
   const { t } = useTranslation();
   const user = useSelector(selectUserData);
+  const [watchlist, setWatchlist] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (user?.id) {
+      getUserWatchlist(user.id).then((data) => {
+        if (data && !data.error) {
+          setWatchlist(data.watchlist.map((item: { mediaId: string }) => item.mediaId));
+        }
+      });
+    }
+  }, [user?.id]);
+
+  const toggleWatchlist = async (mediaId: string, mediaType: string) => {
+    if (!user?.id) return;
+
+    const isInWatchlist = watchlist.includes(mediaId);
+    if (isInWatchlist) {
+      await removeFromWatchlist(user.id, mediaId, mediaType);
+      setWatchlist(watchlist.filter((id) => id != mediaId));
+    } else {
+      await addToWatchlist(user.id, mediaId, mediaType);
+      setWatchlist([...watchlist, mediaId]);
+    }
+  };
 
   return (
     <HomeStack.Navigator
       initialRouteName="Home"
       screenOptions={{
-        animation, // ? Avoid flickering effect when navigating between screens
-        animationDuration, // ? It doesn't seem to work
+        animation,
+        animationDuration,
       }}
     >
       <HomeStack.Screen
@@ -35,15 +61,12 @@ function HomeNavigator() {
         name="Details"
         component={DetailsScreen}
         options={({ route, navigation }) => {
-          const isFavorite = false; // ? Implement a function to check if the movie is in the user's list
+          const { id, title, mediaType } = route.params;
+          const isFavorite = watchlist.filter((item) => item == id).length > 0;
           const icon = isFavorite ? assets.icons.listFull : assets.icons.list;
 
           return {
-            header: () =>
-              renderHeader(route.params.title, navigation, true, icon, () => {
-                //   TODO: Implement a function to add the movie to the user's list
-                // It has to change the icon to a checkmark and add the movie to the user's list
-              }),
+            header: () => renderHeader(title, navigation, true, icon, () => toggleWatchlist(id, mediaType)),
           };
         }}
       />

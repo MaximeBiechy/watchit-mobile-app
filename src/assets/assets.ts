@@ -116,7 +116,7 @@ const assets = {
     options: 'options-outline',
     home: 'home-outline',
     list: 'bookmark-outline',
-    listFull: 'bookmarks-outline',
+    listFull: 'bookmark',
     userProfile: 'person-outline',
     calendar: 'calendar-outline',
     time: 'time-outline',

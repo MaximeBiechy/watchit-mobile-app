@@ -10,7 +10,7 @@ import { getNowPlayingMovies, getPopularMovies, getTopRatedMovies, getUpcomingMo
 import { SCREEN_WIDTH } from '../../styles/responsives.ts';
 import LoaderComponent from '../../components/Loader/LoaderComponent.tsx';
 import { highlightColor } from '../../styles/colors.ts';
-import i18n from "../../locales/i18n.ts";
+import i18n from '../../locales/i18n.ts';
 
 function MovieGrid({ fetchMovies }: { fetchMovies: () => Promise<any> }) {
   const navigation = useNavigation<HomeNavigationProp>();
@@ -45,7 +45,7 @@ function MovieGrid({ fetchMovies }: { fetchMovies: () => Promise<any> }) {
     <FlatList
       data={movies}
       renderItem={({ item }) => (
-        <TouchableOpacity onPress={() => navigation.navigate('Details', { id: item.id, title: item.title })}>
+        <TouchableOpacity onPress={() => navigation.navigate('Details', { id: item.id, title: item.title, mediaType: 'movie' })}>
           <Image source={{ uri: item.posterPath }} style={styles.cardGrid} />
         </TouchableOpacity>
       )}
@@ -138,7 +138,9 @@ function HomeScreen() {
           ref={flatListRef}
           data={moviesNowPlaying}
           renderItem={({ item }) => (
-            <TouchableOpacity onPress={() => navigation.navigate('Details', { id: item.id, title: item.title })}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Details', { id: item.id, title: item.title, mediaType: 'movie' })}
+            >
               <Image source={{ uri: item.posterPath }} style={styles.card} />
             </TouchableOpacity>
           )}
