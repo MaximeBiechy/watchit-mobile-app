@@ -15,8 +15,8 @@ import LoaderComponent from '../../components/Loader/LoaderComponent.tsx';
 import ErrorComponent from '../../components/Error/ErrorComponent.tsx';
 import CastListComponent from '../../components/CastList/CastListComponent.tsx';
 import { MovieDetails } from '../../types/entities.ts';
-import { formatVoteAverage } from "../../utils/number.ts";
-import { formatDateTimeOnlyYear } from "../../utils/dateTime.ts";
+import { formatVoteAverage } from '../../utils/number.ts';
+import { formatDateTimeOnlyYear } from '../../utils/dateTime.ts';
 
 type DetailsScreenRouteProp = RouteProp<HomeStackParamList, 'Details'>;
 
@@ -176,7 +176,9 @@ function DetailsScreen() {
         />
         <View style={styles.descriptionContainer}>
           <Text style={styles.sectionTitle}>{t('description')}</Text>
-          <Text style={styles.descriptionText}>{movieDetails?.overview}</Text>
+          <Text style={styles.descriptionText}>
+            {movieDetails?.overview !== '' ? movieDetails?.overview : t('noDescription')}
+          </Text>
         </View>
         <View style={styles.sectionContainer}>
           <Text style={styles.sectionTitle}>{t('cast')}</Text>
