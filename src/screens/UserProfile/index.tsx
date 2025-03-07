@@ -10,6 +10,8 @@ import SettingButtonComponent from '../../components/SettingButton/SettingButton
 import { errorColor, highlightColor } from '../../styles/colors.ts';
 import { ProfileNavigationProp } from '../../navigation/RootStackParamList.tsx';
 import ModalComponent from '../../components/Modal/ModalComponent.tsx';
+import i18n from '../../locales/i18n.ts';
+import { updateUserSettings } from '../../services/api/users.ts';
 
 function UserProfileScreen() {
   const { t } = useTranslation('profile');
@@ -17,10 +19,17 @@ function UserProfileScreen() {
   const user = useSelector(selectUserData);
   const dispatch = useDispatch();
   const [isLogoutModalVisible, setIsLogoutModalVisible] = useState(false);
+  const [language, setLanguage] = useState(i18n.language);
 
   const handleLogout = () => {
     dispatch(logout());
     setIsLogoutModalVisible(false);
+  };
+
+  const toggleFrEnLanguage = async () => {
+    const toggleLanguage = i18n.language === 'en' ? 'fr' : 'en';
+    await updateUserSettings(user.id!, { language: toggleLanguage });
+    i18n.changeLanguage(toggleLanguage);
   };
 
   return (
@@ -43,7 +52,12 @@ function UserProfileScreen() {
             title={t('notifications')}
             rightText="ON"
           />
-          <SettingButtonComponent onPress={() => {}} leftIcon={assets.icons.language} title={t('language')} rightText="English" />
+          <SettingButtonComponent
+            onPress={toggleFrEnLanguage}
+            leftIcon={assets.icons.language}
+            title={t('language')}
+            rightText={t('languageUser')}
+          />
         </View>
         <View style={[styles.settingSecondBlock, styles.settingCommonStyle]}>
           <SettingButtonComponent onPress={() => {}} leftIcon={assets.icons.lock} title={t('privacy')} />

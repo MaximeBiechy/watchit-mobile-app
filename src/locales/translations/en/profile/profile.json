@@ -10,5 +10,6 @@
   "logoutConfirmationTitle": "Are you sure ?",
   "logoutConfirmationMessage": "You are about to logout from the app",
   "logoutConfirmationCancel": "Cancel",
-  "logoutConfirmationConfirm": "Log Out"
+  "logoutConfirmationConfirm": "Log Out",
+  "languageUser": "English"
 }

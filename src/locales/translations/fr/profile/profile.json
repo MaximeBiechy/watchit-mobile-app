@@ -10,5 +10,6 @@
   "logoutConfirmationTitle": "Es-tu sûr ?",
   "logoutConfirmationMessage": "Tu es sur le point de te déconnecter de l'application",
   "logoutConfirmationCancel": "Annuler",
-  "logoutConfirmationConfirm": "Se déconnecter"
+  "logoutConfirmationConfirm": "Se déconnecter",
+  "languageUser": "Français"
 }
