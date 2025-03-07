@@ -16,6 +16,13 @@ import netflix from './images/watch-providers/netflix.png';
 import paramount from './images/watch-providers/paramount.png';
 import prime from './images/watch-providers/prime-video.png';
 import canal from './images/watch-providers/canal.png';
+import apple2 from './images/watch-providers/apple-tv_2.png';
+import disneyPlus2 from './images/watch-providers/disney_2.png';
+import max2 from './images/watch-providers/max_2.png';
+import netflix2 from './images/watch-providers/netflix_2.png';
+import paramount2 from './images/watch-providers/paramount_2.png';
+import prime2 from './images/watch-providers/prime-video_2.png';
+import canal2 from './images/watch-providers/canal_2.png';
 
 // IMAGES/ONBOARDING
 import onboarding1 from './images/onboarding/onboarding1.png';
@@ -64,6 +71,13 @@ const assets = {
       paramount,
       prime,
       canal,
+      apple2,
+      disneyPlus2,
+      max2,
+      netflix2,
+      paramount2,
+      prime2,
+      canal2,
     },
     Onboarding: {
       onboarding1,
@@ -115,6 +129,7 @@ const assets = {
     settings: 'settings-outline',
     logout: 'log-out-outline',
     trash: 'trash-outline',
+    star: 'star-outline',
   },
 };
 
