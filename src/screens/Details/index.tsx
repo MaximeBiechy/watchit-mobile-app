@@ -16,6 +16,7 @@ import ErrorComponent from '../../components/Error/ErrorComponent.tsx';
 import CastListComponent from '../../components/CastList/CastListComponent.tsx';
 import { MovieDetails } from '../../types/entities.ts';
 import { formatVoteAverage } from "../../utils/number.ts";
+import { formatDateTimeOnlyYear } from "../../utils/dateTime.ts";
 
 type DetailsScreenRouteProp = RouteProp<HomeStackParamList, 'Details'>;
 
@@ -85,7 +86,7 @@ function DetailsScreen() {
         <View style={styles.infosContainer}>
           <View style={styles.info}>
             <Icon name={assets.icons.calendar} size={FONT_SIZE_12} color={gray} />
-            <Text style={styles.textInfo}>{movieDetails?.releaseDate.split('-')[0]}</Text>
+            <Text style={styles.textInfo}>{formatDateTimeOnlyYear(movieDetails?.releaseDate)}</Text>
           </View>
           <View style={styles.divider} />
           <View style={styles.info}>
