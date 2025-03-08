@@ -34,7 +34,7 @@ export type BottomTabParamList = {
 
 export type HomeStackParamList = {
   Home: undefined;
-  Details: { id: string; title: string; mediaType: string };
+  Details: { id: number; title: string; mediaType: string };
   Search: undefined;
 };
 

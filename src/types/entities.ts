@@ -17,3 +17,8 @@ export interface MovieDetails {
   actors: Actor[];
   streamingProviders: string[];
 }
+
+export interface WatchlistItem {
+  mediaId: number;
+  type: string;
+}

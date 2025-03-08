@@ -23,7 +23,6 @@ type DetailsScreenRouteProp = RouteProp<HomeStackParamList, 'Details'>;
 function DetailsScreen() {
   const route = useRoute<DetailsScreenRouteProp>();
   const { id } = route.params;
-  console.log('id', id);
   const { t } = useTranslation('details');
   const [movieDetails, setMoviesDetails] = useState<MovieDetails | null>(null);
   const [loading, setLoading] = useState(true);
