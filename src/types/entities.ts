@@ -22,3 +22,10 @@ export interface WatchlistItem {
   mediaId: number;
   type: string;
 }
+
+export interface SeenListItem {
+  mediaId: number;
+  type: string;
+  rating?: number;
+  watchedAt: string;
+}

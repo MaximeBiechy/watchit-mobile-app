@@ -9,43 +9,16 @@ import { selectUserData } from '../store/user/userSlice.ts';
 import { PADDING_HORIZONTAL, PADDING_VERTICAL } from '../styles/responsives.ts';
 import { animation, animationDuration } from '../styles/transitionScreens.ts';
 import assets from '../assets/assets.ts';
-import { addToWatchlist, getUserWatchlist, removeFromWatchlist } from '../services/api/users.ts';
-import { WatchlistItem } from '../types/entities.ts';
+import useWatchlist from '../hooks/useWatchList.ts';
+import useSeenList from '../hooks/useSeenList.ts';
 
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();
 
 function HomeNavigator() {
   const { t } = useTranslation();
   const user = useSelector(selectUserData);
-  const [watchlist, setWatchlist] = useState<WatchlistItem[]>([]);
-
-  useEffect(() => {
-    if (user?.id) {
-      getUserWatchlist(user.id).then((data) => {
-        if (data && !data.error) {
-          setWatchlist(
-            data.watchlist.map((item: { mediaId: number; type: string }) => ({
-              mediaId: item.mediaId,
-              type: item.type,
-            })),
-          );
-        }
-      });
-    }
-  }, [user?.id]);
-
-  const toggleWatchlist = async (mediaId: number, type: string) => {
-    if (!user?.id) return;
-
-    const isInWatchlist = watchlist.some((item) => item.mediaId === mediaId && item.type === type);
-    if (isInWatchlist) {
-      await removeFromWatchlist(user.id, mediaId, type);
-      setWatchlist(watchlist.filter((item) => item.mediaId !== mediaId || item.type !== type));
-    } else {
-      await addToWatchlist(user.id, mediaId, type);
-      setWatchlist([...watchlist, { mediaId, type }]);
-    }
-  };
+  const { watchlist, toggleWatchlist } = useWatchlist();
+  const { seenList } = useSeenList();
 
   return (
     <HomeStack.Navigator
@@ -67,14 +40,15 @@ function HomeNavigator() {
         name="Details"
         component={DetailsScreen}
         options={({ route, navigation }) => {
-          const { id, title, mediaType } = route.params;
-          const isFavorite = watchlist.some((item) => item.mediaId === id && item.type === mediaType);
+          const { mediaId, mediaTitle, mediaType } = route.params;
+          const isFavorite = watchlist.some((item) => item.mediaId === mediaId && item.type === mediaType);
           const icon = isFavorite ? assets.icons.listFull : assets.icons.list;
 
           return {
-            header: () => renderHeader(title, navigation, true, icon, () => toggleWatchlist(id, mediaType)),
+            header: () => renderHeader(mediaTitle, navigation, true, icon, () => toggleWatchlist(mediaId, mediaType)),
           };
         }}
+        initialParams={{ watchlist, toggleWatchlist }}
       />
       <HomeStack.Screen
         name="Search"

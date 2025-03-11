@@ -45,7 +45,15 @@ function MovieGrid({ fetchMovies }: { fetchMovies: () => Promise<any> }) {
     <FlatList
       data={movies}
       renderItem={({ item }) => (
-        <TouchableOpacity onPress={() => navigation.navigate('Details', { id: item.id, title: item.title, mediaType: 'movie' })}>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate('Details', {
+              mediaId: item.id,
+              mediaTitle: item.title,
+              mediaType: 'movie',
+            })
+          }
+        >
           <Image source={{ uri: item.posterPath }} style={styles.cardGrid} />
         </TouchableOpacity>
       )}
@@ -139,7 +147,13 @@ function HomeScreen() {
           data={moviesNowPlaying}
           renderItem={({ item }) => (
             <TouchableOpacity
-              onPress={() => navigation.navigate('Details', { id: item.id, title: item.title, mediaType: 'movie' })}
+              onPress={() =>
+                navigation.navigate('Details', {
+                  mediaId: item.id,
+                  mediaTitle: item.title,
+                  mediaType: 'movie',
+                })
+              }
             >
               <Image source={{ uri: item.posterPath }} style={styles.card} />
             </TouchableOpacity>
