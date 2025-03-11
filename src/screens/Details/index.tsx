@@ -15,36 +15,29 @@ import { accentColor, gray, primaryColor } from '../../styles/colors.ts';
 import LoaderComponent from '../../components/Loader/LoaderComponent.tsx';
 import ErrorComponent from '../../components/Error/ErrorComponent.tsx';
 import CastListComponent from '../../components/CastList/CastListComponent.tsx';
-import { MovieDetails, SeenListItem } from '../../types/entities.ts';
+import { MovieDetails } from '../../types/entities.ts';
 import { formatVoteAverage } from '../../utils/number.ts';
 import { formatDateTimeOnlyYear } from '../../utils/dateTime.ts';
-import { getUserSeenMedia, markAsSeen, markAsUnseen, removeFromWatchlist } from '../../services/api/users.ts';
 import { selectUserData } from '../../store/user/userSlice.ts';
+import useLists from '../../hooks/useLists.ts';
+import { selectSeenList } from '../../store/lists/listsSlice.ts';
 
 type DetailsScreenRouteProp = RouteProp<HomeStackParamList, 'Details'>;
 
 function DetailsScreen() {
   const route = useRoute<DetailsScreenRouteProp>();
-  const { mediaId, mediaType, watchlist, toggleWatchlist } = route.params;
+  const { mediaId } = route.params;
   const { t } = useTranslation('details');
   const [movieDetails, setMoviesDetails] = useState<MovieDetails | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const user = useSelector(selectUserData);
-  const [seenList, setSeenList] = useState<SeenListItem[]>([]);
+  const seenList = useSelector(selectSeenList);
+  const { addToSeenList, removeFromSeenList, removeFromWatchlist } = useLists(user.id!);
+
+  const isInSeenList = seenList.some((item) => item.mediaId === mediaId);
 
   useEffect(() => {
-    getUserSeenMedia(user.id!).then((data) => {
-      if (data && !data.error) {
-        setSeenList(
-          data.seenMedia.map((item: { mediaId: number; type: string }) => ({
-            mediaId: item.mediaId,
-            type: item.type,
-          })),
-        );
-      }
-    });
-
     const fetchMovieDetails = async () => {
       const response = await getMovieDetails(mediaId);
       if (!response.error) {
@@ -72,24 +65,6 @@ function DetailsScreen() {
     );
   }
 
-  const isInSeenMedia = seenList.some((item: any) => item.mediaId === mediaId);
-  const eyeIcon = isInSeenMedia ? assets.icons.eye : assets.icons.eyeOff;
-
-  const toggleSeenStatus = async () => {
-    const isSeen = seenList.some((item) => item.mediaId === mediaId);
-    if (isSeen) {
-      await markAsUnseen(user.id!, mediaId, route.params.mediaType);
-      setSeenList(seenList.filter((item) => item.mediaId !== mediaId));
-    } else {
-      await markAsSeen(user.id!, mediaId, route.params.mediaType);
-      setSeenList([...seenList, { mediaId, type: route.params.mediaType, watchedAt: new Date().toISOString() }]);
-      const response = await removeFromWatchlist(user.id!, mediaId, mediaType);
-      if (!response.error) {
-        toggleWatchlist(mediaId, mediaType);
-      }
-    }
-  };
-
   // ? This function is used to filter unique providers and sort them alphabetically
   const filterUniqueProviders = (providers: string[]) => {
     const uniqueProviders = new Set<string>();
@@ -106,6 +81,15 @@ function DetailsScreen() {
   const sortedStreamingProviders = filterUniqueProviders(movieDetails?.streamingProviders || []).sort((a, b) =>
     a.localeCompare(b),
   );
+
+  const handleSeenListToggle = async () => {
+    if (isInSeenList) {
+      await removeFromSeenList({ mediaId, mediaType: 'movie', mediaTitle: movieDetails?.title || '' });
+    } else {
+      await addToSeenList({ mediaId, mediaType: 'movie', mediaTitle: movieDetails?.title || '' });
+      await removeFromWatchlist(mediaId, 'movie');
+    }
+  };
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
@@ -139,8 +123,8 @@ function DetailsScreen() {
             <Icon name={assets.icons.play} size={FONT_SIZE_16} color="white" />
             <Text style={styles.textButton}>{t('trailerButton')}</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.seenButton} onPress={toggleSeenStatus}>
-            <Icon name={eyeIcon} size={FONT_SIZE_16} color={accentColor} />
+          <TouchableOpacity style={styles.seenButton} onPress={handleSeenListToggle}>
+            <Icon name={isInSeenList ? assets.icons.eye : assets.icons.eyeOff} size={FONT_SIZE_16} color={accentColor} />
           </TouchableOpacity>
         </View>
         <Text style={styles.directorContent}>

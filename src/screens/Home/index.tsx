@@ -147,13 +147,13 @@ function HomeScreen() {
           data={moviesNowPlaying}
           renderItem={({ item }) => (
             <TouchableOpacity
-              onPress={() =>
+              onPress={() => {
                 navigation.navigate('Details', {
                   mediaId: item.id,
                   mediaTitle: item.title,
                   mediaType: 'movie',
-                })
-              }
+                });
+              }}
             >
               <Image source={{ uri: item.posterPath }} style={styles.card} />
             </TouchableOpacity>

@@ -6,6 +6,7 @@ export interface Actor {
 }
 
 export interface MovieDetails {
+  title: string;
   posterPath: string;
   releaseDate: string;
   duration: number;
@@ -18,14 +19,12 @@ export interface MovieDetails {
   streamingProviders: string[];
 }
 
-export interface WatchlistItem {
+export interface MediaItem {
   mediaId: number;
-  type: string;
+  mediaType: 'movie' | 'tv';
+  mediaTitle: string;
 }
 
-export interface SeenListItem {
-  mediaId: number;
-  type: string;
+export interface SeenMedia extends MediaItem {
   rating?: number;
-  watchedAt: string;
 }
