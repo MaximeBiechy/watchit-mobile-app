@@ -25,7 +25,6 @@ function MyListNavigator() {
     <MyListStack.Navigator
       initialRouteName="MyList"
       screenOptions={{
-        contentStyle: { paddingHorizontal: PADDING_HORIZONTAL, paddingTop: PADDING_VERTICAL },
         animation, // ? Avoid flickering effect when navigating between screens
         animationDuration, // ? It doesn't seem to work
       }}
@@ -35,6 +34,7 @@ function MyListNavigator() {
         component={MyListScreen}
         options={({ navigation }) => ({
           header: () => renderHeader(t('list:screenTitle'), navigation, false),
+          contentStyle: { paddingHorizontal: PADDING_HORIZONTAL, paddingTop: PADDING_VERTICAL },
         })}
       />
       <MyListStack.Screen
