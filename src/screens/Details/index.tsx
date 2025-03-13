@@ -52,7 +52,13 @@ function DetailsScreen() {
       setLoading(false);
     };
 
+    const fetchUserRating = async () => {
+      const rating = seenList.find((item) => item.mediaId === mediaId)?.rating;
+      setUserRating(rating || null);
+    };
+
     fetchMovieDetails();
+    fetchUserRating();
   }, [user?.id]);
 
   if (loading) {
