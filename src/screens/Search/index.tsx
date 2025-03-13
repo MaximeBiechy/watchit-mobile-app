@@ -12,6 +12,7 @@ import { search } from '../../services/api/search.ts';
 import { HomeNavigationProp } from '../../navigation/RootStackParamList.tsx';
 import { PADDING_HORIZONTAL } from '../../styles/responsives.ts';
 import { getMovieDetails } from '../../services/api/movies.ts';
+import ErrorComponent from '../../components/Error/ErrorComponent.tsx';
 
 interface SearchResult {
   title: string;
@@ -97,7 +98,16 @@ function SearchScreen() {
               }))}
             imageWidthRatio={5}
           />
-          {results.results.length === 0 && <Text style={styles.sectionTitle}>{t('suggestions')}</Text>}
+          {/* {results.results.length === 0 && <Text style={styles.sectionTitle}>{t('suggestions')}</Text>} */}
+          {results.results.length === 0 && (
+            <View style={styles.errorContainer}>
+              <ErrorComponent
+                error={t('noResultsTitle')}
+                imageSource={assets.images.noResults}
+                additionalText={t('noResultsSubTitle')}
+              />
+            </View>
+          )}
           {results.results.some(
             (item) =>
               item.mediaType === 'movie' &&

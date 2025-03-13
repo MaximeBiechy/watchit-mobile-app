@@ -1,5 +1,7 @@
 {
   "screenTitle": "Mes listes",
   "watchlist": "À voir",
-  "seen": "Vu"
+  "seen": "Vu",
+  "errorTitle": "Il n'y pas encore de films!",
+  "errorSubtitle": "Trouvez votre film dans la page d'accueil"
 }

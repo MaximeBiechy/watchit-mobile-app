@@ -2,6 +2,8 @@
   "screenTitle": "Rechercher",
   "suggestions": "Suggestions",
   "actorsTitle": "Acteurs",
-  "moviesTitle": "Movies",
-  "otherTitle": "Other"
+  "moviesTitle": "Films",
+  "otherTitle": "Autres",
+  "noResultsTitle": "Désolé, nous n'avons pas trouvé votre film :(",
+  "noResultsSubTitle": "Trouvez votre film en tapant dans la barre de recherche"
 }

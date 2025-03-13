@@ -1,7 +1,9 @@
 {
   "screenTitle": "Search",
   "suggestions": "Suggestions",
-  "actorsTitle": "Acteurs",
-  "moviesTitle": "Films",
-  "otherTitle": "Autres"
+  "actorsTitle": "Actors",
+  "moviesTitle": "Movies",
+  "otherTitle": "Other",
+  "noResultsTitle": "we are sorry, we can not find the movie :(",
+  "noResultsSubTitle": "Find your movie by typing title, author, categories, etc "
 }

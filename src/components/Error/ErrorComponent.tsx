@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { navigationTopBarTitle, bodyInfo } from '../../styles/typography.ts';
 import { gray } from '../../styles/colors.ts';
+import { SCREEN_WIDTH } from '../../styles/responsives.ts';
 
 const styles = StyleSheet.create({
   errorContainer: {
@@ -10,8 +11,8 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   errorImage: {
-    width: 100,
-    height: 100,
+    width: SCREEN_WIDTH * 0.25,
+    height: SCREEN_WIDTH * 0.25,
     marginBottom: 16,
   },
   errorText: {

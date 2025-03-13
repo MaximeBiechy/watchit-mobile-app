@@ -6,6 +6,11 @@ const styles = StyleSheet.create({
   container: {
     marginTop: PADDING_VERTICAL * 2,
   },
+  errorContainer: {
+    alignItems: 'center',
+    height: '100%',
+    justifyContent: 'center',
+  },
   providersContainer: {
     marginVertical: PADDING_VERTICAL,
     gap: PADDING_VERTICAL,

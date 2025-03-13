@@ -1,7 +1,9 @@
 // @ts-nocheck / disable checking for TypeScript files
 // IMAGES
 import logo from './images/logo.svg';
-import error from './images/onboarding/avatar/avatar1.png'; // TODO: replace with the correct image
+import error from './images/logo.svg'; // TODO: replace with another image
+import noResults from './images/no-results.png';
+import empty from './images/magic-box.png';
 import defaultActor from './images/defaultActor.jpg';
 import defaultMovie from './images/defaultActor.jpg'; // TODO: replace with the correct image
 import question from './images/question.png';
@@ -55,6 +57,8 @@ const assets = {
   images: {
     logo,
     error,
+    noResults,
+    empty,
     defaultActor,
     defaultMovie,
     question,

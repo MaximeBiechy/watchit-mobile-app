@@ -14,8 +14,11 @@ import { PADDING_HORIZONTAL, SCREEN_WIDTH } from '../../styles/responsives.ts';
 import { highlightColor } from '../../styles/colors.ts';
 import i18n from '../../locales/i18n.ts';
 import { getMovieDetails } from '../../services/api/movies.ts';
+import ErrorComponent from '../../components/Error/ErrorComponent.tsx';
+import assets from '../../assets/assets.ts';
 
 function List({ fetchMovies }: { fetchMovies: () => Promise<any> }) {
+  const { t } = useTranslation('list');
   const navigation = useNavigation<MyListNavigationProp>();
   const [movies, setMovies] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -67,6 +70,10 @@ function List({ fetchMovies }: { fetchMovies: () => Promise<any> }) {
 
   if (loading && !refreshing) {
     return <LoaderComponent />;
+  }
+
+  if (!loading && movies.length === 0) {
+    return <ErrorComponent error={t('errorTitle')} imageSource={assets.images.empty} additionalText={t('errorSubtitle')} />;
   }
 
   return (

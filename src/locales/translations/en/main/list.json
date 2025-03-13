@@ -1,5 +1,7 @@
 {
   "screenTitle": "My List",
   "watchlist": "To Watch",
-  "seen": "Seen"
+  "seen": "Seen",
+  "errorTitle": "There is no movie yet!",
+  "errorSubtitle": "Find your movie in the home page"
 }
