@@ -22,6 +22,8 @@ import enDetails from './en/main/details.json';
 import frDetails from './fr/main/details.json';
 import enSearch from './en/main/search.json';
 import frSearch from './fr/main/search.json';
+import enList from './en/main/list.json';
+import frList from './fr/main/list.json';
 // Bottom Tab Bar
 import enBottomTabBar from './en/bottomTabBar/bottomTabBar.json';
 import frBottomTabBar from './fr/bottomTabBar/bottomTabBar.json';
@@ -46,6 +48,7 @@ const translations = {
     bottomTabBar: enBottomTabBar,
     profile: enProfile,
     editProfile: enEditProfile,
+    list: enList,
   },
   fr: {
     chooseConnectionMode: frChooseConnectionMode,
@@ -61,6 +64,7 @@ const translations = {
     bottomTabBar: frBottomTabBar,
     profile: frProfile,
     editProfile: frEditProfile,
+    list: frList,
   },
 };
 
