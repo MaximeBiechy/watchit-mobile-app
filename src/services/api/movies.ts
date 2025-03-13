@@ -88,3 +88,19 @@ export const getTopRatedMovies = async () => {
     return { error: error.response?.data?.message || 'An error occurred' };
   }
 };
+
+export const getMovieTrailer = async (id: number) => {
+  try {
+    const response = await api.get(`/movies/${id}/trailer`, {
+      params: {
+        language: i18n.language === 'en' ? 'en-US' : 'fr-FR',
+      },
+    });
+    return response.data;
+  } catch (error: any) {
+    // const errorCode = error.response?.data?.code || 'UnexpectedError';
+    // const translatedMessage = t(`errors:${errorCode}`);
+    // showToast('error', translatedMessage);
+    return { error: error.response?.data?.message || 'An error occurred' };
+  }
+};

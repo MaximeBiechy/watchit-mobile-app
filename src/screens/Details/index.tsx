@@ -1,4 +1,4 @@
-import { FlatList, Image, ImageBackground, Text, TouchableOpacity, View } from 'react-native';
+import { FlatList, Image, ImageBackground, Linking, Text, TouchableOpacity, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useRoute, RouteProp } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -7,7 +7,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { HomeStackParamList } from '../../navigation/RootStackParamList.tsx';
-import { getMovieDetails } from '../../services/api/movies.ts';
+import { getMovieDetails, getMovieTrailer } from '../../services/api/movies.ts';
 import styles from './styles.ts';
 import assets from '../../assets/assets.ts';
 import { FONT_SIZE_12, FONT_SIZE_16 } from '../../styles/typography.ts';
@@ -80,6 +80,15 @@ function DetailsScreen() {
     setUserRating(note);
   };
 
+  const handleTrailerPress = async () => {
+    const response = await getMovieTrailer(mediaId);
+    console.log(response);
+    if (!response.error) {
+      const trailerUrl = response.trailer;
+      Linking.openURL(trailerUrl);
+    }
+  };
+
   if (error) {
     return (
       <ErrorComponent
@@ -144,7 +153,7 @@ function DetailsScreen() {
           </View>
         </View>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.trailerButton} onPress={() => {}}>
+          <TouchableOpacity style={styles.trailerButton} onPress={handleTrailerPress}>
             <Icon name={assets.icons.play} size={FONT_SIZE_16} color="white" />
             <Text style={styles.textButton}>{t('trailerButton')}</Text>
           </TouchableOpacity>
