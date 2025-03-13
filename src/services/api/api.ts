@@ -16,9 +16,12 @@ const api = axios.create({
 // ? Interceptors
 api.interceptors.request.use(
   async (config) => {
-    const token = await AsyncStorage.getItem('accessToken');
-    if (token && config.headers) {
-      config.headers.set('Authorization', `Bearer ${token}`);
+    const userData = await AsyncStorage.getItem('user');
+    if (userData) {
+      const { accessToken } = JSON.parse(userData);
+      if (accessToken && config.headers) {
+        config.headers.set('Authorization', `Bearer ${accessToken}`);
+      }
     }
     return config;
   },
@@ -26,19 +29,25 @@ api.interceptors.request.use(
 );
 
 const refreshAccessToken = async () => {
-  const refreshToken = await AsyncStorage.getItem('refreshToken');
+  const userData = await AsyncStorage.getItem('user');
+  if (!userData) {
+    return null;
+  }
+
+  const { refreshToken } = JSON.parse(userData);
   if (!refreshToken) {
     return null;
   }
 
   try {
-    // TODO: Replace with the correct endpoint
     const response = await api.post('/auth/refresh-token', {
       refreshToken,
     });
 
     const newAccessToken = response.data.accessToken;
-    await AsyncStorage.setItem('accessToken', newAccessToken);
+    const newRefreshToken = response.data.refreshToken;
+    const updatedUserData = { ...JSON.parse(userData), accessToken: newAccessToken, refreshToken: newRefreshToken };
+    await AsyncStorage.setItem('user', JSON.stringify(updatedUserData));
 
     return newAccessToken;
   } catch (error) {
