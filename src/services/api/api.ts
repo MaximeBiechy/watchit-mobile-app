@@ -44,8 +44,8 @@ const refreshAccessToken = async () => {
       refreshToken,
     });
 
-    const newAccessToken = response.data.accessToken;
-    const newRefreshToken = response.data.refreshToken;
+    const newAccessToken = response.data.user.accessToken;
+    const newRefreshToken = response.data.user.refreshToken;
     const updatedUserData = { ...JSON.parse(userData), accessToken: newAccessToken, refreshToken: newRefreshToken };
     await AsyncStorage.setItem('user', JSON.stringify(updatedUserData));
 
