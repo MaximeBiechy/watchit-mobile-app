@@ -17,7 +17,6 @@ export const updateUserSettings = async (userId: string, settings: any) => {
 export const getUserWatchlist = async (userId: string) => {
   try {
     const response = await api.get(`/users/${userId}/watchlist`);
-
     return response.data;
   } catch (error: any) {
     // const errorCode = error.response?.data?.code || 'UnexpectedError';
@@ -49,6 +48,19 @@ export const removeFromWatchlist = async (userId: string, mediaId: number, media
         mediaType,
       },
     });
+
+    return response.data;
+  } catch (error: any) {
+    // const errorCode = error.response?.data?.code || 'UnexpectedError';
+    // const translatedMessage = t(`errors:${errorCode}`);
+    // showToast('error', translatedMessage);
+    return { error: error.response?.data?.message || 'An error occurred' };
+  }
+};
+
+export const getUserSeenMedia = async (userId: string) => {
+  try {
+    const response = await api.get(`/users/${userId}/seen`);
 
     return response.data;
   } catch (error: any) {

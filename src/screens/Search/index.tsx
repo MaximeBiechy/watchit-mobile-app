@@ -129,7 +129,7 @@ function SearchScreen() {
           genres={item.genres}
           voteAverage={item.voteAverage}
           onPress={() => {
-            navigation.navigate('Details', { id: item.id, title: item.title, mediaType: 'movie' });
+            navigation.navigate('Details', { mediaId: item.id, mediaTitle: item.title, mediaType: 'movie' });
           }}
         />
       )}

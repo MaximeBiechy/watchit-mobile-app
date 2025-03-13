@@ -1,10 +1,11 @@
-import { FlatList, Image, ImageBackground, Text, TouchableOpacity, View, Linking } from 'react-native';
+import { FlatList, Image, ImageBackground, Text, TouchableOpacity, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useRoute, RouteProp } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import { HomeStackParamList } from '../../navigation/RootStackParamList.tsx';
 import { getMovieDetails } from '../../services/api/movies.ts';
 import styles from './styles.ts';
@@ -17,20 +18,28 @@ import CastListComponent from '../../components/CastList/CastListComponent.tsx';
 import { MovieDetails } from '../../types/entities.ts';
 import { formatVoteAverage } from '../../utils/number.ts';
 import { formatDateTimeOnlyYear } from '../../utils/dateTime.ts';
+import { selectUserData } from '../../store/user/userSlice.ts';
+import useLists from '../../hooks/useLists.ts';
+import { selectSeenList } from '../../store/lists/listsSlice.ts';
 
 type DetailsScreenRouteProp = RouteProp<HomeStackParamList, 'Details'>;
 
 function DetailsScreen() {
   const route = useRoute<DetailsScreenRouteProp>();
-  const { id } = route.params;
+  const { mediaId } = route.params;
   const { t } = useTranslation('details');
   const [movieDetails, setMoviesDetails] = useState<MovieDetails | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const user = useSelector(selectUserData);
+  const seenList = useSelector(selectSeenList);
+  const { addToSeenList, removeFromSeenList, removeFromWatchlist } = useLists(user.id!);
+
+  const isInSeenList = seenList.some((item) => item.mediaId === mediaId);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
-      const response = await getMovieDetails(id);
+      const response = await getMovieDetails(mediaId);
       if (!response.error) {
         setMoviesDetails(response.movie);
       } else {
@@ -40,7 +49,7 @@ function DetailsScreen() {
     };
 
     fetchMovieDetails();
-  }, [id]);
+  }, [user?.id]);
 
   if (loading) {
     return <LoaderComponent />;
@@ -72,6 +81,15 @@ function DetailsScreen() {
   const sortedStreamingProviders = filterUniqueProviders(movieDetails?.streamingProviders || []).sort((a, b) =>
     a.localeCompare(b),
   );
+
+  const handleSeenListToggle = async () => {
+    if (isInSeenList) {
+      await removeFromSeenList({ mediaId, mediaType: 'movie', mediaTitle: movieDetails?.title || '' });
+    } else {
+      await addToSeenList({ mediaId, mediaType: 'movie', mediaTitle: movieDetails?.title || '' });
+      await removeFromWatchlist(mediaId, 'movie');
+    }
+  };
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
@@ -105,8 +123,8 @@ function DetailsScreen() {
             <Icon name={assets.icons.play} size={FONT_SIZE_16} color="white" />
             <Text style={styles.textButton}>{t('trailerButton')}</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.seenButton} onPress={() => {}}>
-            <Icon name={assets.icons.eyeOff} size={FONT_SIZE_16} color={accentColor} />
+          <TouchableOpacity style={styles.seenButton} onPress={handleSeenListToggle}>
+            <Icon name={isInSeenList ? assets.icons.eye : assets.icons.eyeOff} size={FONT_SIZE_16} color={accentColor} />
           </TouchableOpacity>
         </View>
         <Text style={styles.directorContent}>
