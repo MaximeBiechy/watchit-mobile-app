@@ -40,6 +40,7 @@ export type HomeStackParamList = {
 
 export type MyListStackParamList = {
   MyList: undefined;
+  Details: { mediaId: number; mediaTitle: string; mediaType: string };
 };
 
 export type ProfileStackParamList = {
