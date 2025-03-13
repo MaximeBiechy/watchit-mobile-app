@@ -1,4 +1,4 @@
-export const formatVoteAverage = (voteAverage: number | undefined) => {
+export const formatVoteAverage = (voteAverage: number | null | undefined) => {
   if (Number.isNaN(voteAverage) || !voteAverage) {
     return '-';
   }

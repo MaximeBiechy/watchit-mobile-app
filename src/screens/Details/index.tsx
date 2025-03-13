@@ -21,6 +21,8 @@ import { formatDateTimeOnlyYear } from '../../utils/dateTime.ts';
 import { selectUserData } from '../../store/user/userSlice.ts';
 import useLists from '../../hooks/useLists.ts';
 import { selectSeenList } from '../../store/lists/listsSlice.ts';
+import SelectRatingComponent from '../../components/SelectRating/SelectRatingComponent.tsx';
+import { rateMedia, updateMediaRating } from '../../services/api/users.ts';
 
 type DetailsScreenRouteProp = RouteProp<HomeStackParamList, 'Details'>;
 
@@ -34,6 +36,8 @@ function DetailsScreen() {
   const user = useSelector(selectUserData);
   const seenList = useSelector(selectSeenList);
   const { addToSeenList, removeFromSeenList, removeFromWatchlist } = useLists(user.id!);
+  const [isRatingModalVisible, setRatingModalVisible] = useState(false);
+  const [userRating, setUserRating] = useState<number | null>(null);
 
   const isInSeenList = seenList.some((item) => item.mediaId === mediaId);
 
@@ -54,6 +58,21 @@ function DetailsScreen() {
   if (loading) {
     return <LoaderComponent />;
   }
+
+  const handleRatingPress = () => {
+    setRatingModalVisible(true);
+  };
+
+  const handleSelectRating = async (note: number) => {
+    if (userRating === null) {
+      await rateMedia(user.id!, mediaId, 'movie', note);
+    } else {
+      await updateMediaRating(user.id!, mediaId, 'movie', note);
+    }
+    await removeFromWatchlist(mediaId, 'movie');
+    await addToSeenList({ mediaId, mediaType: 'movie', mediaTitle: movieDetails?.title || '', rating: note });
+    setUserRating(note);
+  };
 
   if (error) {
     return (
@@ -134,12 +153,13 @@ function DetailsScreen() {
       <View style={styles.secondPartContainer}>
         <Text style={styles.sectionTitle}>{t('opinions')}</Text>
         <View style={styles.opinionContainer}>
-          <TouchableOpacity onPress={() => {}} style={styles.scoreAction}>
+          <TouchableOpacity onPress={handleRatingPress} style={styles.scoreAction}>
             <View style={styles.scoreContainer}>
-              <Text style={styles.score}>8.0/10</Text>
+              <Text style={styles.score}>{formatVoteAverage(userRating)}/10</Text>
               <Text style={styles.who}>{t('yours')}</Text>
             </View>
           </TouchableOpacity>
+
           <View style={styles.divider} />
           <View style={styles.scoreContainer}>
             <Text style={styles.score}>8.0/10</Text>
@@ -207,6 +227,11 @@ function DetailsScreen() {
         {/* TODO: Implement Comments Section */}
         {/* <Text style={styles.sectionTitle}>{t('comments')}</Text> */}
       </View>
+      <SelectRatingComponent
+        visible={isRatingModalVisible}
+        onClose={() => setRatingModalVisible(false)}
+        onSelectRating={handleSelectRating}
+      />
     </ScrollView>
   );
 }

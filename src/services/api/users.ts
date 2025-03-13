@@ -102,3 +102,36 @@ export const markAsUnseen = async (userId: string, mediaId: number, mediaType: s
     return { error: error.response?.data?.message || 'An error occurred' };
   }
 };
+
+export const rateMedia = async (userId: string, mediaId: number, mediaType: string, rating: number) => {
+  try {
+    const response = await api.post(`/users/${userId}/ratings/${mediaId}`, {
+      mediaType,
+      rating,
+    });
+
+    return response.data;
+  } catch (error: any) {
+    // const errorCode = error.response?.data?.code || 'UnexpectedError';
+    // const translatedMessage = t(`errors:${errorCode}`);
+    // showToast('error', translatedMessage);
+    return { error: error.response?.data?.message || 'An error occurred' };
+  }
+};
+
+
+export const updateMediaRating = async (userId: string, mediaId: number, mediaType: string, rating: number) => {
+  try {
+    const response = await api.patch(`/users/${userId}/ratings/${mediaId}`, {
+      mediaType,
+      rating,
+    });
+
+    return response.data;
+  } catch (error: any) {
+    // const errorCode = error.response?.data?.code || 'UnexpectedError';
+    // const translatedMessage = t(`errors:${errorCode}`);
+    // showToast('error', translatedMessage);
+    return { error: error.response?.data?.message || 'An error occurred' };
+  }
+};
