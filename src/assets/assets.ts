@@ -11,13 +11,6 @@ import question from './images/question.png';
 import apple from './images/social-media/apple.png';
 import facebook from './images/social-media/facebook.png';
 import google from './images/social-media/google.png';
-import appleTv from './images/watch-providers/apple-tv.png';
-import disneyPlus from './images/watch-providers/disney.png';
-import max from './images/watch-providers/max.png';
-import netflix from './images/watch-providers/netflix.png';
-import paramount from './images/watch-providers/paramount.png';
-import prime from './images/watch-providers/prime-video.png';
-import canal from './images/watch-providers/canal.png';
 import apple2 from './images/watch-providers/apple-tv_2.png';
 import disneyPlus2 from './images/watch-providers/disney_2.png';
 import max2 from './images/watch-providers/max_2.png';
@@ -68,13 +61,6 @@ const assets = {
       google,
     },
     WatchProviders: {
-      appleTv,
-      disneyPlus,
-      max,
-      netflix,
-      paramount,
-      prime,
-      canal,
       apple2,
       disneyPlus2,
       max2,
