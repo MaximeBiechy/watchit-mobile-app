@@ -47,6 +47,7 @@ function SearchScreen() {
   const navigation = useNavigation<HomeNavigationProp>();
   const { t } = useTranslation('search');
   const [results, setResults] = useState<SearchResults>({ results: [] });
+  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
 
   const hasActors = results.results.some((item) => item.mediaType === 'actor' && item.name && item.profilePath);
 
@@ -68,6 +69,14 @@ function SearchScreen() {
     setResults({ results: detailedResults });
   };
 
+  const handleSearchWithDelay = (text: string) => {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    const newTimeoutId = setTimeout(() => handleSearch(text), 300);
+    setTimeoutId(newTimeoutId);
+  };
+
   return (
     <FlatList
       ListHeaderComponent={
@@ -75,7 +84,7 @@ function SearchScreen() {
           <SearchBarComponent
             placeholder="Search for a movie, etc"
             autoFocus
-            onSearch={handleSearch}
+            onSearch={handleSearchWithDelay}
             rightIconName={assets.icons.options}
           />
           <FlatList
