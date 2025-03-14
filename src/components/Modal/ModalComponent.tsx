@@ -1,7 +1,7 @@
-import { Image, ImageBackground, Modal, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Modal, Text, TouchableOpacity, View } from 'react-native';
+import { BlurView } from '@react-native-community/blur';
 import styles from './styles.ts';
 import { highlightColor, primaryColor } from '../../styles/colors.ts';
-import { BlurView } from '@react-native-community/blur';
 
 interface ModalProps {
   visible: boolean;
