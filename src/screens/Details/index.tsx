@@ -82,7 +82,6 @@ function DetailsScreen() {
 
   const handleTrailerPress = async () => {
     const response = await getMovieTrailer(mediaId);
-    console.log(response);
     if (!response.error) {
       const trailerUrl = response.trailer;
       Linking.openURL(trailerUrl);
@@ -100,10 +99,10 @@ function DetailsScreen() {
   }
 
   // ? This function is used to filter unique providers and sort them alphabetically
-  const filterUniqueProviders = (providers: string[]) => {
+  const filterUniqueProviders = (providers: { name: string; id: number; logo: string }[]) => {
     const uniqueProviders = new Set<string>();
     return providers.filter((provider) => {
-      const baseProvider = provider.split(/[ +]/)[0];
+      const baseProvider = provider.name.split(/[ +]/)[0];
       if (!uniqueProviders.has(baseProvider)) {
         uniqueProviders.add(baseProvider);
         return true;
@@ -113,7 +112,7 @@ function DetailsScreen() {
   };
 
   const sortedStreamingProviders = filterUniqueProviders(movieDetails?.streamingProviders || []).sort((a, b) =>
-    a.localeCompare(b),
+    a.name.localeCompare(b.name),
   );
 
   const handleSeenListToggle = async () => {
@@ -122,6 +121,28 @@ function DetailsScreen() {
     } else {
       await addToSeenList({ mediaId, mediaType: 'movie', mediaTitle: movieDetails?.title || '' });
       await removeFromWatchlist(mediaId, 'movie');
+    }
+  };
+
+  const getProviderUrl = (provider: { name: string; id: number }, movieTitle: string) => {
+    const providerName = provider.name.split(/[ +]/)[0].toLowerCase();
+    const encodedTitle = encodeURIComponent(movieTitle);
+
+    switch (providerName) {
+      case 'netflix':
+        return `https://www.netflix.com/search?q=${encodedTitle}`;
+      case 'prime':
+        return `https://www.amazon.com/s?k=${encodedTitle}&i=instant-video`;
+      case 'disney':
+        return `https://www.disneyplus.com/search/${encodedTitle}`;
+      case 'apple':
+        return `https://tv.apple.com/search?term=${encodedTitle}`;
+      case 'hbo':
+        return `https://www.max.com/search?q=${encodedTitle}`;
+      case 'paramount':
+        return `https://www.paramountplus.com/shows/${encodedTitle}`;
+      default:
+        return null;
     }
   };
 
@@ -189,41 +210,20 @@ function DetailsScreen() {
         <FlatList
           style={styles.streamingWatcherContainer}
           data={sortedStreamingProviders}
-          keyExtractor={(provider) => provider}
+          keyExtractor={(provider) => provider.id.toString()}
           horizontal
-          renderItem={({ item: provider }) => {
-            let imageSource;
-            switch (true) {
-              case provider.includes('Netflix'):
-                imageSource = assets.images.WatchProviders.netflix;
-                break;
-              case provider.includes('Prime'):
-                imageSource = assets.images.WatchProviders.prime;
-                break;
-              case provider.includes('Disney'):
-                imageSource = assets.images.WatchProviders.disneyPlus;
-                break;
-              case provider.includes('Apple'):
-                imageSource = assets.images.WatchProviders.appleTv;
-                break;
-              case provider.includes('Max'):
-                imageSource = assets.images.WatchProviders.max;
-                break;
-              case provider.includes('Paramount'):
-                imageSource = assets.images.WatchProviders.paramount;
-                break;
-              case provider.includes('Canal'):
-                imageSource = assets.images.WatchProviders.canal;
-                break;
-              default:
-                return null;
-            }
-            return (
-              <TouchableOpacity onPress={() => {}}>
-                <Image source={imageSource} style={styles.streamingProvider} />
-              </TouchableOpacity>
-            );
-          }}
+          renderItem={({ item: provider }) => (
+            <TouchableOpacity
+              onPress={() => {
+                const url = getProviderUrl(provider, movieDetails?.title || '');
+                if (url) {
+                  Linking.openURL(url);
+                }
+              }}
+            >
+              <Image source={{ uri: provider?.logo }} style={styles.streamingProvider} />
+            </TouchableOpacity>
+          )}
           showsHorizontalScrollIndicator={false}
         />
         <View style={styles.descriptionContainer}>

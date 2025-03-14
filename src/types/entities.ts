@@ -16,7 +16,7 @@ export interface MovieDetails {
   voteAverage: number;
   overview: string;
   actors: Actor[];
-  streamingProviders: string[];
+  streamingProviders: { name: string; id: number; logo: string }[];
 }
 
 export interface MediaItem {
