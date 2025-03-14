@@ -10,7 +10,7 @@ interface SelectRatingProps {
 }
 
 function SelectRating({ visible, onClose, onSelectRating }: SelectRatingProps) {
-  const { t } = useTranslation('list');
+  const { t } = useTranslation('details');
   const notes = Array.from({ length: 11 }, (_, i) => i);
 
   return (
