@@ -11,6 +11,7 @@ import { SCREEN_WIDTH } from '../../styles/responsives.ts';
 import LoaderComponent from '../../components/Loader/LoaderComponent.tsx';
 import { highlightColor } from '../../styles/colors.ts';
 import i18n from '../../locales/i18n.ts';
+import assets from '../../assets/assets.ts';
 
 function MovieGrid({ fetchMovies }: { fetchMovies: () => Promise<any> }) {
   const navigation = useNavigation<HomeNavigationProp>();
@@ -54,7 +55,10 @@ function MovieGrid({ fetchMovies }: { fetchMovies: () => Promise<any> }) {
             })
           }
         >
-          <Image source={{ uri: item.posterPath }} style={styles.cardGrid} />
+          <Image
+            source={{ uri: item.posterPath !== null ? item.posterPath : assets.images.defaultMovie }}
+            style={styles.cardGrid}
+          />
         </TouchableOpacity>
       )}
       keyExtractor={(item) => item.id.toString()}
@@ -155,7 +159,10 @@ function HomeScreen() {
                 });
               }}
             >
-              <Image source={{ uri: item.posterPath }} style={styles.card} />
+              <Image
+                source={{ uri: item.posterPath !== null ? item.posterPath : assets.images.defaultMovie }}
+                style={styles.card}
+              />
             </TouchableOpacity>
           )}
           keyExtractor={(item) => item.id.toString()}

@@ -9,7 +9,7 @@ import { formatDateTimeOnlyYear } from '../../utils/dateTime.ts';
 
 interface MovieCardSearchProps {
   title: string;
-  posterPath: string;
+  posterPath: string | null;
   duration: number;
   releaseDate: string;
   genres: string[];
@@ -28,7 +28,7 @@ function MovieCardSearchComponent({
 }: MovieCardSearchProps) {
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
-      <Image source={{ uri: posterPath }} style={styles.poster} />
+      <Image source={{ uri: posterPath !== null ? posterPath : assets.images.defaultMovie }} style={styles.poster} />
       <View style={styles.infosContainer}>
         <View style={styles.titleContainer}>
           <Text style={styles.title} numberOfLines={1}>

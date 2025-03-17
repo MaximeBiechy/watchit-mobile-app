@@ -5,7 +5,7 @@ import error from './images/logo.svg'; // TODO: replace with another image
 import noResults from './images/no-results.png';
 import empty from './images/magic-box.png';
 import defaultActor from './images/defaultActor.jpg';
-import defaultMovie from './images/defaultActor.jpg'; // TODO: replace with the correct image
+import defaultMovie from './images/defaultMovie.png';
 import question from './images/question.png';
 // IMAGES/SOCIAL MEDIA
 import apple from './images/social-media/apple.png';
