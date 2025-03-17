@@ -13,6 +13,19 @@ export const getUserById = async (userId: string) => {
   }
 };
 
+export const deleteAccount = async (userId: string) => {
+  try {
+    const response = await api.delete(`/users/${userId}`);
+
+    return response.data;
+  } catch (error: any) {
+    // const errorCode = error.response?.data?.code || 'UnexpectedError';
+    // const translatedMessage = t(`errors:${errorCode}`);
+    // showToast('error', translatedMessage);
+    return { error: error.response?.data?.message || 'An error occurred' };
+  }
+};
+
 export const updateUserSettings = async (userId: string, settings: any) => {
   try {
     await api.patch(`/users/${userId}/settings`, {

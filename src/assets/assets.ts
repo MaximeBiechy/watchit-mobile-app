@@ -7,6 +7,9 @@ import empty from './images/magic-box.png';
 import defaultActor from './images/defaultActor.jpg';
 import defaultMovie from './images/defaultMovie.png';
 import question from './images/question.png';
+import warning from './images/warning.png';
+// IMAGES/TOAST
+import warningToast from './images/toast/warning.png';
 // IMAGES/SOCIAL MEDIA
 import apple from './images/social-media/apple.png';
 import facebook from './images/social-media/facebook.png';
@@ -55,6 +58,10 @@ const assets = {
     defaultActor,
     defaultMovie,
     question,
+    warning,
+    toast: {
+      warningToast,
+    },
     SocialsMedia: {
       apple,
       facebook,

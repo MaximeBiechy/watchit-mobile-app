@@ -11,7 +11,7 @@ import { errorColor, highlightColor } from '../../styles/colors.ts';
 import { ProfileNavigationProp } from '../../navigation/RootStackParamList.tsx';
 import ModalComponent from '../../components/Modal/ModalComponent.tsx';
 import i18n from '../../locales/i18n.ts';
-import { updateUserSettings } from '../../services/api/users.ts';
+import { deleteAccount, updateUserSettings } from '../../services/api/users.ts';
 
 function UserProfileScreen() {
   const { t } = useTranslation('profile');
@@ -19,11 +19,20 @@ function UserProfileScreen() {
   const user = useSelector(selectUserData);
   const dispatch = useDispatch();
   const [isLogoutModalVisible, setIsLogoutModalVisible] = useState(false);
-  const [language, setLanguage] = useState(i18n.language);
+  const [isDeleteAccountModalVisible, setIsDeleteAccountModalVisible] = useState(false);
+  const [isFinalDeleteAccountModalVisible, setIsFinalDeleteAccountModalVisible] = useState(false);
 
   const handleLogout = () => {
     dispatch(logout());
     setIsLogoutModalVisible(false);
+  };
+
+  const handleDeleteAccount = async () => {
+    const response = await deleteAccount(user.id!);
+    if (!response.error) {
+      dispatch(logout());
+    }
+    setIsFinalDeleteAccountModalVisible(false);
   };
 
   const toggleFrEnLanguage = async () => {
@@ -46,12 +55,12 @@ function UserProfileScreen() {
             leftIcon={assets.icons.editProfile}
             title={t('editProfile')}
           />
-          <SettingButtonComponent
-            onPress={() => {}}
-            leftIcon={assets.icons.notification}
-            title={t('notifications')}
-            rightText="ON"
-          />
+          {/* <SettingButtonComponent */}
+          {/*  onPress={() => {}} */}
+          {/*  leftIcon={assets.icons.notification} */}
+          {/*  title={t('notifications')} */}
+          {/*  rightText="ON" */}
+          {/* /> */}
           <SettingButtonComponent
             onPress={toggleFrEnLanguage}
             leftIcon={assets.icons.language}
@@ -59,10 +68,10 @@ function UserProfileScreen() {
             rightText={t('languageUser')}
           />
         </View>
-        <View style={[styles.settingSecondBlock, styles.settingCommonStyle]}>
-          <SettingButtonComponent onPress={() => {}} leftIcon={assets.icons.lock} title={t('privacy')} />
-          <SettingButtonComponent onPress={() => {}} leftIcon={assets.icons.settings} title={t('support')} />
-        </View>
+        {/* <View style={[styles.settingSecondBlock, styles.settingCommonStyle]}> */}
+        {/*  <SettingButtonComponent onPress={() => {}} leftIcon={assets.icons.lock} title={t('privacy')} /> */}
+        {/*  <SettingButtonComponent onPress={() => {}} leftIcon={assets.icons.settings} title={t('support')} /> */}
+        {/* </View> */}
         <View style={[styles.settingThirdBlock, styles.settingCommonStyle]}>
           <SettingButtonComponent
             onPress={() => setIsLogoutModalVisible(true)}
@@ -71,7 +80,7 @@ function UserProfileScreen() {
             title={t('logout')}
           />
           <SettingButtonComponent
-            onPress={() => {}}
+            onPress={() => setIsDeleteAccountModalVisible(true)}
             leftIcon={assets.icons.trash}
             leftIconColor={errorColor}
             title={t('deleteAccount')}
@@ -89,6 +98,33 @@ function UserProfileScreen() {
         icon={assets.images.question}
         onConfirm={handleLogout}
         onCancel={() => setIsLogoutModalVisible(false)}
+      />
+      <ModalComponent
+        visible={isDeleteAccountModalVisible}
+        title={t('deleteAccountConfirmationTitle')}
+        message={t('deleteAccountConfirmationMessage')}
+        confirmText={t('deleteAccountConfirmationConfirm')}
+        cancelText={t('deleteAccountConfirmationCancel')}
+        confirmColor={highlightColor}
+        cancelColor={highlightColor}
+        icon={assets.images.question}
+        onConfirm={() => {
+          setIsDeleteAccountModalVisible(false);
+          setIsFinalDeleteAccountModalVisible(true);
+        }}
+        onCancel={() => setIsDeleteAccountModalVisible(false)}
+      />
+      <ModalComponent
+        visible={isFinalDeleteAccountModalVisible}
+        title={t('finalDeleteAccountConfirmationTitle')}
+        message={t('finalDeleteAccountConfirmationMessage')}
+        confirmText={t('finalDeleteAccountConfirmationConfirm')}
+        cancelText={t('finalDeleteAccountConfirmationCancel')}
+        confirmColor={highlightColor}
+        cancelColor={highlightColor}
+        icon={assets.images.warning}
+        onConfirm={handleDeleteAccount}
+        onCancel={() => setIsFinalDeleteAccountModalVisible(false)}
       />
     </View>
   );

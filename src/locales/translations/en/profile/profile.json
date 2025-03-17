@@ -11,5 +11,13 @@
   "logoutConfirmationMessage": "You are about to logout from the app",
   "logoutConfirmationCancel": "Cancel",
   "logoutConfirmationConfirm": "Log Out",
+  "deleteAccountConfirmationTitle": "Delete Account",
+  "deleteAccountConfirmationMessage": "Are you sure you want to delete your account? This action cannot be undone.",
+  "deleteAccountConfirmationConfirm": "Delete",
+  "deleteAccountConfirmationCancel": "Cancel",
+  "finalDeleteAccountConfirmationTitle": "Confirm Deletion",
+  "finalDeleteAccountConfirmationMessage": "This is your last chance to cancel. Are you sure you want to delete your account?",
+  "finalDeleteAccountConfirmationConfirm": "Yes, Delete",
+  "finalDeleteAccountConfirmationCancel": "No, Cancel",
   "languageUser": "English"
 }

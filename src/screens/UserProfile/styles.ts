@@ -28,7 +28,9 @@ const styles = StyleSheet.create({
     width: '100%',
     marginTop: PADDING_VERTICAL * 3,
   },
-  settingFirstBlock: {},
+  settingFirstBlock: {
+    marginBottom: PADDING_VERTICAL * 3, // TODO: remove when I implemented the second block
+  },
   settingSecondBlock: {
     marginVertical: PADDING_VERTICAL * 3,
   },

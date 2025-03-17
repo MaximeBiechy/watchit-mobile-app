@@ -11,5 +11,13 @@
   "logoutConfirmationMessage": "Tu es sur le point de te déconnecter de l'application",
   "logoutConfirmationCancel": "Annuler",
   "logoutConfirmationConfirm": "Se déconnecter",
+  "deleteAccountConfirmationTitle": "Supprimer le compte",
+  "deleteAccountConfirmationMessage": "Es-tu sûr de vouloir supprimer ton compte ? Cette action est irréversible.",
+  "deleteAccountConfirmationConfirm": "Supprimer",
+  "deleteAccountConfirmationCancel": "Annuler",
+  "finalDeleteAccountConfirmationTitle": "Confirmer la suppression",
+  "finalDeleteAccountConfirmationMessage": "C'est votre dernière chance d'annuler. Es-tu sûr de vouloir supprimer ton compte ?",
+  "finalDeleteAccountConfirmationConfirm": "Oui, supprimer",
+  "finalDeleteAccountConfirmationCancel": "Non, annuler",
   "languageUser": "Français"
 }
