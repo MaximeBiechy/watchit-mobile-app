@@ -54,6 +54,7 @@ function SearchScreen() {
   const handleSearch = async (text: string) => {
     if (text.length < 3) {
       setResults({ results: [] });
+      return;
     }
     if (text.trim() === '') {
       setResults({ results: [] });
