@@ -145,7 +145,6 @@ function DetailsScreen() {
         return null;
     }
   };
-
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <ImageBackground source={{ uri: movieDetails?.backDropPath || movieDetails?.posterPath }} style={styles.mainInfos}>
@@ -154,7 +153,10 @@ function DetailsScreen() {
           locations={[0, 0, 1]}
           style={styles.overlay}
         />
-        <Image source={{ uri: movieDetails?.posterPath }} style={styles.poster} />
+        <Image
+          source={movieDetails?.posterPath ? { uri: movieDetails?.posterPath } : assets.images.defaultMovie}
+          style={styles.poster}
+        />
         <View style={styles.infosContainer}>
           <View style={styles.info}>
             <Icon name={assets.icons.calendar} size={FONT_SIZE_12} color={gray} />
