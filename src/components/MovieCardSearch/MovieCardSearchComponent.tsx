@@ -28,7 +28,7 @@ function MovieCardSearchComponent({
 }: MovieCardSearchProps) {
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
-      <Image source={{ uri: posterPath !== null ? posterPath : assets.images.defaultMovie }} style={styles.poster} />
+      <Image source={posterPath ? { uri: posterPath } : assets.images.defaultMovie} style={styles.poster} />
       <View style={styles.infosContainer}>
         <View style={styles.titleContainer}>
           <Text style={styles.title} numberOfLines={1}>

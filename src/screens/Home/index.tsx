@@ -55,10 +55,7 @@ function MovieGrid({ fetchMovies }: { fetchMovies: () => Promise<any> }) {
             })
           }
         >
-          <Image
-            source={{ uri: item.posterPath !== null ? item.posterPath : assets.images.defaultMovie }}
-            style={styles.cardGrid}
-          />
+          <Image source={item.posterPath ? { uri: item.posterPath } : assets.images.defaultMovie} style={styles.cardGrid} />
         </TouchableOpacity>
       )}
       keyExtractor={(item) => item.id.toString()}
@@ -159,10 +156,7 @@ function HomeScreen() {
                 });
               }}
             >
-              <Image
-                source={{ uri: item.posterPath !== null ? item.posterPath : assets.images.defaultMovie }}
-                style={styles.card}
-              />
+              <Image source={item.posterPath ? { uri: item.posterPath } : assets.images.defaultMovie} style={styles.cardGrid} />
             </TouchableOpacity>
           )}
           keyExtractor={(item) => item.id.toString()}
