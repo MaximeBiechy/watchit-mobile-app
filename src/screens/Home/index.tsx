@@ -162,6 +162,7 @@ function HomeScreen() {
           keyExtractor={(item) => item.id.toString()}
           horizontal
           showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.gridContainer}
           nestedScrollEnabled
           refreshControl={<RefreshControl refreshing={refreshing} onRefresh={handleRefresh} colors={[highlightColor]} />}
         />

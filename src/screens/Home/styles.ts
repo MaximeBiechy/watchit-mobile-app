@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
     maxWidth: imageSize,
     height: imageSize / 0.7,
     objectFit: 'cover',
-    marginRight: PADDING_VERTICAL_BUTTON * 2,
     borderRadius: 16,
   },
   tabBar: {
