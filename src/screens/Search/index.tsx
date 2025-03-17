@@ -52,6 +52,9 @@ function SearchScreen() {
   const hasActors = results.results.some((item) => item.mediaType === 'actor' && item.name && item.profilePath);
 
   const handleSearch = async (text: string) => {
+    if (text.length < 3) {
+      return;
+    }
     if (text.trim() === '') {
       setResults({ results: [] });
       return;
@@ -87,14 +90,15 @@ function SearchScreen() {
             onSearch={handleSearchWithDelay}
             rightIconName={assets.icons.options}
           />
-          <FlatList
-            data={providers}
-            renderItem={({ item }) => <Image source={item.logo} style={styles.providerLogo} />}
-            keyExtractor={(item) => item.name}
-            contentContainerStyle={styles.providersContainer}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-          />
+          {/* TODO: implemented provider filter later */}
+          {/* <FlatList */}
+          {/*  data={providers} */}
+          {/*  renderItem={({ item }) => <Image source={item.logo} style={styles.providerLogo} />} */}
+          {/*  keyExtractor={(item) => item.name} */}
+          {/*  contentContainerStyle={styles.providersContainer} */}
+          {/*  horizontal */}
+          {/*  showsHorizontalScrollIndicator={false} */}
+          {/* /> */}
           {hasActors && <Text style={styles.sectionTitle}>{t('actorsTitle')}</Text>}
           <CastListComponent
             cast={results.results

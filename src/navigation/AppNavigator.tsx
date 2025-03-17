@@ -11,6 +11,7 @@ import darkTheme from '../styles/themes.ts';
 import { RootStackParamList } from './RootStackParamList.tsx';
 import { selectIsAuthenticated, selectOnboardingCompleted, loadUserData } from '../store/user/userSlice.ts';
 import { PADDING_HORIZONTAL, PADDING_VERTICAL } from '../styles/responsives.ts';
+import { getUserById } from '../services/api/users.ts';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -24,7 +25,15 @@ function AppNavigator() {
     try {
       const userData = await AsyncStorage.getItem('user');
       if (userData) {
-        dispatch(loadUserData(JSON.parse(userData)));
+        const parsedUserData = JSON.parse(userData);
+        const userId = parsedUserData.id;
+
+        const userResponse = await getUserById(userId);
+        if (userResponse.error) {
+          await AsyncStorage.removeItem('user');
+        } else {
+          dispatch(loadUserData(parsedUserData));
+        }
       }
     } catch (error) {
       console.error('Failed to load user data from storage:', error);
