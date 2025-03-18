@@ -8,6 +8,7 @@ interface UserState {
   accessToken: string | null;
   refreshToken: string | null;
   onboardingCompleted?: boolean;
+  avatar: number | null;
 }
 
 const initialState: UserState = {
@@ -17,6 +18,7 @@ const initialState: UserState = {
   accessToken: null,
   refreshToken: null,
   onboardingCompleted: false,
+  avatar: null,
 };
 
 const userSlice = createSlice({
@@ -25,6 +27,11 @@ const userSlice = createSlice({
   reducers: {
     setUserData: (state, action: PayloadAction<UserState>) => {
       const newState = { ...state, ...action.payload };
+      AsyncStorage.setItem('user', JSON.stringify(newState));
+      return newState;
+    },
+    setUserAvatar: (state, action: PayloadAction<number>) => {
+      const newState = { ...state, avatar: action.payload };
       AsyncStorage.setItem('user', JSON.stringify(newState));
       return newState;
     },
@@ -48,6 +55,6 @@ export const selectUserData = (state: { user: UserState }) => state.user;
 export const selectIsAuthenticated = (state: { user: UserState }) => !!state.user.accessToken;
 export const selectOnboardingCompleted = (state: { user: UserState }) => state.user.onboardingCompleted;
 
-export const { setUserData, completeOnboarding, loadUserData, logout } = userSlice.actions;
+export const { setUserData, setUserAvatar, completeOnboarding, loadUserData, logout } = userSlice.actions;
 
 export default userSlice.reducer;

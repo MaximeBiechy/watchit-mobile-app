@@ -26,6 +26,21 @@ export const deleteAccount = async (userId: string) => {
   }
 };
 
+export const updateAvatar = async (userId: string, avatar: number) => {
+  try {
+    const response = await api.patch(`/users/${userId}/avatar`, {
+      avatar,
+    });
+
+    return response.data;
+  } catch (error: any) {
+    // const errorCode = error.response?.data?.code || 'UnexpectedError';
+    // const translatedMessage = t(`errors:${errorCode}`);
+    // showToast('error', translatedMessage);
+    return { error: error.response?.data?.message || 'An error occurred' };
+  }
+};
+
 export const updateUserSettings = async (userId: string, settings: any) => {
   try {
     await api.patch(`/users/${userId}/settings`, {

@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { Text, View, FlatList, Image, TouchableOpacity } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './styles.ts';
 import assets from '../../assets/assets.ts';
 import { highlightColor } from '../../styles/colors.ts';
 import ButtonComponent from '../../components/Button/ButtonComponent.tsx';
 import { PADDING_VERTICAL } from '../../styles/responsives.ts';
 import { showToast } from '../../utils/toast.tsx';
-import { completeOnboarding } from '../../store/user/userSlice.ts';
+import { completeOnboarding, selectUserData, setUserAvatar } from '../../store/user/userSlice.ts';
+import { updateAvatar } from '../../services/api/users.ts';
 
-const images = [
+const images: number[] = [
   assets.images.Onboarding.avatar.avatar1,
   assets.images.Onboarding.avatar.avatar2,
   assets.images.Onboarding.avatar.avatar3,
@@ -37,12 +38,19 @@ const images = [
 function ChooseAvatar() {
   const { t } = useTranslation('chooseCharacter');
   const dispatch = useDispatch();
+  const user = useSelector(selectUserData);
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
-  const handleValidation = () => {
+  const handleValidation = async () => {
     if (selectedImage === null) {
       showToast('info', t('selectAvatar'));
     } else {
+      const response = await updateAvatar(user.id!, selectedImage);
+      if (response.error) {
+        showToast('error', response.error);
+        return;
+      }
+      dispatch(setUserAvatar(selectedImage));
       dispatch(completeOnboarding());
     }
   };

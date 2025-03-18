@@ -9,9 +9,9 @@ import AuthNavigator from './AuthNavigator.tsx';
 import OnboardingNavigator from './OnboardingNavigator.tsx';
 import darkTheme from '../styles/themes.ts';
 import { RootStackParamList } from './RootStackParamList.tsx';
-import { selectIsAuthenticated, selectOnboardingCompleted, loadUserData } from '../store/user/userSlice.ts';
+import { selectIsAuthenticated, selectOnboardingCompleted, loadUserData, setUserAvatar } from '../store/user/userSlice.ts';
 import { PADDING_HORIZONTAL, PADDING_VERTICAL } from '../styles/responsives.ts';
-import { getUserById } from '../services/api/users.ts';
+import { getUserById, updateAvatar } from '../services/api/users.ts';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -33,6 +33,7 @@ function AppNavigator() {
           await AsyncStorage.removeItem('user');
         } else {
           dispatch(loadUserData(parsedUserData));
+          dispatch(setUserAvatar(userResponse.user.avatar));
         }
       }
     } catch (error) {

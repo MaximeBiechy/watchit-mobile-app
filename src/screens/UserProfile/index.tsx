@@ -13,6 +13,30 @@ import ModalComponent from '../../components/Modal/ModalComponent.tsx';
 import i18n from '../../locales/i18n.ts';
 import { deleteAccount, updateUserSettings } from '../../services/api/users.ts';
 
+const images: number[] = [
+  assets.images.Onboarding.avatar.avatar1,
+  assets.images.Onboarding.avatar.avatar2,
+  assets.images.Onboarding.avatar.avatar3,
+  assets.images.Onboarding.avatar.avatar4,
+  assets.images.Onboarding.avatar.avatar5,
+  assets.images.Onboarding.avatar.avatar6,
+  assets.images.Onboarding.avatar.avatar7,
+  assets.images.Onboarding.avatar.avatar8,
+  assets.images.Onboarding.avatar.avatar9,
+  assets.images.Onboarding.avatar.avatar10,
+  assets.images.Onboarding.avatar.avatar11,
+  assets.images.Onboarding.avatar.avatar12,
+  assets.images.Onboarding.avatar.avatar13,
+  assets.images.Onboarding.avatar.avatar14,
+  assets.images.Onboarding.avatar.avatar15,
+  assets.images.Onboarding.avatar.avatar16,
+  assets.images.Onboarding.avatar.avatar17,
+  assets.images.Onboarding.avatar.avatar18,
+  assets.images.Onboarding.avatar.avatar19,
+  assets.images.Onboarding.avatar.avatar20,
+  assets.images.Onboarding.avatar.avatar21,
+];
+
 function UserProfileScreen() {
   const { t } = useTranslation('profile');
   const navigation = useNavigation<ProfileNavigationProp>();
@@ -41,9 +65,11 @@ function UserProfileScreen() {
     i18n.changeLanguage(toggleLanguage);
   };
 
+  const avatarIndex = user.avatar !== null && user.avatar >= 0 && user.avatar < images.length ? user.avatar : 0;
+
   return (
     <View style={styles.container}>
-      <Image source={assets.images.Onboarding.avatar.avatar1} style={styles.avatar} />
+      <Image source={images[avatarIndex]} style={styles.avatar} />
       <Text style={styles.username}>{user.username}</Text>
       <Text style={styles.email}>{user.email}</Text>
       <View style={styles.settingsContainer}>

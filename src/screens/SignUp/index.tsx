@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { useNavigation } from '@react-navigation/native';
+// import { useNavigation } from '@react-navigation/natikve';
 import { ScrollView } from 'react-native-gesture-handler';
+import { useDispatch } from 'react-redux';
 import FormComponent from '../../components/Form/FormComponent.tsx';
 import styles from './styles.ts';
-import { register } from '../../services/api/auth.ts';
-import { AuthNavigationProp } from '../../navigation/RootStackParamList.tsx';
+import { register, signIn } from '../../services/api/auth.ts';
+// import { AuthNavigationProp } from '../../navigation/RootStackParamList.tsx';
+import { setUserData } from '../../store/user/userSlice.ts';
 
 function SignUpScreen() {
   const { t } = useTranslation('signup');
-  const navigation = useNavigation<AuthNavigationProp>();
+  // const navigation = useNavigation<AuthNavigationProp>();
+  const dispatch = useDispatch();
   const [nickName, setNickName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -19,9 +22,10 @@ function SignUpScreen() {
     const response = await register(nickName, email, password);
 
     if (!response.error) {
-      // It's working like this for the navigation.
-      // When the user is registered, the app will navigate to the HomeScreen.
-      navigation.navigate('EmailVerification', { userData: { email, password } });
+      // TODO: implemented later
+      // navigation.navigate('EmailVerification', { userData: { email, password } });
+      const res = await signIn(email, password);
+      dispatch(setUserData({ ...res.user }));
     }
   };
 
