@@ -1,4 +1,6 @@
+import { t } from 'i18next';
 import api from './api.ts';
+import { showToast } from '../../utils/toast.tsx';
 
 export const getUserById = async (userId: string) => {
   try {
@@ -6,9 +8,22 @@ export const getUserById = async (userId: string) => {
 
     return response.data;
   } catch (error: any) {
-    // const errorCode = error.response?.data?.code || 'UnexpectedError';
-    // const translatedMessage = t(`errors:${errorCode}`);
-    // showToast('error', translatedMessage);
+    const errorCode = error.response?.data?.code || 'UnexpectedError';
+    const translatedMessage = t(`errors:${errorCode}`);
+    showToast('error', translatedMessage);
+    return { error: error.response?.data?.message || 'An error occurred' };
+  }
+};
+
+export const updateUserProfile = async (userId: string, data: any) => {
+  try {
+    const response = await api.patch(`/users/${userId}`, data);
+
+    return response.data;
+  } catch (error: any) {
+    const errorCode = error.response?.data?.code || 'UnexpectedError';
+    const translatedMessage = t(`errors:${errorCode}`);
+    showToast('error', translatedMessage);
     return { error: error.response?.data?.message || 'An error occurred' };
   }
 };
@@ -19,9 +34,9 @@ export const deleteAccount = async (userId: string) => {
 
     return response.data;
   } catch (error: any) {
-    // const errorCode = error.response?.data?.code || 'UnexpectedError';
-    // const translatedMessage = t(`errors:${errorCode}`);
-    // showToast('error', translatedMessage);
+    const errorCode = error.response?.data?.code || 'UnexpectedError';
+    const translatedMessage = t(`errors:${errorCode}`);
+    showToast('error', translatedMessage);
     return { error: error.response?.data?.message || 'An error occurred' };
   }
 };
@@ -34,9 +49,9 @@ export const updateAvatar = async (userId: string, avatar: number) => {
 
     return response.data;
   } catch (error: any) {
-    // const errorCode = error.response?.data?.code || 'UnexpectedError';
-    // const translatedMessage = t(`errors:${errorCode}`);
-    // showToast('error', translatedMessage);
+    const errorCode = error.response?.data?.code || 'UnexpectedError';
+    const translatedMessage = t(`errors:${errorCode}`);
+    showToast('error', translatedMessage);
     return { error: error.response?.data?.message || 'An error occurred' };
   }
 };
@@ -48,9 +63,9 @@ export const updateUserSettings = async (userId: string, settings: any) => {
     });
     return { success: true };
   } catch (error: any) {
-    // const errorCode = error.response?.data?.code || 'UnexpectedError';
-    // const translatedMessage = t(`errors:${errorCode}`);
-    // showToast('error', translatedMessage);
+    const errorCode = error.response?.data?.code || 'UnexpectedError';
+    const translatedMessage = t(`errors:${errorCode}`);
+    showToast('error', translatedMessage);
     return { error: error.response?.data?.message || 'An error occurred' };
   }
 };
@@ -60,9 +75,9 @@ export const getUserWatchlist = async (userId: string) => {
     const response = await api.get(`/users/${userId}/watchlist`);
     return response.data;
   } catch (error: any) {
-    // const errorCode = error.response?.data?.code || 'UnexpectedError';
-    // const translatedMessage = t(`errors:${errorCode}`);
-    // showToast('error', translatedMessage);
+    const errorCode = error.response?.data?.code || 'UnexpectedError';
+    const translatedMessage = t(`errors:${errorCode}`);
+    showToast('error', translatedMessage);
     return { error: error.response?.data?.message || 'An error occurred' };
   }
 };
@@ -75,9 +90,9 @@ export const addToWatchlist = async (userId: string, mediaId: number, mediaType:
 
     return response.data;
   } catch (error: any) {
-    // const errorCode = error.response?.data?.code || 'UnexpectedError';
-    // const translatedMessage = t(`errors:${errorCode}`);
-    // showToast('error', translatedMessage);
+    const errorCode = error.response?.data?.code || 'UnexpectedError';
+    const translatedMessage = t(`errors:${errorCode}`);
+    showToast('error', translatedMessage);
     return { error: error.response?.data?.message || 'An error occurred' };
   }
 };
@@ -92,9 +107,9 @@ export const removeFromWatchlist = async (userId: string, mediaId: number, media
 
     return response.data;
   } catch (error: any) {
-    // const errorCode = error.response?.data?.code || 'UnexpectedError';
-    // const translatedMessage = t(`errors:${errorCode}`);
-    // showToast('error', translatedMessage);
+    const errorCode = error.response?.data?.code || 'UnexpectedError';
+    const translatedMessage = t(`errors:${errorCode}`);
+    showToast('error', translatedMessage);
     return { error: error.response?.data?.message || 'An error occurred' };
   }
 };
@@ -105,9 +120,9 @@ export const getUserSeenMedia = async (userId: string) => {
 
     return response.data;
   } catch (error: any) {
-    // const errorCode = error.response?.data?.code || 'UnexpectedError';
-    // const translatedMessage = t(`errors:${errorCode}`);
-    // showToast('error', translatedMessage);
+    const errorCode = error.response?.data?.code || 'UnexpectedError';
+    const translatedMessage = t(`errors:${errorCode}`);
+    showToast('error', translatedMessage);
     return { error: error.response?.data?.message || 'An error occurred' };
   }
 };
@@ -120,9 +135,9 @@ export const markAsSeen = async (userId: string, mediaId: number, mediaType: str
 
     return response.data;
   } catch (error: any) {
-    // const errorCode = error.response?.data?.code || 'UnexpectedError';
-    // const translatedMessage = t(`errors:${errorCode}`);
-    // showToast('error', translatedMessage);
+    const errorCode = error.response?.data?.code || 'UnexpectedError';
+    const translatedMessage = t(`errors:${errorCode}`);
+    showToast('error', translatedMessage);
     return { error: error.response?.data?.message || 'An error occurred' };
   }
 };
@@ -137,9 +152,9 @@ export const markAsUnseen = async (userId: string, mediaId: number, mediaType: s
 
     return response.data;
   } catch (error: any) {
-    // const errorCode = error.response?.data?.code || 'UnexpectedError';
-    // const translatedMessage = t(`errors:${errorCode}`);
-    // showToast('error', translatedMessage);
+    const errorCode = error.response?.data?.code || 'UnexpectedError';
+    const translatedMessage = t(`errors:${errorCode}`);
+    showToast('error', translatedMessage);
     return { error: error.response?.data?.message || 'An error occurred' };
   }
 };
@@ -153,9 +168,9 @@ export const rateMedia = async (userId: string, mediaId: number, mediaType: stri
 
     return response.data;
   } catch (error: any) {
-    // const errorCode = error.response?.data?.code || 'UnexpectedError';
-    // const translatedMessage = t(`errors:${errorCode}`);
-    // showToast('error', translatedMessage);
+    const errorCode = error.response?.data?.code || 'UnexpectedError';
+    const translatedMessage = t(`errors:${errorCode}`);
+    showToast('error', translatedMessage);
     return { error: error.response?.data?.message || 'An error occurred' };
   }
 };
@@ -169,9 +184,9 @@ export const updateMediaRating = async (userId: string, mediaId: number, mediaTy
 
     return response.data;
   } catch (error: any) {
-    // const errorCode = error.response?.data?.code || 'UnexpectedError';
-    // const translatedMessage = t(`errors:${errorCode}`);
-    // showToast('error', translatedMessage);
+    const errorCode = error.response?.data?.code || 'UnexpectedError';
+    const translatedMessage = t(`errors:${errorCode}`);
+    showToast('error', translatedMessage);
     return { error: error.response?.data?.message || 'An error occurred' };
   }
 };

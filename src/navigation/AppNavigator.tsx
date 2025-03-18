@@ -11,7 +11,7 @@ import darkTheme from '../styles/themes.ts';
 import { RootStackParamList } from './RootStackParamList.tsx';
 import { selectIsAuthenticated, selectOnboardingCompleted, loadUserData, setUserAvatar } from '../store/user/userSlice.ts';
 import { PADDING_HORIZONTAL, PADDING_VERTICAL } from '../styles/responsives.ts';
-import { getUserById, updateAvatar } from '../services/api/users.ts';
+import { getUserById } from '../services/api/users.ts';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

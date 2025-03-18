@@ -1,9 +1,9 @@
 import { Image, Text, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { useNavigation } from '@react-navigation/native';
-import { useState } from 'react';
-import { logout, selectUserData } from '../../store/user/userSlice.ts';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import { useCallback, useEffect, useState } from 'react';
+import { loadUserData, logout, selectUserData } from '../../store/user/userSlice.ts';
 import styles from './styles.ts';
 import assets from '../../assets/assets.ts';
 import SettingButtonComponent from '../../components/SettingButton/SettingButtonComponent.tsx';
@@ -51,6 +51,11 @@ function UserProfileScreen() {
     setIsLogoutModalVisible(false);
   };
 
+  useFocusEffect(() => {
+    console.log('UserProfileScreen focused');
+    console.log(user);
+  });
+
   const handleDeleteAccount = async () => {
     const response = await deleteAccount(user.id!);
     if (!response.error) {
@@ -81,12 +86,6 @@ function UserProfileScreen() {
             leftIcon={assets.icons.editProfile}
             title={t('editProfile')}
           />
-          {/* <SettingButtonComponent */}
-          {/*  onPress={() => {}} */}
-          {/*  leftIcon={assets.icons.notification} */}
-          {/*  title={t('notifications')} */}
-          {/*  rightText="ON" */}
-          {/* /> */}
           <SettingButtonComponent
             onPress={toggleFrEnLanguage}
             leftIcon={assets.icons.language}
@@ -94,10 +93,6 @@ function UserProfileScreen() {
             rightText={t('languageUser')}
           />
         </View>
-        {/* <View style={[styles.settingSecondBlock, styles.settingCommonStyle]}> */}
-        {/*  <SettingButtonComponent onPress={() => {}} leftIcon={assets.icons.lock} title={t('privacy')} /> */}
-        {/*  <SettingButtonComponent onPress={() => {}} leftIcon={assets.icons.settings} title={t('support')} /> */}
-        {/* </View> */}
         <View style={[styles.settingThirdBlock, styles.settingCommonStyle]}>
           <SettingButtonComponent
             onPress={() => setIsLogoutModalVisible(true)}
