@@ -21,7 +21,7 @@ import { formatDateTimeOnlyYear } from '../../utils/dateTime.ts';
 import { selectUserData } from '../../store/user/userSlice.ts';
 import useLists from '../../hooks/useLists.ts';
 import SelectRatingComponent from '../../components/SelectRating/SelectRatingComponent.tsx';
-import { updateMediaRating } from '../../services/api/users.ts';
+import { rateMedia, updateMediaRating } from '../../services/api/users.ts';
 
 type DetailsScreenRouteProp = RouteProp<HomeStackParamList, 'Details'>;
 
@@ -51,6 +51,8 @@ function DetailsScreen() {
     };
 
     const fetchUserRating = () => {
+      console.log(seenlist);
+      console.log(watchlist);
       const rating = seenlist.find((item: SeenMedia) => item.mediaId === mediaId)?.rating;
       setUserRating(rating || null);
     };
@@ -83,6 +85,7 @@ function DetailsScreen() {
         await removeFromWatchlist(mediaId, 'movie');
       }
       await addToSeenList({ mediaId, mediaType: 'movie', mediaTitle: movieDetails?.title || '', rating: note });
+      await rateMedia(user.id!, mediaId, 'movie', note);
     } else {
       await updateMediaRating(user.id!, mediaId, 'movie', note);
     }

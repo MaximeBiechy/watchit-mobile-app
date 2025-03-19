@@ -17,11 +17,10 @@ const initialState: ListState = {
 export const fetchLists = async (userId: string) => {
   const watchlistData = await getUserWatchlist(userId);
   const seenListData = await getUserSeenMedia(userId);
-  console.log(seenListData);
 
   return {
-    watchlist: watchlistData,
-    seenList: seenListData,
+    watchlist: watchlistData.watchlist,
+    seenList: seenListData.seenMedia[0],
   };
 };
 
@@ -58,6 +57,7 @@ export const selectWatchlist = (state: { lists: ListState }) => state.lists.watc
 export const selectSeenList = (state: { lists: ListState }) => state.lists.seenList;
 export const selectListsFetched = (state: { lists: ListState }) => state.lists.listsFetched;
 
-export const { addToWatchlist, removeFromWatchlist, addToSeenList, removeFromSeenList, rateMedia, setListsFetched } = listsSlice.actions;
+export const { addToWatchlist, removeFromWatchlist, addToSeenList, removeFromSeenList, rateMedia, setListsFetched } =
+  listsSlice.actions;
 
 export default listsSlice.reducer;
