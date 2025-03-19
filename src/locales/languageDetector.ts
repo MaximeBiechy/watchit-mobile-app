@@ -1,11 +1,6 @@
-import { NativeModules, Platform } from 'react-native';
+import * as RNLocalize from 'react-native-localize';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { ModuleType } from "i18next";
-
-const deviceLanguage =
-  Platform.OS === 'ios'
-    ? NativeModules.SettingsManager.settings.AppleLocale || NativeModules.SettingsManager.settings.AppleLocale[0]
-    : NativeModules.I18nManager.localeIdentifier;
+import { ModuleType } from 'i18next';
 
 const STORE_LANGUAGE_KEY = 'settings.language';
 
@@ -15,24 +10,30 @@ const languageDetector = {
   init: () => {},
   async detect(callback: (lang: string) => void) {
     try {
-      const language = await AsyncStorage.getItem(STORE_LANGUAGE_KEY);
-      if (language) {
-        // ? If the user has selected a language, we use it
-        callback(language);
+      const storedLanguage = await AsyncStorage.getItem(STORE_LANGUAGE_KEY);
+
+      if (storedLanguage) {
+        callback(storedLanguage);
       } else {
-        // ? Otherwise, we use the device's language
-        const deviceLang = deviceLanguage.splice(0, 2);
-        callback(deviceLang === 'en' ? 'en' : 'fr');
+        const locales = RNLocalize.getLocales();
+
+        if (locales.length > 0) {
+          const deviceLanguageCode = locales[0].languageCode;
+          callback(deviceLanguageCode === 'en' ? 'en' : 'fr');
+        } else {
+          callback('en');
+        }
       }
     } catch (error) {
       console.error('Failed to detect language:', error);
+      callback('en');
     }
   },
   async cacheUserLanguage(lang: string) {
     try {
       await AsyncStorage.setItem(STORE_LANGUAGE_KEY, lang);
     } catch (error) {
-      /* empty */
+      console.error('Failed to cache language:', error);
     }
   },
 };
