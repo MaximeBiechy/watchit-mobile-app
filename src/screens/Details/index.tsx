@@ -198,12 +198,13 @@ function DetailsScreen() {
             </View>
           </TouchableOpacity>
 
-          <View style={styles.divider} />
-          <View style={styles.scoreContainer}>
-            <Text style={styles.score}>8.0/10</Text>
-            <Text style={styles.who}>Watch It</Text>
-          </View>
-          <View style={styles.divider} />
+          {/* <View style={styles.divider} /> */}
+          {/* <View style={styles.scoreContainer}> */}
+          {/*  <Text style={styles.score}>8.0/10</Text> */}
+          {/*  <Text style={styles.who}>Watch It</Text> */}
+          {/* </View> */}
+          {/* <View style={styles.divider} /> */}
+
           <View style={styles.scoreContainer}>
             <Text style={styles.score}>{formatVoteAverage(movieDetails?.voteAverage)}/10</Text>
             <Text style={styles.who}>IMDB</Text>
