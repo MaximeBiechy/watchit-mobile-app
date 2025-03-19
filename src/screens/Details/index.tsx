@@ -15,31 +15,29 @@ import { accentColor, gray, primaryColor } from '../../styles/colors.ts';
 import LoaderComponent from '../../components/Loader/LoaderComponent.tsx';
 import ErrorComponent from '../../components/Error/ErrorComponent.tsx';
 import CastListComponent from '../../components/CastList/CastListComponent.tsx';
-import { MovieDetails } from '../../types/entities.ts';
+import { MovieDetails, SeenMedia } from '../../types/entities.ts';
 import { formatVoteAverage } from '../../utils/number.ts';
 import { formatDateTimeOnlyYear } from '../../utils/dateTime.ts';
 import { selectUserData } from '../../store/user/userSlice.ts';
 import useLists from '../../hooks/useLists.ts';
-import { selectSeenList } from '../../store/lists/listsSlice.ts';
 import SelectRatingComponent from '../../components/SelectRating/SelectRatingComponent.tsx';
-import { rateMedia, updateMediaRating } from '../../services/api/users.ts';
+import { updateMediaRating } from '../../services/api/users.ts';
 
 type DetailsScreenRouteProp = RouteProp<HomeStackParamList, 'Details'>;
 
 function DetailsScreen() {
-  const route = useRoute<DetailsScreenRouteProp>();
-  const { mediaId } = route.params;
+  const { mediaId } = useRoute<DetailsScreenRouteProp>().params;
   const { t } = useTranslation('details');
   const [movieDetails, setMoviesDetails] = useState<MovieDetails | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const user = useSelector(selectUserData);
-  const seenList = useSelector(selectSeenList);
-  const { addToSeenList, removeFromSeenList, removeFromWatchlist } = useLists(user.id!);
+  const { seenlist, watchlist, addToSeenList, removeFromSeenList, removeFromWatchlist } = useLists(user.id!);
   const [isRatingModalVisible, setRatingModalVisible] = useState(false);
   const [userRating, setUserRating] = useState<number | null>(null);
 
-  const isInSeenList = seenList.some((item) => item.mediaId === mediaId);
+  const isInSeenList = seenlist.some((item: any) => item.mediaId === mediaId);
+  const isInWatchlist = watchlist.some((item) => item.mediaId === mediaId);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -52,17 +50,27 @@ function DetailsScreen() {
       setLoading(false);
     };
 
-    const fetchUserRating = async () => {
-      const rating = seenList.find((item) => item.mediaId === mediaId)?.rating;
+    const fetchUserRating = () => {
+      const rating = seenlist.find((item: SeenMedia) => item.mediaId === mediaId)?.rating;
       setUserRating(rating || null);
     };
 
     fetchMovieDetails();
     fetchUserRating();
-  }, [user?.id]);
+  }, [mediaId, seenlist]);
 
   if (loading) {
     return <LoaderComponent />;
+  }
+
+  if (error) {
+    return (
+      <ErrorComponent
+        error={error}
+        imageSource={assets.images.error}
+        additionalText="An error occurred while fetching movie details."
+      />
+    );
   }
 
   const handleRatingPress = () => {
@@ -70,13 +78,14 @@ function DetailsScreen() {
   };
 
   const handleSelectRating = async (note: number) => {
-    if (userRating === null) {
-      await rateMedia(user.id!, mediaId, 'movie', note);
+    if (!isInSeenList) {
+      if (isInWatchlist) {
+        await removeFromWatchlist(mediaId, 'movie');
+      }
+      await addToSeenList({ mediaId, mediaType: 'movie', mediaTitle: movieDetails?.title || '', rating: note });
     } else {
       await updateMediaRating(user.id!, mediaId, 'movie', note);
     }
-    await removeFromWatchlist(mediaId, 'movie');
-    await addToSeenList({ mediaId, mediaType: 'movie', mediaTitle: movieDetails?.title || '', rating: note });
     setUserRating(note);
   };
 
@@ -116,11 +125,13 @@ function DetailsScreen() {
   );
 
   const handleSeenListToggle = async () => {
-    if (isInSeenList) {
+    if (isInSeenList && userRating === null) {
       await removeFromSeenList({ mediaId, mediaType: 'movie', mediaTitle: movieDetails?.title || '' });
-    } else {
+    } else if (!isInSeenList) {
       await addToSeenList({ mediaId, mediaType: 'movie', mediaTitle: movieDetails?.title || '' });
-      await removeFromWatchlist(mediaId, 'movie');
+      if (isInWatchlist) {
+        await removeFromWatchlist(mediaId, 'movie');
+      }
     }
   };
 

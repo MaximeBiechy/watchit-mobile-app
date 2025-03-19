@@ -14,9 +14,9 @@ export const getNowPlayingMovies = async () => {
 
     return response.data;
   } catch (error: any) {
-    // const errorCode = error.response?.data?.code || 'UnexpectedError';
-    // const translatedMessage = t(`errors:${errorCode}`);
-    // showToast('error', translatedMessage);
+    const errorCode = error.response?.data?.code || 'UnexpectedError';
+    const translatedMessage = t(`errors:${errorCode}`);
+    showToast('error', translatedMessage);
     return { error: error.response?.data?.message || 'An error occurred' };
   }
 };
@@ -31,9 +31,9 @@ export const getMovieDetails = async (id: number) => {
 
     return response.data;
   } catch (error: any) {
-    // const errorCode = error.response?.data?.code || 'UnexpectedError';
-    // const translatedMessage = t(`errors:${errorCode}`);
-    // showToast('error', translatedMessage);
+    const errorCode = error.response?.data?.code || 'UnexpectedError';
+    const translatedMessage = t(`errors:${errorCode}`);
+    showToast('error', translatedMessage);
     return { error: error.response?.data?.message || 'An error occurred' };
   }
 };
@@ -48,9 +48,9 @@ export const getUpcomingMovies = async () => {
     });
     return response.data;
   } catch (error: any) {
-    // const errorCode = error.response?.data?.code || 'UnexpectedError';
-    // const translatedMessage = t(`errors:${errorCode}`);
-    // showToast('error', translatedMessage);
+    const errorCode = error.response?.data?.code || 'UnexpectedError';
+    const translatedMessage = t(`errors:${errorCode}`);
+    showToast('error', translatedMessage);
     return { error: error.response?.data?.message || 'An error occurred' };
   }
 };
@@ -65,9 +65,9 @@ export const getPopularMovies = async () => {
     });
     return response.data;
   } catch (error: any) {
-    // const errorCode = error.response?.data?.code || 'UnexpectedError';
-    // const translatedMessage = t(`errors:${errorCode}`);
-    // showToast('error', translatedMessage);
+    const errorCode = error.response?.data?.code || 'UnexpectedError';
+    const translatedMessage = t(`errors:${errorCode}`);
+    showToast('error', translatedMessage);
     return { error: error.response?.data?.message || 'An error occurred' };
   }
 };
@@ -82,9 +82,9 @@ export const getTopRatedMovies = async () => {
     });
     return response.data;
   } catch (error: any) {
-    // const errorCode = error.response?.data?.code || 'UnexpectedError';
-    // const translatedMessage = t(`errors:${errorCode}`);
-    // showToast('error', translatedMessage);
+    const errorCode = error.response?.data?.code || 'UnexpectedError';
+    const translatedMessage = t(`errors:${errorCode}`);
+    showToast('error', translatedMessage);
     return { error: error.response?.data?.message || 'An error occurred' };
   }
 };
@@ -98,9 +98,9 @@ export const getMovieTrailer = async (id: number) => {
     });
     return response.data;
   } catch (error: any) {
-    // const errorCode = error.response?.data?.code || 'UnexpectedError';
-    // const translatedMessage = t(`errors:${errorCode}`);
-    // showToast('error', translatedMessage);
+    const errorCode = error.response?.data?.code || 'UnexpectedError';
+    const translatedMessage = t(`errors:${errorCode}`);
+    showToast('error', translatedMessage);
     return { error: error.response?.data?.message || 'An error occurred' };
   }
 };

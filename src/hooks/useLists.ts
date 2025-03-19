@@ -9,6 +9,8 @@ import {
   addToSeenList,
   removeFromSeenList,
   rateMedia,
+  selectListsFetched,
+  setListsFetched,
 } from '../store/lists/listsSlice.ts';
 import { MediaItem, SeenMedia } from '../types/entities.ts';
 import {
@@ -22,16 +24,20 @@ const useLists = (userId: string) => {
   const dispatch = useDispatch();
   const watchlist = useSelector(selectWatchlist);
   const seenlist = useSelector(selectSeenList);
+  const listsFetched = useSelector(selectListsFetched);
 
   useEffect(() => {
-    const loadLists = async () => {
-      const lists = await fetchLists(userId);
-      dispatch(addToWatchlist(lists.watchlist));
-      dispatch(addToSeenList(lists.seenList));
-    };
+    if (!listsFetched) {
+      const loadLists = async () => {
+        const lists = await fetchLists(userId);
+        dispatch(addToWatchlist(lists.watchlist));
+        dispatch(addToSeenList(lists.seenList));
+        dispatch(setListsFetched(true));
+      };
 
-    loadLists();
-  }, [dispatch, userId]);
+      loadLists();
+    }
+  }, [dispatch, userId, listsFetched]);
 
   const addToWatchlistHandler = async (mediaItem: MediaItem) => {
     await apiAddToWatchlist(userId, mediaItem.mediaId, mediaItem.mediaType);
