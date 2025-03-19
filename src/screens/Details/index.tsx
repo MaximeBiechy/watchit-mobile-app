@@ -125,7 +125,7 @@ function DetailsScreen() {
   );
 
   const handleSeenListToggle = async () => {
-    if (isInSeenList && userRating === null) {
+    if (isInSeenList) {
       await removeFromSeenList({ mediaId, mediaType: 'movie', mediaTitle: movieDetails?.title || '' });
     } else if (!isInSeenList) {
       await addToSeenList({ mediaId, mediaType: 'movie', mediaTitle: movieDetails?.title || '' });
