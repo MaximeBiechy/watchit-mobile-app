@@ -1,9 +1,9 @@
 import { Image, Text, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { useFocusEffect, useNavigation } from '@react-navigation/native';
-import { useCallback, useEffect, useState } from 'react';
-import { loadUserData, logout, selectUserData } from '../../store/user/userSlice.ts';
+import { useNavigation } from '@react-navigation/native';
+import { useState } from 'react';
+import { logout, selectUserAvatar, selectUserData } from '../../store/user/userSlice.ts';
 import styles from './styles.ts';
 import assets from '../../assets/assets.ts';
 import SettingButtonComponent from '../../components/SettingButton/SettingButtonComponent.tsx';
@@ -41,6 +41,7 @@ function UserProfileScreen() {
   const { t } = useTranslation('profile');
   const navigation = useNavigation<ProfileNavigationProp>();
   const user = useSelector(selectUserData);
+  const userAvatar = useSelector(selectUserAvatar);
   const dispatch = useDispatch();
   const [isLogoutModalVisible, setIsLogoutModalVisible] = useState(false);
   const [isDeleteAccountModalVisible, setIsDeleteAccountModalVisible] = useState(false);
@@ -50,11 +51,6 @@ function UserProfileScreen() {
     dispatch(logout());
     setIsLogoutModalVisible(false);
   };
-
-  useFocusEffect(() => {
-    console.log('UserProfileScreen focused');
-    console.log(user);
-  });
 
   const handleDeleteAccount = async () => {
     const response = await deleteAccount(user.id!);
@@ -70,7 +66,7 @@ function UserProfileScreen() {
     i18n.changeLanguage(toggleLanguage);
   };
 
-  const avatarIndex = user.avatar !== null && user.avatar >= 0 && user.avatar < images.length ? user.avatar : 0;
+  const avatarIndex = userAvatar !== null && userAvatar >= 0 && userAvatar < images.length ? userAvatar : 0;
 
   return (
     <View style={styles.container}>

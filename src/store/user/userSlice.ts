@@ -54,6 +54,7 @@ const userSlice = createSlice({
 export const selectUserData = (state: { user: UserState }) => state.user;
 export const selectIsAuthenticated = (state: { user: UserState }) => !!state.user.accessToken;
 export const selectOnboardingCompleted = (state: { user: UserState }) => state.user.onboardingCompleted;
+export const selectUserAvatar = (state: { user: UserState }) => state.user.avatar;
 
 export const { setUserData, setUserAvatar, completeOnboarding, loadUserData, logout } = userSlice.actions;
 
