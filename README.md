@@ -55,7 +55,7 @@ The backend API for this app is available here:
 
 UI mockups were designed in Figma.  
 👉 *(view-only link)*  
-https://www.figma.com/design/swrq0UzbeRDJD3BiIGWw4L/Design?node-id=0-1&t=S0QfWskRmtNP6d33-1
+[https://www.figma.com/design/swrq0UzbeRDJD3BiIGWw4L/Design?node-id=0-1&t=S0QfWskRmtNP6d33-1](https://www.figma.com/design/rONGYIjNkiftmUGIczmlt6/Design?node-id=1-4151&t=wPy6NkynKrYweHjH-1)
 
 ---
 
