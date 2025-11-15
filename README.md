@@ -61,8 +61,11 @@ https://www.figma.com/design/swrq0UzbeRDJD3BiIGWw4L/Design?node-id=0-1&t=S0QfWsk
 
 ## Notes
 
-⚠️ The app has **not** been tested on iOS.  
-⚠️ Code is provided for **demonstration purposes only** and should not be reused or redistributed.
+⚠️ This project is not fully complete, but the core features are functional.  
+It may evolve further over time, as additional features could still be developed.
+⚠️ The app has not been tested on iOS.<br>
+⚠️ This backend was developed as a learning project.<br>  
+⚠️ Code is provided for demonstration purposes only and is not intended for reuse.
 
 
 # Getting Started
