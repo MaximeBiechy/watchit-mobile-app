@@ -1,50 +1,68 @@
 # WatchIt
 
-**WatchIt** is a mobile app that allows users to browse movies, create custom lists, and rate films they wish to track or review later. This project was developed as a side project during my studies as a way to explore mobile and backend development while implementing modern and clean code practices.
+**WatchIt** is a mobile app that allows users to browse movies, create custom lists, and rate films they want to track or review later.
 
-The purpose of this app was educational, not commercial. It is not intended for app stores and has only been tested on Android devices. The code in this repository is provided for demonstration purposes and should not be reused in other projects.
+This project was developed as a personal learning experience during my studies, with the goal of experimenting with clean architecture, good development practices, and mobile/backend integration. It is not intended for publication or commercial use and has only been tested on Android devices.
 
-# Mobile App
+The code is shared for demonstration purposes only and should not be reused in other projects.
 
-This repository contains the React Native mobile app for the WatchIt project.
+---
 
-## Overview
+## Mobile App
 
-WatchIt allows users to browse movies, create lists, rate films, and track what they want to watch. The app is built in React Native using TypeScript and features a custom Redux store, i18n support, and integration with a REST API.
+This repository contains the React Native application for WatchIt.
 
-The backend API for this app is available at:  
+### Overview
+
+WatchIt allows users to:
+- Browse movies (via TMDB)
+- Create personal watchlists
+- Rate and track films they want to watch
+
+The app is built with React Native and TypeScript, includes a custom Redux store, multi-language support, error tracking, and experimental AdMob integration.
+
+The backend API for this app is available here:  
 👉 https://github.com/MaximeBiechy/watchit-api
+
+---
 
 ## Features
 
-- Movie browsing powered by TMDB API
-- List management and rating UI
-- Redux state management
-- i18n multi-language support
-- Custom UI defined in Figma
-- Error handling via Sentry
-- Fake AdMob ads integration
-- Tested only on Android
+- Movie browsing powered by the TMDB API  
+- Custom list creation and rating system  
+- Redux-based global state management  
+- Multi-language support (i18n)  
+- Custom UI designed in Figma  
+- Error monitoring via Sentry  
+- Fake AdMob integration (for testing)  
+- Only tested on Android
+
+---
 
 ## Tech Stack
 
-- React Native (TypeScript)
-- Redux
-- i18n
-- Axios
-- Sentry
-- AdMob (mocked)
-- Figma for UI (custom)
+- **React Native (TypeScript)**
+- **Redux**
+- **i18n**
+- **Axios**
+- **Sentry**
+- **AdMob (mocked)**
+- **Figma (custom UI)**
 
-⚠️ The app has not been tested on iOS.<br>
-⚠️ Code is intended for demonstration purposes only.
+---
 
 ## Design Mockups
 
-UI mockups were created using Figma.  
-👉 [https://www.figma.com/file/XXXXX/WatchIt-Design?type=design&mode=design](https://www.figma.com/design/swrq0UzbeRDJD3BiIGWw4L/Design?node-id=0-1&t=S0QfWskRmtNP6d33-1)
+UI mockups were designed in Figma.  
+👉 *(view-only link)*  
+https://www.figma.com/design/swrq0UzbeRDJD3BiIGWw4L/Design?node-id=0-1&t=S0QfWskRmtNP6d33-1
 
-*(view-only link)*
+---
+
+## Notes
+
+⚠️ The app has **not** been tested on iOS.  
+⚠️ Code is provided for **demonstration purposes only** and should not be reused or redistributed.
 
 
 # Getting Started
