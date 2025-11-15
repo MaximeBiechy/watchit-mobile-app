@@ -36,6 +36,9 @@ The backend API for this app is available at:
 - AdMob (mocked)
 - Figma for UI (custom)
 
+⚠️ The app has not been tested on iOS.
+⚠️ Code is intended for demonstration purposes only.
+
 ## Design Mockups
 
 UI mockups were created using Figma.  
