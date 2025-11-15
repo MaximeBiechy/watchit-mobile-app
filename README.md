@@ -1,4 +1,34 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# WatchIt Mobile App
+
+This repository contains the React Native mobile app for the WatchIt project.
+
+## Overview
+
+WatchIt allows users to browse movies, create lists, rate films, and track what they want to watch. The app is built in React Native using TypeScript and features a custom Redux store, i18n support, and integration with a REST API.
+
+The backend API for this app is available at:  
+👉 https://github.com/MaximeBiechy/watchit-api
+
+## Features
+
+- Movie browsing powered by TMDB API
+- List management and rating UI
+- Redux state management
+- i18n multi-language support
+- Custom UI defined in Figma
+- Error handling via Sentry
+- Fake AdMob ads integration
+- Tested only on Android
+
+## Tech Stack
+
+- React Native (TypeScript)
+- Redux
+- i18n
+- Axios
+- Sentry
+- AdMob (mocked)
+- Figma for UI (custom)
 
 # Getting Started
 
