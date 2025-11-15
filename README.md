@@ -30,6 +30,14 @@ The backend API for this app is available at:
 - AdMob (mocked)
 - Figma for UI (custom)
 
+## Design Mockups
+
+UI mockups were created using Figma.  
+👉 [https://www.figma.com/file/XXXXX/WatchIt-Design?type=design&mode=design](https://www.figma.com/design/swrq0UzbeRDJD3BiIGWw4L/Design?node-id=0-1&t=S0QfWskRmtNP6d33-1)
+
+*(view-only link)*
+
+
 # Getting Started
 
 > **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
