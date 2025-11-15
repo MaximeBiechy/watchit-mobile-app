@@ -36,8 +36,8 @@ function DetailsScreen() {
   const [isRatingModalVisible, setRatingModalVisible] = useState(false);
   const [userRating, setUserRating] = useState<number | null>(null);
 
-  const isInSeenList = seenlist.some((item: any) => item.mediaId === mediaId);
-  const isInWatchlist = watchlist.some((item) => item.mediaId === mediaId);
+  const isInSeenList = seenlist.some((item: any) => item?.mediaId === mediaId);
+  const isInWatchlist = watchlist.some((item) => item?.mediaId === mediaId);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -51,9 +51,7 @@ function DetailsScreen() {
     };
 
     const fetchUserRating = () => {
-      console.log(seenlist);
-      console.log(watchlist);
-      const rating = seenlist.find((item: SeenMedia) => item.mediaId === mediaId)?.rating;
+      const rating = seenlist.find((item: SeenMedia) => item?.mediaId === mediaId)?.rating;
       setUserRating(rating || null);
     };
 

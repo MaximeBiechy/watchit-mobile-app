@@ -46,8 +46,8 @@ function HomeNavigator() {
             mediaTitle: route.params.mediaTitle,
             mediaType: route.params.mediaType === 'movie' ? 'movie' : 'tv',
           };
-          const isInWatchlist = watchlist.some((item) => item.mediaId === media.mediaId);
-          const isInSeenList = seenList.some((item) => item.mediaId === media.mediaId);
+          const isInWatchlist = watchlist.some((item) => item?.mediaId === media.mediaId);
+          const isInSeenList = seenList.some((item) => item?.mediaId === media.mediaId);
           const toggleWatchlist = async () => {
             if (isInWatchlist) {
               await apiRemoveFromWatchlist(user.id!, media.mediaId, media.mediaType);
